@@ -1,0 +1,319 @@
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot');
+    src: url('../fonts/icomoon.eot#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf') format('truetype'),
+        url('../fonts/icomoon.woff') format('woff'),
+        url('../fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-vet:before {
+    content: "\e922";
+}
+
+.icon-dog:before {
+    content: "\e923";
+}
+
+.icon-heartworm:before {
+    content: "\e924";
+}
+
+.icon-cone:before {
+    content: "\e925";
+}
+
+.icon-pills:before {
+    content: "\e926";
+}
+
+.icon-scales:before {
+    content: "\e927";
+}
+
+.icon-dog3:before {
+    content: "\e928";
+}
+
+.icon-mobile:before {
+    content: "\e929";
+}
+
+.icon-hospital:before {
+    content: "\e92a";
+}
+
+.icon-horse:before {
+    content: "\e92b";
+}
+
+.icon-dog4:before {
+    content: "\e92c";
+}
+
+.icon-cat1:before {
+    content: "\e92d";
+}
+
+.icon-cat2:before {
+    content: "\e92e";
+}
+
+.icon-dog5:before {
+    content: "\e92f";
+}
+
+.icon-dog6:before {
+    content: "\e930";
+}
+
+.icon-truck:before {
+    content: "\e931";
+}
+
+.icon-vet1:before {
+    content: "\e932";
+}
+
+.icon-vet2:before {
+    content: "\e933";
+}
+
+.icon-reptile:before {
+    content: "\e934";
+}
+
+.icon-dog1:before {
+    content: "\e935";
+}
+
+.icon-food:before {
+    content: "\e936";
+}
+
+.icon-dog2:before {
+    content: "\e937";
+}
+
+.icon-spay:before {
+    content: "\e938";
+}
+
+.icon-neuter:before {
+    content: "\e939";
+}
+
+.icon-vaccine:before {
+    content: "\e93a";
+}
+
+.icon-eye1:before {
+    content: "\e93b";
+}
+
+.icon-dog7:before {
+    content: "\e93c";
+}
+
+.icon-location:before {
+    content: "\e93d";
+}
+
+.icon-dog8:before {
+    content: "\e93e";
+}
+
+.icon-dog9:before {
+    content: "\e93f";
+}
+
+.icon-rabbit:before {
+    content: "\e940";
+}
+
+.icon-dog10:before {
+    content: "\e941";
+}
+
+.icon-house:before {
+    content: "\e942";
+}
+
+.icon-chat:before {
+    content: "\e943";
+}
+
+.icon-rabbit1:before {
+    content: "\e944";
+}
+
+.icon-dog11:before {
+    content: "\e945";
+}
+
+.icon-cat:before {
+    content: "\e946";
+}
+
+.icon-health:before {
+    content: "\e947";
+}
+
+.icon-sign:before {
+    content: "\e948";
+}
+
+.icon-first-aid:before {
+    content: "\e949";
+}
+
+.icon-service-1:before {
+    content: "\e902";
+}
+
+.icon-service-3:before {
+    content: "\e904";
+}
+
+.icon-circle-close:before {
+    content: "\e918";
+}
+
+.icon-circle-check:before {
+    content: "\e920";
+}
+
+.icon-service-2:before {
+    content: "\e921";
+}
+
+.icon-acor:before {
+    content: "\e900";
+}
+
+.icon-arrow-right:before {
+    content: "\e901";
+}
+
+.icon-clock:before {
+    content: "\e903";
+}
+
+.icon-envelope:before {
+    content: "\e905";
+}
+
+.icon-headphone:before {
+    content: "\e906";
+}
+
+.icon-map-marker:before {
+    content: "\e907";
+}
+
+.icon-paper-plane:before {
+    content: "\e908";
+}
+
+.icon-search:before {
+    content: "\e909";
+}
+
+.icon-shoping-troli:before {
+    content: "\e90a";
+}
+
+.icon-twitter:before {
+    content: "\e90b";
+}
+
+.icon-what:before {
+    content: "\e90c";
+}
+
+.icon-zoom:before {
+    content: "\e90d";
+}
+
+.icon-reply:before {
+    content: "\e90e";
+}
+
+.icon-play:before {
+    content: "\e90f";
+}
+
+.icon-eye:before {
+    content: "\e910";
+}
+
+.icon-love:before {
+    content: "\e911";
+}
+
+.icon-phone:before {
+    content: "\e912";
+}
+
+.icon-facebook:before {
+    content: "\e913";
+}
+
+.icon-instagram:before {
+    content: "\e914";
+}
+
+.icon-linkedin:before {
+    content: "\e915";
+}
+
+.icon-calender:before {
+    content: "\e916";
+}
+
+.icon-user:before {
+    content: "\e917";
+}
+
+.icon-arrow-left:before {
+    content: "\e919";
+}
+
+.icon-quote:before {
+    content: "\e91a";
+}
+
+.icon-award:before {
+    content: "\e91b";
+}
+
+.icon-hand-dog:before {
+    content: "\e91c";
+}
+
+.icon-hand-sheak:before {
+    content: "\e91d";
+}
+
+.icon-star-user:before {
+    content: "\e91e";
+}
+
+.icon-dog-line:before {
+    content: "\e91f";
+}
