@@ -23,6 +23,12 @@ def registerpage(request):
 def vetRegisterpage(request):
     return render(request,"vetRegister.html")
 
+def blogsingle(request):
+    return render(request,"blog-single.html")
+
+def forgetpass(request):
+    return render(request,"forgot-password.html")
+
 
 
 
