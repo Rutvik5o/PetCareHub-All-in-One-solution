@@ -29,6 +29,21 @@ def blogsingle(request):
 def forgetpass(request):
     return render(request,"forgot-password.html")
 
+def getadoption(request):
+    return render(request,"adoption.html")
+
+def testPage(request):
+    return render(request,"testimonial.html")
+
+def aboutour(request):
+    return render(request,"about.html")
+
+def pricingpage(request):
+    return render(request,"pricing.html")
+
+#def errorpage(request,exception):
+ #   return render(request,"404.html",status=404)
+
 
 
 
