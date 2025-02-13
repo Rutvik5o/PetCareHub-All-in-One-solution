@@ -14,8 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import handler404
 from django.contrib import admin
 from django.urls import path
+
+import myapp.views
 from myapp import views
 from django.conf.urls.static import static
 from django.conf import settings
@@ -25,7 +28,7 @@ urlpatterns = [
     path('',views.indexpage),
     path('service-single/',views.servicepage),
     path('blog/',views.blogpage),
-    path('blogs/',views.blogsingle),
+    path('blogs/',views.blogsinglepage),
     path('login/',views.loginpage),
     path('vetLogin/',views.vetLoginpage),
     path('register/',views.registerpage),
@@ -35,4 +38,13 @@ urlpatterns = [
     path('fetchvetdata',views.fetchvetdata),
     path('checklogindata',views.checklogindata),
     path('checkVetlogindata',views.checkVetlogindata),
+    path('adopt/',views.getadoption),
+    path('test/',views.testPage),
+    path('about/',views.aboutour),
+    path('price',views.pricingpage)
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
+#handler404='myapp.views.errorpage'
+
+

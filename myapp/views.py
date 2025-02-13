@@ -23,11 +23,26 @@ def registerpage(request):
 def vetRegisterpage(request):
     return render(request,"vetRegister.html")
 
-def blogsingle(request):
+def blogsinglepage(request):
     return render(request,"blog-single.html")
 
 def forgetpass(request):
     return render(request,"forgot-password.html")
+
+def getadoption(request):
+    return render(request,"adoption.html")
+
+def testPage(request):
+    return render(request,"testimonial.html")
+
+def aboutour(request):
+    return render(request,"about.html")
+
+def pricingpage(request):
+    return render(request,"pricing.html")
+
+#def errorpage(request,exception):
+ #   return render(request,"404.html",status=404)
 
 
 
