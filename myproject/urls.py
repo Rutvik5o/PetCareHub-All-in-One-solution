@@ -41,7 +41,10 @@ urlpatterns = [
     path('adopt/',views.getadoption),
     path('test/',views.testPage),
     path('about/',views.aboutour),
-    path('price',views.pricingpage)
+    path('price',views.pricingpage),
+    path('ssp',views.shopsingelpage)
+
+
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 

@@ -26,6 +26,10 @@ def vetRegisterpage(request):
 def blogsinglepage(request):
     return render(request,"blog-single.html")
 
+def shopsingelpage(request):
+    return render(request,"shop-single.html")
+
+
 def forgetpass(request):
     return render(request,"forgot-password.html")
 
