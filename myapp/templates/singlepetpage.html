@@ -243,11 +243,14 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="single-item-info">
-                            <h4 class="single-item-title">{{ fetchsingle.petName }}</h4>
+                            <h4 class="single-item-title">{{ fetchsingle.petName }}</h4><br>
 
-                            <p class="mb-4">
+                            <h5>Breed: <span>{{ fetchsingle.petBreed }}</span></h5><br>
+                            <h5>Age: <span>{{ fetchsingle.petAge }}</span></h5><br>
+
+                         <!--   <p class="mb-4">
                                 {{ fetchsingle.petDescription }}
-                            </p>
+                            </p>-->
                             <!--
                             <div class="single-item-content">
                                 <h5>Stock: <span>Available</span></h5>
@@ -259,9 +262,12 @@
                                     <button class="theme-btn"><span class="far fa-shopping-cart"></span> Adopt Now</button>
                                     <a href="#" class="single-item-btn"><i class="far fa-heart"></i></a>
 
+
                                 </div>
                             </div>
+                            <br>
                             <div class="single-item-content">
+                                <h5>Shelter Name: <span>{{ fetchsingle.ShelterId }}</span></h5>
                                 <h5>Category: <span>{{ fetchsingle.petCategory }}</span></h5>
                                 <h5>Tags: <span>Pet, Shop, Toy</span></h5>
                             </div>
@@ -298,21 +304,9 @@
 
                             <div class="single-item-desc">
                                 <p>
-                                    There are many variations of passages of Lorem Ipsum available, but the majority
-                                    have suffered alteration in some form, by injected humour, or randomised words which
-                                    don't look even slightly believable. If you are going to use a passage of Lorem
-                                    Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of
-                                    text. All the Lorem Ipsum generators on the Internet tend to repeat predefined
-                                    chunks as necessary, making this the first true generator on the Internet.
+                                    {{ fetchsingle.petDescription }}
                                 </p>
-                                <p>
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                                    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-                                    voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                                    magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-                                    qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.
-                                </p>
+
                             </div>
                         </div>
                         <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="nav-tab2">
