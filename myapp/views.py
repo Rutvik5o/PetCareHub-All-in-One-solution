@@ -29,6 +29,15 @@ def blogsinglepage(request):
 def shopsingelpage(request):
     return render(request,"shop-single.html")
 
+def vetdiscoverpage(request):
+
+    fetchdata = vetRegisterDB.objects.all()
+
+    context = {
+        "vetdis" : fetchdata
+    }
+    return render(request,"vetdiscover.html",context)
+
 
 def forgetpass(request):
     return render(request,"forgot-password.html")
@@ -164,6 +173,17 @@ def singlepagepet(request,id): #for viewinng single page of pet
     }
 
     return render(request,"singlepetpage.html",context)
+
+def vetsinglepage(request,id): #for viewinng single page of pet
+
+    fetchdata = vetRegisterDB.objects.get(id=id)
+
+
+    context = {
+        "fetchsingle" : fetchdata
+    }
+
+    return render(request,"singlevetpage.html",context)
 
 
 

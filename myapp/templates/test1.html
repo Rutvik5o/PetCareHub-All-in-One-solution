@@ -1,85 +1,76 @@
-<html>
-<head>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <style>
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Our Team
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Nunito', sans-serif;
         }
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-    </style>
-</head>
-<body class="bg-blue-900">
-    <div class="container mx-auto p-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Card 1 -->
-            <div class="bg-white rounded-lg shadow-lg p-4 fade-in">
-                <div class="relative">
-                    <img alt="A cute French Bulldog sitting on grass" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200" />
-                    <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
-                        <i class="fas fa-heart text-gray-500"></i>
-                    </button>
-                </div>
-                <div class="p-4">
-                    <h2 class="text-xl font-bold text-gray-800">Cute French Bulldog</h2>
-                    <p class="text-gray-600"><span class="text-purple-600">•</span> Gender: Male</p>
-                    <p class="text-gray-600"><span class="text-purple-600">•</span> Breed: French</p>
-                    <p class="text-gray-600"><i class="fas fa-map-marker-alt text-purple-600"></i> Bakersfield, California</p>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="bg-white rounded-lg shadow-lg p-4 fade-in">
-                <div class="relative">
-                    <img alt="A purebred pussycat with a collar" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200" />
-                    <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
-                        <i class="fas fa-heart text-gray-500"></i>
-                    </button>
-                </div>
-                <div class="p-4">
-                    <h2 class="text-xl font-bold text-gray-800">purebred pussycat</h2>
-                    <p class="text-gray-600"><span class="text-purple-600">•</span> Gender: Female</p>
-                    <p class="text-gray-600"><span class="text-purple-600">•</span> Breed: Germany</p>
-                    <p class="text-gray-600"><i class="fas fa-map-marker-alt text-purple-600"></i> Central Park, New York</p>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-white rounded-lg shadow-lg p-4 fade-in">
-                <div class="relative">
-                    <img alt="An Italian Rabbit sitting on grass" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200" />
-                    <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
-                        <i class="fas fa-heart text-gray-500"></i>
-                    </button>
-                </div>
-                <div class="p-4">
-                    <h2 class="text-xl font-bold text-gray-800">Italian Rabbit</h2>
-                    <p class="text-gray-600"><span class="text-purple-600">•</span> Gender: Male</p>
-                    <p class="text-gray-600"><span class="text-purple-600">•</span> Breed: Italy</p>
-                    <p class="text-gray-600"><i class="fas fa-map-marker-alt text-purple-600"></i> Birmingham, Alabama</p>
-                </div>
-            </div>
-            <!-- Card 4 -->
-            <div class="bg-white rounded-lg shadow-lg p-4 fade-in">
-                <div class="relative">
-                    <img alt="A Macaw Russian bird on a branch" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200" />
-                    <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
-                        <i class="fas fa-heart text-gray-500"></i>
-                    </button>
-                </div>
-                <div class="p-4">
-                    <h2 class="text-xl font-bold text-gray-800">Macaw Russian</h2>
-                    <p class="text-gray-600"><span class="text-purple-600">•</span> Gender: Male</p>
-                    <p class="text-gray-600"><span class="text-purple-600">•</span> Breed: Canada</p>
-                    <p class="text-gray-600"><i class="fas fa-map-marker-alt text-purple-600"></i> Anchorage, Alaska</p>
-                </div>
-            </div>
-        </div>
+  </style>
+ </head>
+ <body class="bg-[#FFF7F2]">
+  {% include 'nav.html' %}
+  <div class="container mx-auto py-12 px-4">
+   <div class="flex justify-between items-center mb-8">
+    <div class="flex items-center">
+     <div class="h-1 w-8 bg-red-500 mr-2">
+     </div>
+     <span class="text-red-500 font-semibold">
+      Our Team
+     </span>
     </div>
-</body>
+    <button class="border border-red-500 text-red-500 px-4 py-2 rounded-md">
+     View All
+    </button>
+   </div>
+   <h1 class="text-4xl font-bold text-[#2B2B2B] mb-8">
+    Discover our team
+   </h1>
+   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div class="bg-white rounded-lg shadow-lg p-4 text-center transform transition duration-500 hover:scale-105">
+     <img alt="Portrait of Eric K. Frerichs, a veterinary professional" class="w-full h-64 object-cover rounded-t-lg mb-4 rounded-lg" height="300" src="https://storage.googleapis.com/a1aa/image/v8xZGKTFy7X7ic6TZfNvW0Z23HWWGtmR2zsfzLD2NOA.jpg" width="300"/>
+     <h2 class="text-xl font-bold text-[#2B2B2B]">
+      Eric K. Frerichs
+     </h2>
+     <p class="text-gray-500">
+      Veterinary
+     </p>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg p-4 text-center transform transition duration-500 hover:scale-105">
+     <img alt="Portrait of Cathy J. Gomez, a veterinary professional" class="w-full h-64 object-cover rounded-t-lg mb-4 rounded-lg" height="300" src="https://storage.googleapis.com/a1aa/image/duNSpL3NXTxzvE2csvnan-Uvq1OloVVCCyHI5c0iJPo.jpg" width="300"/>
+     <h2 class="text-xl font-bold text-[#2B2B2B]">
+      Cathy J. Gomez
+     </h2>
+     <p class="text-gray-500">
+      Veterinary
+     </p>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg p-4 text-center transform transition duration-500 hover:scale-105">
+     <img alt="Portrait of Eric K. Frerichs, a veterinary professional" class="w-full h-64 object-cover rounded-t-lg mb-4 rounded-lg" height="300" src="https://storage.googleapis.com/a1aa/image/v8xZGKTFy7X7ic6TZfNvW0Z23HWWGtmR2zsfzLD2NOA.jpg" width="300"/>
+     <h2 class="text-xl font-bold text-[#2B2B2B]">
+      Eric K. Frerichs
+     </h2>
+     <p class="text-gray-500">
+      Veterinary
+     </p>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg p-4 text-center transform transition duration-500 hover:scale-105">
+     <img alt="Portrait of Eric K. Frerichs, a veterinary professional" class="w-full h-64 object-cover rounded-t-lg mb-4 rounded-lg" height="300" src="https://storage.googleapis.com/a1aa/image/v8xZGKTFy7X7ic6TZfNvW0Z23HWWGtmR2zsfzLD2NOA.jpg" width="300"/>
+     <h2 class="text-xl font-bold text-[#2B2B2B]">
+      Eric K. Frerichs
+     </h2>
+     <p class="text-gray-500">
+      Veterinary
+     </p>
+    </div>
+   </div>
+  </div>
+ </body>
 </html>

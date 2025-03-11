@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from live.themewild.com/pawsy/adoption.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
+<head>
+    <!-- meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- title -->
+    <title>PetCare Hub : All In One Solution</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/img/logo/favicon.png">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/all-fontawesome.min.css">
+    <link rel="stylesheet" href="/static/css/icomoon.css">
+    <link rel="stylesheet" href="/static/css/animate.min.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+
+</head>
+
+
+
+<body>
+
+    <!-- preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- preloader end -->
+
+{% include 'nav.html' %}
+       <main class="main">
+       <div class="site-breadcrumb" style="background: url(/static/img/breadcrumb/01.jpg)">
+            <div class="container">
+                <h2 class="breadcrumb-title">Discover Veternaties</h2>
+                <ul class="breadcrumb-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Get Adoption</li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+        <!-- team-area -->
+        <div class="team-area pt-120 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto wow fadeInDown" data-wow-duration="1s" data-wow-delay=".25s">
+                        <div class="site-heading text-center">
+                            <span class="site-title-tagline">Team</span>
+                            <h2 class="site-title">Our Experts <span>Team</span></h2>
+                            <div class="heading-divider"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    {% for i in vetdis %}
+                    <div class="col-md-6 col-lg-3">
+                        <div class="team-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+                            <div class="team-img">
+                               <a href="/svp/{{ i.id }}"> <img src="/media/{{ i.Photo }}" alt="thumb"></a>
+                            </div>
+                            <div class="team-content">
+                                <div class="team-bio">
+                                    <h5><a href="#">{{ i.Name }}</a></h5>
+                                    <span>{{ i.Specialization }}</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <!-- team-area end -->
+
+
+
+
+
+
+    <!-- footer area -->
+    <footer class="footer-area">
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row footer-widget-wrapper pt-100 pb-70">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="footer-widget-box about-us">
+                            <a href="#" class="footer-logo">
+                                <img src="/static/img/logo/logo-light.png" alt="">
+                            </a>
+                            <p class="mb-4">
+                                We are many variations of passages available but the majority have suffered alteration
+                                in some form by injected humour words believable.
+                            </p>
+                            <ul class="footer-contact">
+                                <li><a href="tel:+21236547898"><i class="far fa-phone"></i>+2 123 654 7898</a></li>
+                                <li><i class="far fa-map-marker-alt"></i>25/B Milford Road, New York</li>
+                                <li><a href="https://live.themewild.com/cdn-cgi/l/email-protection#ea83848c85aa8f928b879a868fc4898587"><i
+                                            class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="c2abaca4ad82a7baa3afb2aea7eca1adaf">[email&#160;protected]</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Quick Links</h4>
+                            <ul class="footer-list">
+                                <li><a href="#"><i class="fas fa-caret-right"></i> About Us</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> FAQ's</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Terms Of Service</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Privacy policy</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Our Team</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Latest Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Our Services</h4>
+                            <ul class="footer-list">
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Pet Training</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Walking & Sitting</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Pet Grooming</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Pet Transport</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Health & Wellness</a></li>
+                                <li><a href="#"><i class="fas fa-caret-right"></i> Pet Boarding</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Newsletter</h4>
+                            <div class="footer-newsletter">
+                                <p>Subscribe Our Newsletter To Get Latest Update And News</p>
+                                <div class="subscribe-form">
+                                    <form action="#">
+                                        <input type="email" class="form-control" placeholder="Your Email">
+                                        <button class="theme-btn" type="submit">
+                                            Subscribe Now <i class="far fa-paper-plane"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 align-self-center">
+                        <p class="copyright-text">
+                            &copy; Copyright <span id="date"></span> <a href="#"> PAWSY </a> All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 align-self-center">
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+
+
+
+
+    <!-- scroll-top -->
+    <a href="#" id="scroll-top"><i class="far fa-angle-up"></i></a>
+    <!-- scroll-top end -->
+
+
+    <!-- js -->
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-/static/email-decode.min.js"></script><script src="/static/js/jquery-3.6.0.min.js"></script>
+    <script src="/static/js/modernizr.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/isotope.pkgd.min.js"></script>
+    <script src="/static/js/jquery.appear.min.js"></script>
+    <script src="/static/js/jquery.easing.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/counter-up.js"></script>
+    <script src="/static/js/masonry.pkgd.min.js"></script>
+    <script src="/static/js/wow.min.js"></script>
+    <script src="/static/js/main.js"></script>
+       </main>
+</body>
+
+
+<!-- Mirrored from live.themewild.com/pawsy/adoption.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
+</html>

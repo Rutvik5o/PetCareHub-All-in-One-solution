@@ -8,7 +8,7 @@ class showUserRegisterData(admin.ModelAdmin):
 
 @admin.register(vetRegisterDB)
 class showVetRegisterData(admin.ModelAdmin):
-    list_display = ['id','Name','Email','Password','Photo','Gender','Phone','LicenseFile','Address','Specialization','YearsOfExperience','ClinicName','TimeStamp']
+    list_display = ['id','Name','Email','Password','Photo','vet_photo','Gender','Phone','LicenseFile','Address','Specialization','YearsOfExperience','ClinicName','TimeStamp']
 
 @admin.register(shelterDB)
 class showShelterData(admin.ModelAdmin):

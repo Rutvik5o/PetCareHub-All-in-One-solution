@@ -43,7 +43,9 @@ urlpatterns = [
     path('about/',views.aboutour),
     path('price',views.pricingpage),
     path('ssp',views.shopsingelpage),
-    path('spp/<int:id>',views.singlepagepet)
+    path('spp/<int:id>',views.singlepagepet),
+    path('svp/<int:id>',views.vetsinglepage),
+    path('vetdis/',views.vetdiscoverpage)
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -27,6 +27,10 @@ class vetRegisterDB(models.Model):
     def vet_photo(self):
         return mark_safe('<img src="{}" width="100"/>'.format(self.Photo.url))
 
+    vet_photo.allow_tags = True
+
+
+
 class shelterDB(models.Model):
     shelterName = models.CharField(max_length=70)
     shelterEmail = models.EmailField()
