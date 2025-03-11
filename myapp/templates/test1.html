@@ -1,0 +1,85 @@
+<html>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-blue-900">
+    <div class="container mx-auto p-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-lg shadow-lg p-4 fade-in">
+                <div class="relative">
+                    <img alt="A cute French Bulldog sitting on grass" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200" />
+                    <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
+                        <i class="fas fa-heart text-gray-500"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h2 class="text-xl font-bold text-gray-800">Cute French Bulldog</h2>
+                    <p class="text-gray-600"><span class="text-purple-600">•</span> Gender: Male</p>
+                    <p class="text-gray-600"><span class="text-purple-600">•</span> Breed: French</p>
+                    <p class="text-gray-600"><i class="fas fa-map-marker-alt text-purple-600"></i> Bakersfield, California</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white rounded-lg shadow-lg p-4 fade-in">
+                <div class="relative">
+                    <img alt="A purebred pussycat with a collar" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200" />
+                    <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
+                        <i class="fas fa-heart text-gray-500"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h2 class="text-xl font-bold text-gray-800">purebred pussycat</h2>
+                    <p class="text-gray-600"><span class="text-purple-600">•</span> Gender: Female</p>
+                    <p class="text-gray-600"><span class="text-purple-600">•</span> Breed: Germany</p>
+                    <p class="text-gray-600"><i class="fas fa-map-marker-alt text-purple-600"></i> Central Park, New York</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white rounded-lg shadow-lg p-4 fade-in">
+                <div class="relative">
+                    <img alt="An Italian Rabbit sitting on grass" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200" />
+                    <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
+                        <i class="fas fa-heart text-gray-500"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h2 class="text-xl font-bold text-gray-800">Italian Rabbit</h2>
+                    <p class="text-gray-600"><span class="text-purple-600">•</span> Gender: Male</p>
+                    <p class="text-gray-600"><span class="text-purple-600">•</span> Breed: Italy</p>
+                    <p class="text-gray-600"><i class="fas fa-map-marker-alt text-purple-600"></i> Birmingham, Alabama</p>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="bg-white rounded-lg shadow-lg p-4 fade-in">
+                <div class="relative">
+                    <img alt="A Macaw Russian bird on a branch" class="w-full h-48 object-cover rounded-t-lg" src="https://placehold.co/300x200" />
+                    <button class="absolute top-2 right-2 bg-white rounded-full p-2 shadow-md">
+                        <i class="fas fa-heart text-gray-500"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h2 class="text-xl font-bold text-gray-800">Macaw Russian</h2>
+                    <p class="text-gray-600"><span class="text-purple-600">•</span> Gender: Male</p>
+                    <p class="text-gray-600"><span class="text-purple-600">•</span> Breed: Canada</p>
+                    <p class="text-gray-600"><i class="fas fa-map-marker-alt text-purple-600"></i> Anchorage, Alaska</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
