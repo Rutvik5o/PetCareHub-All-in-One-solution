@@ -112,78 +112,27 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pet-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
-                            <div class="pet-img">
-                                <img src="/static/img/adoption/p1.jpg" alt="">
-                            </div>
-                            <div class="pet-content">
-                                <span><i class="far fa-calendar-days"></i> Birth: 2022</span>
-                                <h4><a href="#">French Bulldog</a></h4>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pet-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
-                            <div class="pet-img">
-                                <img src="/static/img/adoption/p2.jpg" alt="">
-                            </div>
-                            <div class="pet-content">
-                                <span><i class="far fa-calendar-days"></i> Birth: 2022</span>
-                                <h4><a href="#">French Bulldog</a></h4>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <!--
+
+   <a href="/singleproducts/{{ i.id }}"><img src="/media/{{ i.image }}" class="card-img-top" alt="Product 1"></a>-->
+
+
+
+                    {% for i in datapet %}
                     <div class="col-md-6 col-lg-4">
                         <div class="pet-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
                             <div class="pet-img">
-                                <img src="/static/img/adoption/p3.jpg" alt="">
+                                <a href="/spp/{{ i.id }}"><img src="/media/{{ i.petImage }}" alt=""></a>
                             </div>
                             <div class="pet-content">
-                                <span><i class="far fa-calendar-days"></i> Birth: 2022</span>
-                                <h4><a href="#">French Bulldog</a></h4>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                <span><i class="far fa-calendar-days"></i> Age: {{ i.petAge }}</span>
+                                <h4><a href="#">{{ i.petName }}</a></h4>
+                                <p>{{ i.petDescription }}</p>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pet-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
-                            <div class="pet-img">
-                                <img src="/static/img/adoption/p4.jpg" alt="">
-                            </div>
-                            <div class="pet-content">
-                                <span><i class="far fa-calendar-days"></i> Birth: 2022</span>
-                                <h4><a href="#">French Bulldog</a></h4>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pet-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
-                            <div class="pet-img">
-                                <img src="/static/img/adoption/p5.jpg" alt="">
-                            </div>
-                            <div class="pet-content">
-                                <span><i class="far fa-calendar-days"></i> Birth: 2022</span>
-                                <h4><a href="#">French Bulldog</a></h4>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pet-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
-                            <div class="pet-img">
-                                <img src="/static/img/adoption/p6.jpg" alt="">
-                            </div>
-                            <div class="pet-content">
-                                <span><i class="far fa-calendar-days"></i> Birth: 2022</span>
-                                <h4><a href="#">French Bulldog</a></h4>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

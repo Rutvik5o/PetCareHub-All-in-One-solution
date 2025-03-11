@@ -12,8 +12,18 @@ class showVetRegisterData(admin.ModelAdmin):
 
 @admin.register(shelterDB)
 class showShelterData(admin.ModelAdmin):
-    list_display = ['id','shelterName','shelterEmail','shelterContact','shelterAddress','shelterLocationUrl','TimeStamp']
+    list_display = ['id','shelterName','shelterEmail','shelterImage','shelter_photo','shelterContact','shelterAddress','shelterLocationUrl','TimeStamp']
 
 @admin.register(petCategoryDB)
 class showPetCategoryData(admin.ModelAdmin):
     list_display = ['id','petCategory']
+
+
+@admin.register(petDB)
+class showPetTable(admin.ModelAdmin):
+
+    list_display=['id','petName','petImage','pet_photo','petDescription','petAge','petBreed','petCategory','ShelterId','PetAddTimeStamp']
+
+
+
+

@@ -32,14 +32,45 @@ class shelterDB(models.Model):
     shelterEmail = models.EmailField()
     shelterContact = models.BigIntegerField()
     shelterAddress = models.TextField()
+    shelterImage = models.ImageField(upload_to="photos",default="",null=True)
     shelterLocationUrl = models.URLField(blank=True,null=True)
     TimeStamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.shelterName
 
+    def shelter_photo(self):
+        return mark_safe('<img src="{}" width="100"/>'.format(self.shelterImage.url))
+
+    shelter_photo.allow_tags = True
+
+
 class petCategoryDB(models.Model):
     petCategory = models.CharField(max_length=20)
 
     def __str__(self):
         return self.petCategory
+
+
+class petDB(models.Model):
+
+    petName = models.CharField(max_length=30)
+    petImage = models.ImageField(upload_to='photos')
+    petDescription = models.TextField()
+    petAge = models.IntegerField()
+    petBreed = models.CharField(max_length=30)
+    petCategory = models.ForeignKey(petCategoryDB,on_delete=models.CASCADE)
+    ShelterId = models.ForeignKey(shelterDB,on_delete = models.CASCADE)
+    PetAddTimeStamp = models.DateTimeField(auto_now_add=True)
+
+    def pet_photo(self):
+        return mark_safe('<img src="{}" width="100"/>'.format(self.petImage.url))
+
+    pet_photo.allow_tags = True
+
+
+
+
+
+
+

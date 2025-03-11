@@ -34,7 +34,13 @@ def forgetpass(request):
     return render(request,"forgot-password.html")
 
 def getadoption(request):
-    return render(request,"adoption.html")
+
+    fetchpet = petDB.objects.all()
+
+    context = {
+        "datapet" : fetchpet
+    }
+    return render(request,"adoption.html",context)
 
 def testPage(request):
     return render(request,"testimonial.html")
@@ -102,6 +108,10 @@ def checklogindata(request):
         userdata = userRegisterDB.objects.get(Email=username,Password=userpassword)
         print(userdata)
         print('success')
+        request.session['log_id'] = userdata.id
+        request.session['log_name'] = userdata.Name
+
+        print("name in session=> ", request.session.get('log_name'))  # ✅ Use .get() to avoid KeyError
 
     except:
         print('fail')
@@ -111,6 +121,8 @@ def checklogindata(request):
 
     if userdata is not None:
         print('success')
+
+
         return render(request,"index.html")
     else:
         print('Invalid Email or Password')
@@ -141,3 +153,17 @@ def checkVetlogindata(request):
         messages.error(request,"Invalid EMAIL or PASSWORD!!")
 
     return render(request,"vetLogin.html")
+
+def singlepagepet(request,id): #for viewinng single page of pet
+
+    fetchdata = petDB.objects.get(id=id)
+
+
+    context = {
+        "fetchsingle" : fetchdata
+    }
+
+    return render(request,"singlepetpage.html",context)
+
+
+
