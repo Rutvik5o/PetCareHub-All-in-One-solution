@@ -26,3 +26,20 @@ class vetRegisterDB(models.Model):
 
     def vet_photo(self):
         return mark_safe('<img src="{}" width="100"/>'.format(self.Photo.url))
+
+class shelterDB(models.Model):
+    shelterName = models.CharField(max_length=70)
+    shelterEmail = models.EmailField()
+    shelterContact = models.BigIntegerField()
+    shelterAddress = models.TextField()
+    shelterLocationUrl = models.URLField(blank=True,null=True)
+    TimeStamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.shelterName
+
+class petCategoryDB(models.Model):
+    petCategory = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.petCategory
