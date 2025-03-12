@@ -42,9 +42,9 @@ urlpatterns = [
     path('test/',views.testPage),
     path('about/',views.aboutour),
     path('price',views.pricingpage),
-    path('ssp',views.shopsingelpage),
-    path('spp/<int:id>',views.singlepagepet),
-    path('svp/<int:id>',views.vetsinglepage),
+    path('ssp/',views.shopsingelpage),
+    path('spp/<int:id>/',views.singlepagepet),
+    path('svp/<int:id>/',views.vetsinglepage),
     path('vetdis/',views.vetdiscoverpage)
 
 
