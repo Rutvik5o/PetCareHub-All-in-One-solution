@@ -25,5 +25,7 @@ class showPetTable(admin.ModelAdmin):
     list_display=['id','petName','petImage','pet_photo','petDescription','petAge','petBreed','petCategory','ShelterId','PetAddTimeStamp']
 
 
-
+@admin.register(Appointment)
+class AppointmentTable(admin.ModelAdmin):
+    list_display = ['id','userid','vetid','petname','petphoto','pet_photo','breed','age','symptoms','status','dateofappo','timeofappo']
 

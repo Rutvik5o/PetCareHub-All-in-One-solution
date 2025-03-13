@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
+from django.utils.termcolors import color_names
+
 from .models import *
 from django.contrib import messages
 # Create your views here.
@@ -185,5 +187,71 @@ def vetsinglepage(request,id): #for viewinng single page of pet
 
     return render(request,"singlevetpage.html",context)
 
+def vetAppoint(request):
 
+    return render(request,"vetAppointment.html")
+
+
+def logout(request):
+    try:
+        del request.session["log_id"]
+        del request.session["log_name"]
+    except:
+        None
+    return redirect("/")
+
+
+def makeAppointment(request):
+    vetid = request.POST.get("vetid")
+    print(vetid)
+    context = {
+        "vetid":vetid
+    }
+
+
+    return render(request,"vetAppointment.html",context)
+
+def categorylist(request):
+
+
+
+    fetchcatdata = petCategoryDB.objects.all()
+
+
+    print(fetchcatdata)
+
+    context ={
+        "allcatdata": fetchcatdata
+    }
+
+    return render(request,"vetAppointment.html",context)
+
+def appointmentRequest(request):
+    userid = request.session["log_id"]
+    vetid = request.POST.get("vetid")
+    petname = request.POST.get("petname")
+    petage = request.POST.get("petage")
+    petCategory_id = request.POST.get("pc")
+    petImage = request.FILES["petimage"]
+    Breed = request.POST.get("breed")
+
+    date = request.POST.get("date")
+    time = request.POST.get("time")
+
+    sym = request.POST.get("sym")
+    if request.session["log_id"] == "":
+        print("cant")
+    else:
+        status = True
+
+
+    insertquery = Appointment(userid=userRegisterDB(id=userid), vetid=vetRegisterDB(id=vetid), petname=petname,
+                              age=petage, symptoms=sym, breed=Breed, dateofappo=date, timeofappo=time,
+                              petCategory=petCategoryDB(id=petCategory_id), petphoto=petImage,status=status)
+
+    insertquery.save()
+
+    print("data Stored Succsefully")
+
+    return render(request,"vetAppointment.html")
 

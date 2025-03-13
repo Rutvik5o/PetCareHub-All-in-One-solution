@@ -45,7 +45,11 @@ urlpatterns = [
     path('ssp/',views.shopsingelpage),
     path('spp/<int:id>/',views.singlepagepet),
     path('svp/<int:id>/',views.vetsinglepage),
-    path('vetdis/',views.vetdiscoverpage)
+    path('vetdis/',views.vetdiscoverpage),
+    path('makeAppointment',views.makeAppointment),
+    path('logout/',views.logout),
+    path('appointment',views.appointmentRequest),
+    path('app',views.categorylist)
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

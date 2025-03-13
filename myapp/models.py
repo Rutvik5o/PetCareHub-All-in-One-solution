@@ -10,6 +10,9 @@ class userRegisterDB(models.Model):
     PhoneNo = models.BigIntegerField()
     TimeStamp = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.Name
+
 class vetRegisterDB(models.Model):
     Name = models.CharField(max_length=30)
     Email = models.EmailField()
@@ -28,6 +31,9 @@ class vetRegisterDB(models.Model):
         return mark_safe('<img src="{}" width="100"/>'.format(self.Photo.url))
 
     vet_photo.allow_tags = True
+
+    def __str__(self):
+        return self.Name
 
 
 
@@ -72,6 +78,22 @@ class petDB(models.Model):
 
     pet_photo.allow_tags = True
 
+
+class Appointment(models.Model):
+    userid = models.ForeignKey(userRegisterDB,on_delete=models.CASCADE)
+    vetid = models.ForeignKey(vetRegisterDB,on_delete=models.CASCADE)
+    petname = models.CharField(max_length=30)
+    petphoto = models.ImageField(upload_to='photos')
+    petCategory = models.ForeignKey(petCategoryDB,on_delete=models.CASCADE)
+    breed = models.CharField(max_length=20)
+    age = models.IntegerField()
+    symptoms = models.CharField(max_length=20)
+    status = models.BooleanField()
+    dateofappo = models.DateField()
+    timeofappo = models.DateTimeField(auto_now=True)
+
+    def pet_photo(self):
+        return mark_safe('<img src="{}" width="100"/>'.format(self.petphoto.url))
 
 
 
