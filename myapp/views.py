@@ -1,5 +1,6 @@
 from asyncio import AbstractEventLoopPolicy
 
+from django.http import HttpResponse
 from django.shortcuts import render , redirect
 from django.utils.termcolors import color_names
 
@@ -195,6 +196,23 @@ def vetsinglepage(request,id): #for viewinng single page of pet
     }
 
     return render(request,"singlevetpage.html",context)
+
+
+def gotoShelter(request):
+    petid = request.POST.get("petid")
+
+
+    pet = petDB.objects.get(id=petid)
+
+
+    shelter = shelterDB.objects.get(id=pet.ShelterId.id)
+
+    context = {
+        "fetchsingle": shelter
+    }
+
+    return render(request, "singleshelter.html", context)
+
 
 def vetAppoint(request):
 

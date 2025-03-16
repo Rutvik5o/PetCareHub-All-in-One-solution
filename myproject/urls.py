@@ -52,6 +52,7 @@ urlpatterns = [
     path('manageAppoint/',views.manageAppoint),
     path('vlogout',views.vetlogout),
     path('accept/<int:id>',views.accept),
+    path('gotoS',views.gotoShelter)
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

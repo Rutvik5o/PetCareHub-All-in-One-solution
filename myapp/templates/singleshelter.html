@@ -54,10 +54,10 @@
         <!-- breadcrumb -->
         <div class="site-breadcrumb" style="background: url(/static/img/breadcrumb/01.jpg)">
             <div class="container">
-                <h2 class="breadcrumb-title">Shop Single</h2>
+                <h2 class="breadcrumb-title">Shelter Information</h2>
                 <ul class="breadcrumb-menu">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active">Shop Single</li>
+                    <li class="active">Shelter Details</li>
                 </ul>
             </div>
         </div>
@@ -72,8 +72,8 @@
                         <div class="item-gallery mb-5">
                             <div class="flexslider-thumbnails">
                                  <ul class="slides">
-                                    <li data-thumb="/media/{{ fetchsingle.petImage }}" rel="adjustX:10, adjustY:">
-                                        <img src="/media/{{ fetchsingle.petImage }}" alt="#">
+                                    <li data-thumb="/media/{{ fetchsingle.Photo }}" rel="adjustX:10, adjustY:">
+                                        <img src="/media/{{ fetchsingle.shelterImage }}" alt="#">
                                     </li>
                                  </ul>
                              <!--   <ul class="slides">
@@ -95,10 +95,28 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="single-item-info">
-                            <h4 class="single-item-title">{{ fetchsingle.petName }}</h4><br>
+                            <h4 class="single-item-title">{{ fetchsingle.shelterName }}</h4><br>
 
-                            <h5>Breed: <span>{{ fetchsingle.petBreed }}</span></h5><br>
-                            <h5>Age: <span>{{ fetchsingle.petAge }}</span></h5><br>
+
+                            <h5>Email: <span>{{ fetchsingle.shelterEmail }}</span></h5><br>
+                            <h5>Contact : <span>{{ fetchsingle.shelterContact }}</span></h5><br>
+                            <h5>Address : <span>{{ fetchsingle.shelterAddress }}</span></h5><br>
+                            <h5>Location Url : <span>{{ fetchsingle.shelterLocationUrl }}</span></h5><br>
+
+
+
+                                    <!-- Google Map Embed -->
+                                    <div class="map-container">
+                                        <iframe
+                                            width="600"
+                                            height="450"
+                                            frameborder="0"
+                                            style="border:0"
+                                            src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q={{ fetchsingle.shelterLocationUrl|urlencode }}">
+                                        </iframe>
+                                    </div>
+
+
 
                          <!--   <p class="mb-4">
                                 {{ fetchsingle.petDescription }}
@@ -108,40 +126,19 @@
                                 <h5>Stock: <span>Available</span></h5>
                                 <h5>SKU: <span>676TSEUGD</span></h5>
                             </div>-->
-
-                            <form action="/gotoS" method="POST">
-                                {% csrf_token %}
                             <div class="single-item-action">
 
-                                <div class="item-single-btn-area">
-                                      <input type="hidden" name="petid" value="{{ fetchsingle.id }}">
-                                    <button class="theme-btn"><span class="fas fa-dog"></span>Contact Shelter</button>
-                                    <a href="#" class="single-item-btn"><i class="far fa-heart"></i></a>
-
-
-                                </div>
                             </div>
-                                </form>
+
                             <br>
-                            <div class="single-item-content">
-                                <h5>Shelter Name: <span>{{ fetchsingle.ShelterId }}</span></h5>
-                                <h5>Category: <span>{{ fetchsingle.petCategory }}</span></h5>
-                                <h5>Tags: <span>Pet, Shop, Toy</span></h5>
-                            </div>
+
                             <hr>
-                            <div class="single-item-share">
-                                <span>Share:</span>
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-x-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                            </div>
+
 
                         </div>
                     </div>
                 </div>
-
+<!--
 
                 <div class="single-item-details">
                     <nav>
@@ -376,7 +373,7 @@
                 </div>
 
             </div>
-        </div>
+        </div>-->
         <!-- shop single end -->
 
 
