@@ -203,28 +203,17 @@ def logout(request):
 
 def makeAppointment(request):
     vetid = request.POST.get("vetid")
+    fetchcatdata = petCategoryDB.objects.all()
     print(vetid)
     context = {
-        "vetid":vetid
-    }
-
-
-    return render(request,"vetAppointment.html",context)
-
-def categorylist(request):
-
-
-
-    fetchcatdata = petCategoryDB.objects.all()
-
-
-    print(fetchcatdata)
-
-    context ={
+        "vetid":vetid,
         "allcatdata": fetchcatdata
     }
 
+
     return render(request,"vetAppointment.html",context)
+
+
 
 def appointmentRequest(request):
     userid = request.session["log_id"]
