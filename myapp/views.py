@@ -216,7 +216,7 @@ def vetlogout(request): #vet logout
         del request.session["vet_log_photo"]
     except:
         None
-    return redirect("/")
+    return redirect("/vetLogin")
 
 
 
