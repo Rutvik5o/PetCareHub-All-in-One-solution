@@ -90,7 +90,8 @@ class Appointment(models.Model):
     symptoms = models.CharField(max_length=20)
     status = models.BooleanField()
     dateofappo = models.DateField()
-    timeofappo = models.DateTimeField(auto_now=True)
+    timeofappo = models.TimeField()
+    TimeStamp =models.DateTimeField(auto_now=True)
 
     def pet_photo(self):
         return mark_safe('<img src="{}" width="100"/>'.format(self.petphoto.url))

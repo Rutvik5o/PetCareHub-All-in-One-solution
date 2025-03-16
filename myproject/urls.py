@@ -49,6 +49,7 @@ urlpatterns = [
     path('makeAppointment',views.makeAppointment),
     path('logout/',views.logout),
     path('appointment',views.appointmentRequest),
+    path('manageAppoint/',views.manageAppoint),
     path('app',views.categorylist)
 
 

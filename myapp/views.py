@@ -255,3 +255,6 @@ def appointmentRequest(request):
 
     return render(request,"vetAppointment.html")
 
+
+def manageAppoint(request):
+    return render(request,"manageAppointment.html")
