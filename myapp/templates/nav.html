@@ -30,8 +30,12 @@
                     </div>
                     {% if request.session.log_name %}
                       <div class="header-top-right">
-                          <p style="color:blue;">{{ request.session.log_name }}</p>
+
                         <a href="/logout" class="btn btn-outline-light me-2">Logout</a>
+
+                           <div class="header-btn">
+                                <a href="#" class="theme-btn mt-2">{{ request.session.log_name }}</a>
+                            </div>
                    </div>
                     {% else %}
                    <div class="header-top-right">
@@ -132,9 +136,7 @@
                                 <a href="#" class="header-nav-link search-box-outer"><i class="far fa-search"></i></a>
                             </div>
 
-                            <div class="header-btn">
-                                <a href="#" class="theme-btn mt-2">User name<i class="fas fa-arrow-right"></i></a>
-                            </div>
+
                         </div>
                     </div>
                 </div>

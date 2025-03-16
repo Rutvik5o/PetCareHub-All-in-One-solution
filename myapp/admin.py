@@ -8,7 +8,7 @@ class showUserRegisterData(admin.ModelAdmin):
 
 @admin.register(vetRegisterDB)
 class showVetRegisterData(admin.ModelAdmin):
-    list_display = ['id','Name','Email','Password','Photo','vet_photo','Gender','Phone','LicenseFile','Address','Specialization','YearsOfExperience','ClinicName','TimeStamp']
+    list_display = ['id','Name','Email','Password','Photo','vet_photo','Price','Gender','Phone','LicenseFile','Address','Specialization','YearsOfExperience','ClinicName','TimeStamp']
 
 @admin.register(shelterDB)
 class showShelterData(admin.ModelAdmin):
@@ -27,5 +27,5 @@ class showPetTable(admin.ModelAdmin):
 
 @admin.register(Appointment)
 class AppointmentTable(admin.ModelAdmin):
-    list_display = ['id','userid','vetid','petname','petphoto','pet_photo','breed','age','symptoms','status','dateofappo','timeofappo','TimeStamp']
+    list_display = ['id','userid','vetid','petname','petCategory','petphoto','pet_photo','breed','age','symptoms','status','dateofappo','timeofappo','TimeStamp']
 

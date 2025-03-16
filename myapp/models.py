@@ -25,6 +25,7 @@ class vetRegisterDB(models.Model):
     Specialization = models.CharField(max_length=20)
     YearsOfExperience = models.IntegerField()
     ClinicName = models.CharField(max_length=60)
+    Price = models.IntegerField(default=500)
     TimeStamp = models.DateTimeField(auto_now_add=True)
 
     def vet_photo(self):

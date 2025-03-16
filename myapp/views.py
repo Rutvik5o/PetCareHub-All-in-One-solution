@@ -95,6 +95,7 @@ def fetchvetdata(request):
     v_file = request.FILES["ufile"]
     v_gender = request.POST.get("ugender")
     v_phone = request.POST.get("uphone")
+    v_price = request.POST.get('charges')
     v_address = request.POST.get("uaddress")
     v_specialization = request.POST.get("uspecialization")
     v_yearsofexp = request.POST.get("uyear")
@@ -105,7 +106,7 @@ def fetchvetdata(request):
     # query
     vetDataQuery = vetRegisterDB(Name=v_name, Email=v_email, Password=v_password, Photo=v_photo, Gender=v_gender,
                                  Phone=v_phone, LicenseFile=v_file, Address=v_address, Specialization=v_specialization,
-                                 YearsOfExperience=v_yearsofexp, ClinicName=v_clinicname)
+                                 YearsOfExperience=v_yearsofexp, ClinicName=v_clinicname,Price=v_price)
     vetDataQuery.save()
 
     return render(request,"vetRegister.html")
@@ -203,28 +204,17 @@ def logout(request):
 
 def makeAppointment(request):
     vetid = request.POST.get("vetid")
+    fetchcatdata = petCategoryDB.objects.all()
     print(vetid)
     context = {
-        "vetid":vetid
-    }
-
-
-    return render(request,"vetAppointment.html",context)
-
-def categorylist(request):
-
-
-
-    fetchcatdata = petCategoryDB.objects.all()
-
-
-    print(fetchcatdata)
-
-    context ={
+        "vetid":vetid,
         "allcatdata": fetchcatdata
     }
 
+
     return render(request,"vetAppointment.html",context)
+
+
 
 def appointmentRequest(request):
     userid = request.session["log_id"]

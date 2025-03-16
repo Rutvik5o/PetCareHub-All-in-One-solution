@@ -89,19 +89,16 @@
                                 <label>Age:</label>
                                 <input type="text" class="form-control" placeholder="Age of pet" required name="petage">
                             </div>
+
                               <div class="form-group">
-                                <label>Pet Category:</label>
-                                <input type="text" class="form-control" placeholder="petcategory" required name="pc">
-                            </div>
-                             <!--  <div class="form-group">
                                 <label>Pet Category:</label>
                                 <select class="form-select" id="productCategory" name="pc" required>
                                        <option value="">Select Category</option>
-                                        {% for data in allcatdata %}
-                                           <option value="{{ data.id }} "> {{ data.petCategory }}</option>
+                                        {% for i in allcatdata %}
+                                           <option value="{{ i.id }} "> {{ i.petCategory }}</option>
                                         {% endfor %}
                                </select>
-                            </div>-->
+                            </div>
                                <div class="form-group">
                                 <label>Pet Image:</label>
                                 <input type="file" class="form-control" placeholder="Pet Image" required name="petimage">

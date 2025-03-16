@@ -50,7 +50,7 @@ urlpatterns = [
     path('logout/',views.logout),
     path('appointment',views.appointmentRequest),
     path('manageAppoint/',views.manageAppoint),
-    path('app',views.categorylist)
+
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
