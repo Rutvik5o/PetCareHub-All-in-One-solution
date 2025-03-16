@@ -89,7 +89,7 @@ class Appointment(models.Model):
     breed = models.CharField(max_length=20)
     age = models.IntegerField()
     symptoms = models.CharField(max_length=20)
-    status = models.BooleanField()
+    status = models.CharField(max_length=30,null=True,default="Pending")
     dateofappo = models.DateField()
     timeofappo = models.TimeField()
     TimeStamp =models.DateTimeField(auto_now=True)

@@ -133,7 +133,8 @@
                 <table class="table custom-table">
                     <thead style="background-color:#ad5f2f;">
                         <tr>
-                            <th>#</th>
+                            <th>Serial No</th>
+                            <th>Customer Name</th>
                             <th>Image</th>
                             <th>Pet Name</th>
                             <th>Pet Breed</th>
@@ -142,55 +143,36 @@
                             <th>Date</th>
                             <th>Time</th>
                             <th>Symptoms</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                    {% for i in data %}
+
                         <tr>
-                            <td>1</td>
-                            <td><img src="/image" class="product-img" alt="Pet Image" width="50"></td>
-                            <td>Max</td>
-                            <td>Labrador</td>
-                            <td>3 years</td>
-                            <td>Checkup</td>
-                            <td>2025-03-20</td>
-                            <td>10:00 AM</td>
-                            <td>Fever, Cough</td>
+                            <td> {{i.id }}</td>
+                            <td>{{ i.userid }}</td>
+                            <td><img src="/media/{{ i.petphoto }}" class="product-img" alt="Pet Image" width="50"></td>
+                            <td>{{ i.petname }}</td>
+                            <td>{{ i.breed }}</td>
+                            <td>{{ i.age }}</td>
+                            <td>{{ i.petCategory }} </td>
+                            <td>{{ i.dateofappo }}</td>
+                            <td>{{ i.timeofappo }}</td>
+                            <td>{{ i.symptoms }}</td>
+                            <td>{{ i.status }}</td>
                             <td>
-                                <button class="btn-accept">✔ Accept</button>
-                                <button class="btn-reject">✖ Reject</button>
-                            </td>
+                                {% if i.status == "Pending" %}
+                                <a href="/accept/{{ i.id }}" class="btn-accept">✔ Accept</a>
+                                 <a href="/reject/{{ i.id }}" class="btn-reject">✖ Reject</a>
+                                {% endif %}
+                                                            </td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td><img src="/image" class="product-img" alt="Pet Image" width="50"></td>
-                            <td>Max</td>
-                            <td>Labrador</td>
-                            <td>3 years</td>
-                            <td>Checkup</td>
-                            <td>2025-03-20</td>
-                            <td>10:00 AM</td>
-                            <td>Fever, Cough</td>
-                            <td>
-                                <button class="btn-accept">✔ Accept</button>
-                                <button class="btn-reject">✖ Reject</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td><img src="/image" class="product-img" alt="Pet Image" width="50"></td>
-                            <td>Max</td>
-                            <td>Labrador</td>
-                            <td>3 years</td>
-                            <td>Checkup</td>
-                            <td>2025-03-20</td>
-                            <td>10:00 AM</td>
-                            <td>Fever, Cough</td>
-                            <td>
-                                <button class="btn-accept">✔ Accept</button>
-                                <button class="btn-reject">✖ Reject</button>
-                            </td>
-                        </tr>
+
+                    {% endfor %}
+
+
                     </tbody>
                 </table>
             </div>

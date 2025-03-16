@@ -1,3 +1,5 @@
+from asyncio import AbstractEventLoopPolicy
+
 from django.shortcuts import render , redirect
 from django.utils.termcolors import color_names
 
@@ -149,17 +151,23 @@ def checkVetlogindata(request):
     vetemail = request.POST.get("vemail")
     vetpassword = request.POST.get("vpassword")
 
+
+
     try:
         vetdata = vetRegisterDB.objects.get(Email=vetemail,Password=vetpassword)
         print('success')
         print(vetdata)
+
+        request.session['vet_log_id'] = vetdata.id
+        request.session['vet_log_name'] = vetdata.Name
+        request.session['vet_log_photo'] = vetdata.Photo.url
     except:
         print('fail')
         vetdata = None
 
     if vetdata is not None:
         print('success!!')
-        return render(request,"index.html")
+        return render(request,"vetHomePage.html")
     else:
         print('Invalid Email or Password')
         messages.error(request,"Invalid EMAIL or PASSWORD!!")
@@ -193,13 +201,23 @@ def vetAppoint(request):
     return render(request,"vetAppointment.html")
 
 
-def logout(request):
+def logout(request): #user logout
     try:
         del request.session["log_id"]
         del request.session["log_name"]
     except:
         None
     return redirect("/")
+
+def vetlogout(request): #vet logout
+    try:
+        del request.session["vet_log_id"]
+        del request.session["vet_log_name"]
+        del request.session["vet_log_photo"]
+    except:
+        None
+    return redirect("/")
+
 
 
 def makeAppointment(request):
@@ -247,4 +265,19 @@ def appointmentRequest(request):
 
 
 def manageAppoint(request):
-    return render(request,"manageAppointment.html")
+
+    vet_id = request.session["vet_log_id"]
+    fetchdata = Appointment.objects.filter(vetid=vet_id)
+
+    context = {
+
+        "data" : fetchdata
+    }
+
+    return render(request,"manageAppointment.html",context)
+
+def accept(request,id):
+    data = Appointment.objects.get(id=id)
+    data.status = "Approved"
+    data.save()
+    return redirect("/manageAppoint")
