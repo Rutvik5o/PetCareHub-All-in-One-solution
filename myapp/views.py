@@ -261,18 +261,22 @@ def appointmentRequest(request):
     petImage = request.FILES["petimage"]
     Breed = request.POST.get("breed")
 
+    data = userRegisterDB.objects.filter(id=userid).values('Address').first()
+    address = data.get('Address')  #store thte address
+
+
+    print(address)
+
     date = request.POST.get("date")
     time = request.POST.get("time")
 
     sym = request.POST.get("sym")
-    if request.session["log_id"] == "":
-        print("cant")
-    else:
-        status = True
+
+    status = request.POST.get("status")
 
 
     insertquery = Appointment(userid=userRegisterDB(id=userid), vetid=vetRegisterDB(id=vetid), petname=petname,
-                              age=petage, symptoms=sym, breed=Breed, dateofappo=date, timeofappo=time,
+                              age=petage, symptoms=sym, breed=Breed, dateofappo=date, timeofappo=time,location=address,
                               petCategory=petCategoryDB(id=petCategory_id), petphoto=petImage,status=status)
 
     insertquery.save()
@@ -299,3 +303,38 @@ def accept(request,id):
     data.status = "Approved"
     data.save()
     return redirect("/manageAppoint")
+
+
+def reject(request,id):
+    data = Appointment.objects.get(id=id)
+    data.status = "Rejected"
+    data.status = "Rejected"
+    data.save()
+    return redirect("/manageAppoint")
+
+
+def UserAppointment(request):
+
+    userid = request.session["log_id"]
+    user_name = request.session["log_name"]
+
+    fetchdata = Appointment.objects.filter(userid=userid)
+
+    context = {
+        "data": fetchdata
+    }
+
+
+    print(userid)
+    print(user_name)
+
+    return render(request,"UserManageAppointment.html",context)
+
+
+def cancelappointment(request,id):
+
+    data = Appointment.objects.get(id=id)
+
+    data.delete()
+
+    return redirect("/userManageAppointment")

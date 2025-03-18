@@ -76,6 +76,7 @@
                         <a href="/vlogout" class="btn btn-outline-light me-2">Logout</a>
                           <a href="/manageAppoint" class="btn btn-outline-light me-2">Manage Appointment</a>
 
+
                            <div class="header-btn">
                                 <a href="#" class="theme-btn mt-2">{{ request.session.vet_log_name }}</a>
                             </div>
@@ -105,66 +106,7 @@
                             <span class="navbar-toggler-btn-icon"><i class="far fa-bars"></i></span>
                         </button>
                     </div>
-                    <div class="collapse navbar-collapse" id="main_nav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">Home</a>
-                                <ul class="dropdown-menu fade-down">
-                                    <li><a class="dropdown-item" href="/">Home One</a></li>
-                                    <li><a class="dropdown-item" href="index-2.html">Home Two</a></li>
-                                    <li><a class="dropdown-item" href="index-3.html">Home Three</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
-                                <ul class="dropdown-menu fade-down">
-                                    <li><a class="dropdown-item" href="service.html">Services One</a></li>
-                                    <li><a class="dropdown-item" href="service-2.html">Services Two</a></li>
-                                    <li><a class="dropdown-item" href="/service-single">Service Single</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pages</a>
-                                <ul class="dropdown-menu fade-down">
-                                    <li><a class="dropdown-item" href="/about">About Us</a></li>
-                                    <li><a class="dropdown-item" href="team">Our Team</a></li>
-                                    <li><a class="dropdown-item" href="/adopt">Get Adoption</a></li>
-                                    <li class="dropdown-submenu">
-                                        <a class="dropdown-item dropdown-toggle" href="#">Account</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="/login">Login</a></li>
-                                            <li><a class="dropdown-item" href="/register">Register</a></li>
-                                            <li><a class="dropdown-item" href="/fpass">Forgot Password</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-submenu">
-                                        <a class="dropdown-item dropdown-toggle" href="#">Extra Pages</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="coming-soon.html">Coming Soon</a></li>
-                                            <li><a class="dropdown-item" href="vetdis">Vet Details</a></li>
-                                            <li><a class="dropdown-item" href="terms.html">Terms Of Service</a></li>
-                                            <li><a class="dropdown-item" href="privacy.html">Privacy Policy</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a class="dropdown-item" href="gallery.html">Gallery</a></li>
-                                    <li><a class="dropdown-item" href="pricing.html">Pricing Plan</a></li>
-                                    <li><a class="dropdown-item" href="faq.html">Faq</a></li>
-                                    <li><a class="dropdown-item" href="testimonial.html">Testimonials</a></li>
-                                    <li><a class="dropdown-item" href="404.html">404 Error</a></li>
-                                </ul>
-                            </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Blog</a>
-                                <ul class="dropdown-menu fade-down">
-                                    <li><a class="dropdown-item" href="/blog">Blog</a></li>
-                                    <li><a class="dropdown-item" href="/blogs">Blog Single</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        </ul>
                         <div class="header-nav-right">
 
                             <div class="header-nav-search">
@@ -201,6 +143,8 @@
                 <ul class="breadcrumb-menu">
                    <li><a href="/vetHomePage">Home</a></li>
                     <li class="active">Manage Appoinment</li>
+
+
                 </ul>
             </div>
         </div>
@@ -213,6 +157,7 @@
           <center> <h1 class="breadcrumb-title">Welcome, {{ request.session.vet_log_name }}</h1>
                 <br><br>
            <a href="/manageAppoint" class="btn btn-outline-dark me-2">Manage Appointment</a>
+           <a href="/#" class="btn btn-outline-dark me-2">Blog a Post</a>
            <a href="/vlogout" class="btn btn-outline-dark me-2">Logout</a>
               </center>
 

@@ -76,10 +76,19 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
                                 <ul class="dropdown-menu fade-down">
+                                    <li><a class="dropdown-item" href="adopt">Get Adoption</a></li>
+                                    <li><a class="dropdown-item" href="vetdis">Vet Details</a></li>
+
+                                    {% if request.session.log_name %}
+                                    <li><a class="dropdown-item" href="userManageAppointment">Manage Appointment</a></li>
+                                    <!--
                                     <li><a class="dropdown-item" href="service.html">Services One</a></li>
                                     <li><a class="dropdown-item" href="service-2.html">Services Two</a></li>
                                     <li><a class="dropdown-item" href="/service-single">Service Single</a></li>
+                                -->
+                                    {% endif %}
                                 </ul>
+
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pages</a>

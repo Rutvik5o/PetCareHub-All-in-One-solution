@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from live.themewild.com/pawsy/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:36 GMT -->
+<head>
+    <!-- meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- title -->
+    <title>Pawsy - Pet Care Services HTML5 Template</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/img/logo/favicon.png">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/all-fontawesome.min.css">
+    <link rel="stylesheet" href="/static/css/icomoon.css">
+    <link rel="stylesheet" href="/static/css/animate.min.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+    <!-- preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- preloader end -->
+
+
+  {% include 'nav.html' %}
+
+
+
+
+    <main class="main">
+
+        <!-- breadcrumb -->
+        <div class="site-breadcrumb" style="background: url(/static/img/breadcrumb/01.jpg)">
+            <div class="container">
+                <h2 class="breadcrumb-title">View Appointment</h2>
+                <ul class="breadcrumb-menu">
+                    <li><a href="/">Home</a></li>
+                    <li class="active">View Appointment</li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <!-- register area -->
+
+        <!-- register area end -->
+
+        <!--- Table Area-->
+        <div class="container my-5">
+            <h3 class="text-center mb-4" style="color: #2c3e50; font-weight: bold;">View Appointment</h3>
+            {% if data %}
+            <div class="table-responsive">
+                <table class="table custom-table">
+                    <thead style="background-color:#ad5f2f;">
+                        <tr>
+                            <th>Serial No</th>
+
+                            <th>Image</th>
+                            <th>Pet Name</th>
+                            <th>Pet Breed</th>
+                            <th>Pet Age</th>
+                            <th>Vet Name</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Symptoms</th>
+                            <th>Status</th>
+
+                            {% if i.status != "Pending" %}
+                            <th>Cancellation</th>
+                            {% endif %}
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+
+                        <tr>
+                            <td> {{ i.id }}</td>
+
+
+                            <td><img src="/media/{{ i.petphoto }}" class="product-img" alt="Pet Image" width="50"></td>
+                            <td>{{ i.petname }}</td>
+                            <td>{{ i.breed }}</td>
+                            <td>{{ i.age }}</td>
+                            <td> {{ i.vetid }}</td>
+                            <td>{{ i.petCategory }} </td>
+                            <td>{{ i.dateofappo }}</td>
+                            <td>{{ i.timeofappo }}</td>
+                            <td>{{ i.symptoms }}</td>
+                            <td>{{ i.status }}</td>
+                            <td>
+                                <a href="/cancel/{{ i.id }}" class="btn-reject">Cancel Appointment</a>
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+             {% else %}
+            <br><br>
+              <h2 class="text-center" style="color: red; font-size: 25px;">No Appointment has been booked</h2>
+              {% endif %}
+        </div>
+
+
+    </main>
+
+
+
+    <!-- footer area -->
+
+    <!-- footer area end -->
+
+
+
+
+    <!-- scroll-top -->
+    <a href="#" id="scroll-top"><i class="far fa-angle-up"></i></a>
+    <!-- scroll-top end -->
+
+
+    <!-- js -->
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/static/js/jquery-3.6.0.min.js"></script>
+    <script src="/static/js/modernizr.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/isotope.pkgd.min.js"></script>
+    <script src="/static/js/jquery.appear.min.js"></script>
+    <script src="/static/js/jquery.easing.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/counter-up.js"></script>
+    <script src="/static/js/masonry.pkgd.min.js"></script>
+    <script src="/static/js/wow.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formContainer = document.querySelector('.slide-in');
+            formContainer.style.animation = 'slideIn 1s ease-out';
+
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#password');
+
+            togglePassword.addEventListener('click', function (e) {
+                // toggle the type attribute
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                // toggle the eye slash icon
+                this.classList.toggle('fa-eye-slash');
+            });
+
+            const phoneNumber = document.querySelector('#phoneNumber');
+            const phoneError = document.querySelector('#phoneError');
+
+            phoneNumber.addEventListener('input', function (e) {
+                if (this.value.length > 10) {
+                    this.value = this.value.slice(0, 10);
+                }
+            });
+
+            phoneNumber.addEventListener('blur', function (e) {
+                if (this.value.length !== 10) {
+                    phoneError.classList.remove('hidden');
+                } else {
+                    phoneError.classList.add('hidden');
+                }
+            });
+
+            const registerForm = document.querySelector('#registerForm');
+            registerForm.addEventListener('submit', function (e) {
+                if (phoneNumber.value.length !== 10) {
+                    e.preventDefault();
+                    phoneError.classList.remove('hidden');
+                }
+            });
+        });
+
+
+    </script>
+
+</body>
+
+
+<!-- Mirrored from live.themewild.com/pawsy/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:36 GMT -->
+</html>

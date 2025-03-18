@@ -93,6 +93,7 @@ class Appointment(models.Model):
     dateofappo = models.DateField()
     timeofappo = models.TimeField()
     TimeStamp =models.DateTimeField(auto_now=True)
+    location = models.TextField(null=True,default="")
 
     def pet_photo(self):
         return mark_safe('<img src="{}" width="100"/>'.format(self.petphoto.url))
