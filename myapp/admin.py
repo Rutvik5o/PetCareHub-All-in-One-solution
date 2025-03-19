@@ -29,3 +29,7 @@ class showPetTable(admin.ModelAdmin):
 class AppointmentTable(admin.ModelAdmin):
     list_display = ['id','userid','vetid','petname','petCategory','petphoto','pet_photo','breed','age','symptoms','status','location','dateofappo','timeofappo','TimeStamp']
 
+@admin.register(Blog)
+class BlogData(admin.ModelAdmin):
+    list_display = ['id','blogTitle','blogImage','blog_photo','vetid','vetPhoto','Description','TimeStamp']
+

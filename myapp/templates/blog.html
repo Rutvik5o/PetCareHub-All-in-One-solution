@@ -65,6 +65,7 @@
 
         <!-- blog-area -->
         <div class="blog-area py-120">
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 mx-auto wow fadeInDown" data-wow-duration="1s" data-wow-delay=".25s">
@@ -76,10 +77,11 @@
                     </div>
                 </div>
                 <div class="row">
+                     {% for i in data %}
                     <div class="col-md-6 col-lg-4">
                         <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
                             <div class="blog-item-img">
-                                <img src="/static/img/blog/01.jpg" alt="Thumb">
+                                <img src="/media/{{ i.blogImage }}" alt="Thumb">
                             </div>
                             <div class="blog-item-info">
                                 <h4 class="blog-title">
@@ -87,128 +89,18 @@
                                 </h4>
                                 <div class="blog-item-meta">
                                     <ul>
-                                        <li><a href="#"><i class="far fa-user-circle"></i> By Alicia Davis</a></li>
-                                        <li><a href="#"><i class="far fa-calendar-alt"></i> Jan 01, 2024</a></li>
+                                        <li><a href="#"><i class="far fa-user-circle"></i> By {{ i.vetid }}</a></li>
+                                        <li><a href="#"><i class="far fa-calendar-alt"></i> {{i.TimeStamp }}</a></li>
                                     </ul>
                                 </div>
-                                <p>
-                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>
-                                <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right"></i></a>
+
+                                <a class="theme-btn" href="/blogs/{{ i.id }}">Read Blog<i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
-                            <div class="blog-item-img">
-                                <img src="/static/img/blog/02.jpg" alt="Thumb">
-                            </div>
-                            <div class="blog-item-info">
-                                <h4 class="blog-title">
-                                    <a href="#">There are many variations available suffered</a>
-                                </h4>
-                                <div class="blog-item-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="far fa-user-circle"></i> By Alicia Davis</a></li>
-                                        <li><a href="#"><i class="far fa-calendar-alt"></i> Jan 01, 2024</a></li>
-                                    </ul>
-                                </div>
-                                <p>
-                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>
-                                <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
-                            <div class="blog-item-img">
-                                <img src="/static/img/blog/03.jpg" alt="Thumb">
-                            </div>
-                            <div class="blog-item-info">
-                                <h4 class="blog-title">
-                                    <a href="#">There are many variations available suffered</a>
-                                </h4>
-                                <div class="blog-item-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="far fa-user-circle"></i> By Alicia Davis</a></li>
-                                        <li><a href="#"><i class="far fa-calendar-alt"></i> Jan 01, 2024</a></li>
-                                    </ul>
-                                </div>
-                                <p>
-                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>
-                                <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
-                            <div class="blog-item-img">
-                                <img src="/static/img/blog/01.jpg" alt="Thumb">
-                            </div>
-                            <div class="blog-item-info">
-                                <h4 class="blog-title">
-                                    <a href="#">There are many variations available suffered</a>
-                                </h4>
-                                <div class="blog-item-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="far fa-user-circle"></i> By Alicia Davis</a></li>
-                                        <li><a href="#"><i class="far fa-calendar-alt"></i> Jan 01, 2024</a></li>
-                                    </ul>
-                                </div>
-                                <p>
-                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>
-                                <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
-                            <div class="blog-item-img">
-                                <img src="/static/img/blog/02.jpg" alt="Thumb">
-                            </div>
-                            <div class="blog-item-info">
-                                <h4 class="blog-title">
-                                    <a href="#">There are many variations available suffered</a>
-                                </h4>
-                                <div class="blog-item-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="far fa-user-circle"></i> By Alicia Davis</a></li>
-                                        <li><a href="#"><i class="far fa-calendar-alt"></i> Jan 01, 2024</a></li>
-                                    </ul>
-                                </div>
-                                <p>
-                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>
-                                <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
-                            <div class="blog-item-img">
-                                <img src="/static/img/blog/03.jpg" alt="Thumb">
-                            </div>
-                            <div class="blog-item-info">
-                                <h4 class="blog-title">
-                                    <a href="#">There are many variations available suffered</a>
-                                </h4>
-                                <div class="blog-item-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="far fa-user-circle"></i> By Alicia Davis</a></li>
-                                        <li><a href="#"><i class="far fa-calendar-alt"></i> Jan 01, 2024</a></li>
-                                    </ul>
-                                </div>
-                                <p>
-                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>
-                                <a class="theme-btn" href="#">Read More<i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    {% endfor %}
+
+
 
                 <!-- pagination -->
                 <div class="pagination-area">

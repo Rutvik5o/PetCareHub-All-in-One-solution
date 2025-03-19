@@ -99,6 +99,22 @@ class Appointment(models.Model):
         return mark_safe('<img src="{}" width="100"/>'.format(self.petphoto.url))
 
 
+class Blog(models.Model):
+
+    blogTitle = models.CharField(max_length=30)
+    blogImage = models.ImageField(upload_to='photos')
+    vetid = models.CharField(max_length=30)
+    vetPhoto = models.ImageField(upload_to='photos',null=True,default="")
+    Description = models.TextField()
+    TimeStamp = models.DateTimeField(auto_now=True)
+
+    def blog_photo(self):
+        return mark_safe('<img src="{}" width="100"/>'.format(self.blogImage.url))
+
+
+
+
+
 
 
 

@@ -28,7 +28,7 @@ urlpatterns = [
     path('',views.indexpage),
     path('service-single/',views.servicepage),
     path('blog/',views.blogpage),
-    path('blogs/',views.blogsinglepage),
+    path('blogs/<int:id>',views.blogsinglepage),
     path('login/',views.loginpage),
     path('vetLogin/',views.vetLoginpage),
     path('register/',views.registerpage),
@@ -55,7 +55,9 @@ urlpatterns = [
     path('reject/<int:id>',views.reject),
     path('gotoS',views.gotoShelter),
     path('userManageAppointment',views.UserAppointment),
-    path('cancel/<int:id>',views.cancelappointment)
+    path('cancel/<int:id>',views.cancelappointment),
+    path('blogpost',views.blogP),
+    path('getarticle',views.fetcharticle)
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

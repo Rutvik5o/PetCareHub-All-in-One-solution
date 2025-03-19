@@ -14,7 +14,14 @@ def servicepage(request):
     return render(request,"service-single.html")
 
 def blogpage(request):
-    return render(request,"blog.html")
+
+    fetchdata = Blog.objects.all()
+
+    context = {
+    "data" : fetchdata
+    }
+
+    return render(request,"blog.html",context)
 
 def loginpage(request):
     return render(request,"login.html")
@@ -28,8 +35,16 @@ def registerpage(request):
 def vetRegisterpage(request):
     return render(request,"vetRegister.html")
 
-def blogsinglepage(request):
-    return render(request,"blog-single.html")
+def blogsinglepage(request,id):
+
+   fetchdata =Blog.objects.get(id=id)
+
+   context = {
+      "fetchsingle": fetchdata
+    }
+
+
+   return render(request,"blog-single.html",context)
 
 def shopsingelpage(request):
     return render(request,"shop-single.html")
@@ -338,3 +353,24 @@ def cancelappointment(request,id):
     data.delete()
 
     return redirect("/userManageAppointment")
+
+def blogP(request):
+
+    return render(request,"blogPost.html")
+
+def fetcharticle(request):
+
+    Title = request.POST.get("title")
+    Image = request.FILES["blogimage"]
+    vet_id = request.session["vet_log_name"]
+    vet_photo = request.session['vet_log_photo']
+    article = request.POST.get("art")
+
+    print(Title)
+
+    insertquery = Blog(blogTitle=Title,blogImage=Image,vetid=vet_id,Description=article,vetPhoto=vet_photo)
+    insertquery.save()
+    return render(request,"vetHomePage.html")
+
+
+
