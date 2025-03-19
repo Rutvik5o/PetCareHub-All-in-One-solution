@@ -3,6 +3,7 @@ from asyncio import AbstractEventLoopPolicy
 from django.http import HttpResponse
 from django.shortcuts import render , redirect
 from django.utils.termcolors import color_names
+from django.core.paginator import Paginator
 
 from .models import *
 from django.contrib import messages
@@ -14,14 +15,17 @@ def servicepage(request):
     return render(request,"service-single.html")
 
 def blogpage(request):
+    fetchdata = Blog.objects.all().order_by('-TimeStamp')  # Order by latest blogs
 
-    fetchdata = Blog.objects.all()
+    # Apply pagination
+    paginator = Paginator(fetchdata, 3)  # Show 6 blogs per page
+    page_number = request.GET.get('page')
+    page_data = paginator.get_page(page_number)
 
     context = {
-    "data" : fetchdata
+        "data": page_data
     }
-
-    return render(request,"blog.html",context)
+    return render(request, "blog.html", context)
 
 def loginpage(request):
     return render(request,"login.html")
@@ -62,15 +66,19 @@ def vetdiscoverpage(request):
 def forgetpass(request):
     return render(request,"forgot-password.html")
 
-def getadoption(request):
 
-    fetchpet = petDB.objects.all()
+def getadoption(request):
+    fetchpet = petDB.objects.all().order_by('-id')  # Fetch pets, latest first
+
+    # Apply pagination
+    paginator = Paginator(fetchpet, 6)  # Show 6 pets per page
+    page_number = request.GET.get('page')
+    page_data = paginator.get_page(page_number)
 
     context = {
-        "datapet" : fetchpet
+        "datapet": page_data
     }
-    return render(request,"adoption.html",context)
-
+    return render(request, "adoption.html", context)
 def testPage(request):
     return render(request,"testimonial.html")
 

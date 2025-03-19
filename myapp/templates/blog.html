@@ -77,53 +77,70 @@
                     </div>
                 </div>
                 <div class="row">
-                     {% for i in data %}
-                    <div class="col-md-6 col-lg-4">
-                        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
-                            <div class="blog-item-img">
-                                <img src="/media/{{ i.blogImage }}" alt="Thumb">
-                            </div>
-                            <div class="blog-item-info">
-                                <h4 class="blog-title">
-                                    <a href="#">There are many variations available suffered</a>
-                                </h4>
-                                <div class="blog-item-meta">
-                                    <ul>
-                                        <li><a href="#"><i class="far fa-user-circle"></i> By {{ i.vetid }}</a></li>
-                                        <li><a href="#"><i class="far fa-calendar-alt"></i> {{i.TimeStamp }}</a></li>
-                                    </ul>
-                                </div>
-
-                                <a class="theme-btn" href="/blogs/{{ i.id }}">Read Blog<i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-
-
-
-                <!-- pagination -->
-                <div class="pagination-area">
-                    <div aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true"><i class="far fa-angle-double-left"></i></span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true"><i class="far fa-angle-double-right"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+    {% for i in data %}
+    <div class="col-md-6 col-lg-4">
+        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+            <div class="blog-item-img">
+                <img src="/media/{{ i.blogImage }}" alt="Thumb">
+            </div>
+            <div class="blog-item-info">
+                <h4 class="blog-title">
+                    <a href="#">There are many variations available suffered</a>
+                </h4>
+                <div class="blog-item-meta">
+                    <ul>
+                        <li><a href="#"><i class="far fa-user-circle"></i> By {{ i.vetid }}</a></li>
+                        <li><a href="#"><i class="far fa-calendar-alt"></i> {{ i.TimeStamp }}</a></li>
+                    </ul>
                 </div>
+                <a class="theme-btn" href="/blogs/{{ i.id }}">Read Blog<i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
+    </div>
+    {% empty %}
+    <p>No blogs available.</p>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="pagination-area">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {% if data.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="First">
+                    <i class="far fa-angle-double-left"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ data.previous_page_number }}" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </li>
+            {% endif %}
+
+            {% for num in data.paginator.page_range %}
+            <li class="page-item {% if num == data.number %}active{% endif %}">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% endfor %}
+
+            {% if data.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ data.next_page_number }}" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ data.paginator.num_pages }}" aria-label="Last">
+                    <i class="far fa-angle-double-right"></i>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
         <!-- blog-area end -->
 
 
