@@ -8,14 +8,14 @@
                                 <img src="/static/img/logo/logo4.png" alt="">
                             </a>
                             <p class="mb-4">
-                                We are many variations of passages available but the majority have suffered alteration
-                                in some form by injected humour words believable.
+
+The Petcare Hub streamlines pet adoption and care with features for user registration, pet search, and vet booking.
                             </p>
                             <ul class="footer-contact">
-                                <li><a href="tel:+21236547898"><i class="far fa-phone"></i>+2 123 654 7898</a></li>
-                                <li><i class="far fa-map-marker-alt"></i>25/B Milford Road, New York</li>
+                                <li><a href="tel:+21236547898"><i class="far fa-phone"></i>+91 96584 85214</a></li>
+                                <li><i class="far fa-map-marker-alt"></i>25/B Vistra Gloary, Ahemedavad</li>
                                 <li><a href="https://live.themewild.com/cdn-cgi/l/email-protection#d5bcbbb3ba95b0adb4b8a5b9b0fbb6bab8"><i
-                                            class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="d6bfb8b0b996b3aeb7bba6bab3f8b5b9bb">[email&#160;protected]</span></a></li>
+                                            class="far fa-envelope"></i><span class="__cf_email__" data-cfemail="d6bfb8b0b996b3aeb7bba6bab3f8b5b9bb">Contact@petcare.com</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -23,12 +23,13 @@
                         <div class="footer-widget-box list">
                             <h4 class="footer-widget-title">Quick Links</h4>
                             <ul class="footer-list">
-                                <li><a href="#"><i class="fas fa-caret-right"></i> About Us</a></li>
-                                <li><a href="#"><i class="fas fa-caret-right"></i> FAQ's</a></li>
-                                <li><a href="#"><i class="fas fa-caret-right"></i> Terms Of Service</a></li>
-                                <li><a href="#"><i class="fas fa-caret-right"></i> Privacy policy</a></li>
-                                <li><a href="#"><i class="fas fa-caret-right"></i> Our Team</a></li>
+                                <li><a href="/about"><i class="fas fa-caret-right"></i> About Us</a></li>
+                                <li><a href="/faq"><i class="fas fa-caret-right"></i> FAQ's</a></li>
+                                <li><a href="/terms"><i class="fas fa-caret-right"></i> Terms Of Service</a></li>
+                                <li><a href="/pp"><i class="fas fa-caret-right"></i> Privacy policy</a></li>
+                                <li><a href="/team"><i class="fas fa-caret-right"></i> Our Team</a></li>
                                 <li><a href="/vetRegister"><i class="fas fa-caret-right"></i>Join as a Vet</a></li>
+                                <li><a href="/vetLogin"><i class="fas fa-caret-right"></i>Login as a Vet</a></li>
                             </ul>
                         </div>
                     </div>
@@ -36,12 +37,9 @@
                         <div class="footer-widget-box list">
                             <h4 class="footer-widget-title">Our Services</h4>
                             <ul class="footer-list">
-                                <li><a href="#"><i class="fas fa-caret-right"></i> Pet Training</a></li>
-                                <li><a href="#"><i class="fas fa-caret-right"></i> Walking & Sitting</a></li>
-                                <li><a href="#"><i class="fas fa-caret-right"></i> Pet Grooming</a></li>
-                                <li><a href="#"><i class="fas fa-caret-right"></i> Pet Transport</a></li>
-                                <li><a href="#"><i class="fas fa-caret-right"></i> Health & Wellness</a></li>
-                                <li><a href="#"><i class="fas fa-caret-right"></i> Pet Boarding</a></li>
+                                <li><a href="/adopt"><i class="fas fa-caret-right"></i>Pet Adoption</a></li>
+                                <li><a href="/vetdis"><i class="fas fa-caret-right"></i> Vet Appointment</a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -49,10 +47,11 @@
                         <div class="footer-widget-box list">
                             <h4 class="footer-widget-title">Newsletter</h4>
                             <div class="footer-newsletter">
-                                <p>Subscribe Our Newsletter To Get Latest Update And News</p>
+                                <p>Subscribe Our Newsletter To Get Latest Update And Blogs</p>
                                 <div class="subscribe-form">
-                                    <form action="#">
-                                        <input type="email" class="form-control" placeholder="Your Email">
+                                    <form action="/subscribe" method="POST">
+                                        {% csrf_token %}
+                                        <input type="email" class="form-control" placeholder="Your Email" name="email">
                                         <button class="theme-btn" type="submit">
                                             Subscribe Now <i class="far fa-paper-plane"></i>
                                         </button>
@@ -69,7 +68,7 @@
                 <div class="row">
                     <div class="col-md-6 align-self-center">
                         <p class="copyright-text">
-                            &copy; Copyright <span id="date"></span> <a href="#"> PAWSY </a> All Rights Reserved.
+                            &copy; Copyright <span id="date"></span> <a href="#"> PetCare Hub: </a> All Rights Reserved.
                         </p>
                     </div>
                     <div class="col-md-6 align-self-center">

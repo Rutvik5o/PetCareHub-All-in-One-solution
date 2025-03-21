@@ -33,3 +33,8 @@ class AppointmentTable(admin.ModelAdmin):
 class BlogData(admin.ModelAdmin):
     list_display = ['id','blogTitle','blogImage','blog_photo','vetid','vetPhoto','Description','TimeStamp']
 
+@admin.register(newsletter)
+
+class lettershow(admin.ModelAdmin):
+
+    list_display = ['id','email']

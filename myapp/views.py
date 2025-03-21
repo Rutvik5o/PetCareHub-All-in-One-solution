@@ -54,11 +54,15 @@ def shopsingelpage(request):
     return render(request,"shop-single.html")
 
 def vetdiscoverpage(request):
+    fetchdata = vetRegisterDB.objects.all().order_by('-id')  # Fetch all vets, latest first
 
-    fetchdata = vetRegisterDB.objects.all()
+    # Apply pagination
+    paginator = Paginator(fetchdata, 8)  # Show 8 veterinarians per page
+    page_number = request.GET.get('page')
+    page_data = paginator.get_page(page_number)
 
     context = {
-        "vetdis" : fetchdata
+        "vetdis": page_data
     }
     return render(request,"vetdiscover.html",context)
 
@@ -283,12 +287,18 @@ def appointmentRequest(request):
     petCategory_id = request.POST.get("pc")
     petImage = request.FILES["petimage"]
     Breed = request.POST.get("breed")
+    location = request.POST.get("updatedA")
 
     data = userRegisterDB.objects.filter(id=userid).values('Address').first()
     address = data.get('Address')  #store thte address
 
+    if location:  # If ;pcatopm is not empty
+        address = location  # Use the new address
+    else:
+        address = address  # Use the old address
 
-    print(address)
+
+
 
     date = request.POST.get("date")
     time = request.POST.get("time")
@@ -379,6 +389,45 @@ def fetcharticle(request):
     insertquery = Blog(blogTitle=Title,blogImage=Image,vetid=vet_id,Description=article,vetPhoto=vet_photo)
     insertquery.save()
     return render(request,"vetHomePage.html")
+
+
+
+def showletter(request):
+
+    email = request.POST.get("email")
+
+    insertquery = newsletter(email=email)
+
+    insertquery.save()
+
+    return redirect("/")
+
+def faq(request):
+
+    return render(request,"faq.html")
+
+def terms(request):
+
+    return render(request,"terms.html")
+
+def policy(request):
+
+    return render(request,"privacy.html")
+
+def team(request):
+
+    return render(request,"team.html")
+
+def Petcare2o(request):
+
+    return render(request,"coming-soon.html")
+
+
+
+
+
+
+
 
 
 

@@ -112,6 +112,11 @@ class Blog(models.Model):
         return mark_safe('<img src="{}" width="100"/>'.format(self.blogImage.url))
 
 
+class newsletter(models.Model):
+
+    email = models.CharField(max_length=30)
+
+
 
 
 

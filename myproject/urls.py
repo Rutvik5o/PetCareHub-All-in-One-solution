@@ -57,7 +57,13 @@ urlpatterns = [
     path('userManageAppointment',views.UserAppointment),
     path('cancel/<int:id>',views.cancelappointment),
     path('blogpost',views.blogP),
-    path('getarticle',views.fetcharticle)
+    path('getarticle',views.fetcharticle),
+    path('subscribe',views.showletter),
+    path('faq',views.faq),
+    path('terms',views.terms),
+    path('pp',views.policy),
+    path('team',views.team),
+    path('soon',views.Petcare2o)
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
