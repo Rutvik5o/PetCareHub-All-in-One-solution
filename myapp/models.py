@@ -98,6 +98,11 @@ class Appointment(models.Model):
     def pet_photo(self):
         return mark_safe('<img src="{}" width="100"/>'.format(self.petphoto.url))
 
+    def __str__(self):
+        return self.vetid.Name
+
+
+
 
 class Blog(models.Model):
 
@@ -116,6 +121,29 @@ class newsletter(models.Model):
 
     email = models.CharField(max_length=30)
 
+
+
+
+class Payment(models.Model):
+    userid = models.ForeignKey(userRegisterDB, on_delete=models.CASCADE)
+    appointmentid = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    amount = models.IntegerField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=30, default="Pending")  # Can be Pending, Success, Failed
+    razorpay_order_id = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return f"Payment {self.id} - {self.status}"
+
+
+
+class reportFromVet(models.Model):
+
+    appointmentid = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    vetid = models.ForeignKey(vetRegisterDB, on_delete=models.CASCADE)
+    report = models.FileField(upload_to='files',max_length=250)
+    Description = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
 
 
 

@@ -127,7 +127,7 @@
         <div class="container my-5">
             <h3 class="text-center mb-4" style="color: #2c3e50; font-weight: bold;">Manage Appointment</h3>
             <div class="table-responsive">
-                <table class="table custom-table">
+                <table class="table table-hover">
                     <thead style="background-color:#ad5f2f;">
                         <tr>
                             <th>Serial No</th>
@@ -156,9 +156,10 @@
                             <td>{{ i.breed }}</td>
                             <td>{{ i.age }}</td>
                             <td>{{ i.petCategory }} </td>
+                             <td>{{ i.location }}</td>
                             <td>{{ i.dateofappo }}</td>
                             <td>{{ i.timeofappo }}</td>
-                            <td>{{ i.location }}</td>
+
                             <td>{{ i.symptoms }}</td>
                             <td>{{ i.status }}</td>
                     <td>
@@ -167,6 +168,14 @@
                         {% elif i.status == "Pending" %}
                             <a href="/accept/{{ i.id }}" class="btn-accept">✔ Accept</a>
                             <a href="/reject/{{ i.id }}" class="btn-reject">✖ Reject</a>
+                        {% elif i.status == "Paid" %}
+                        <p><i class="fas fa-check-circle"></i>Confirmed</p><hr>
+                    <a href="/uploadr/{{ i.id }}" class="btn btn-success btn-sm d-flex align-items-center gap-1 text-white text-decoration-none">
+                        <i class="fas fa-check-circle"></i> Appointment Completed
+                    </a>
+
+
+
                         {% endif %}
                     </td>                   </td>
                         </tr>

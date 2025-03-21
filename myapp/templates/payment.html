@@ -1,0 +1,37 @@
+<!-- payment.html -->
+<html>
+
+<body>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<form name="razorpayform" action="/payment/success/" method="POST">
+    <input type="hidden" name="razorpay_order_id" value="{{ razorpay_order_id }}">
+    <input type="hidden" name="amount" value="{{ amount }}">
+    <input type="hidden" name="key" value="{{ key }}">
+    <input type="hidden" name="currency" value="{{ currency }}">
+
+    <script type="text/javascript">
+        var options = {
+            "key": "{{ key }}",  // Your Razorpay key
+            "amount": "{{ amount }}", // Amount in paise
+            "currency": "{{ currency }}",
+            "order_id": "{{ razorpay_order_id }}", // Razorpay order ID
+            "handler": function (response) {
+                // On successful payment
+                document.razorpayform.submit();  // Automatically submit the form
+            },
+            "prefill": {
+                "name": "{{ request.user.username }}",  // You can dynamically pre-fill the user data here
+                "email": "{{ request.user.email }}",
+            },
+            "theme": {
+                "color": "#F37254"
+            }
+        };
+
+        var rzp1 = new Razorpay(options);
+        rzp1.open();  // Open Razorpay checkout modal
+    </script>
+</form>
+
+</body>
+</html>

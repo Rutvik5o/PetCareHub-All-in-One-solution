@@ -1,9 +1,12 @@
 from asyncio import AbstractEventLoopPolicy
+from django.views.decorators.csrf import csrf_exempt
 
 from django.http import HttpResponse
 from django.shortcuts import render , redirect
 from django.utils.termcolors import color_names
 from django.core.paginator import Paginator
+import razorpay
+from django.conf import settings
 
 from .models import *
 from django.contrib import messages
@@ -341,7 +344,7 @@ def accept(request,id):
 def reject(request,id):
     data = Appointment.objects.get(id=id)
     data.status = "Rejected"
-    data.status = "Rejected"
+
     data.save()
     return redirect("/manageAppoint")
 
@@ -423,9 +426,120 @@ def Petcare2o(request):
     return render(request,"coming-soon.html")
 
 
+def MakePayment(request, appointment_id):
+    # Retrieve the appointment object
+    appointment = Appointment.objects.get(id=appointment_id)
+
+    # Check if the appointment is "Approved"
+    if appointment.status != "Approved":
+        messages.error(request, "Only approved appointments can be paid for.")
+        return redirect("/appointment")
+
+    # Fetch the price of the vet for this appointment
+    vet_price = appointment.vetid.Price
+    amount = int(vet_price * 100)  # Razorpay expects the amount in paise, so multiply by 100
+
+    # Initialize Razorpay client
+    client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_SECRET_KEY))
+
+    # Create a Razorpay order
+    razorpay_order = client.order.create({
+        "amount": amount,  # amount in paise
+        "currency": "INR",
+        "receipt": f"order_rcptid_{appointment.userid.id}",
+        "payment_capture": "1",
+    })
+
+    # Create Payment object to store the payment details
+    payment = Payment(
+        userid=appointment.userid,
+        appointmentid=appointment,
+        amount=amount,
+        razorpay_order_id=razorpay_order['id'],
+    )
+    payment.save()
+
+    # Render the payment page with necessary details
+    return render(request, "payment.html", {
+        "razorpay_order_id": razorpay_order['id'],
+        "amount": amount,
+        "key": settings.RAZORPAY_KEY_ID,
+        "currency": "INR",
+    })
 
 
 
+@csrf_exempt
+def PaymentSuccess(request):
+    if request.method == "POST":
+        razorpay_order_id = request.POST.get("razorpay_order_id")
+        razorpay_payment_id = request.POST.get("razorpay_payment_id")
+        razorpay_signature = request.POST.get("razorpay_signature")
+
+        # # Check if we received the necessary data
+        # if not razorpay_order_id or not razorpay_payment_id or not razorpay_signature:
+        #     messages.error(request, "Missing payment details!")
+        #     return redirect("/userManageAppointment")
+
+        # Verify the payment with Razorpay
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_SECRET_KEY))
+
+        # Prepare parameters to verify the payment signature
+        params_dict = {
+            'razorpay_order_id': razorpay_order_id,
+            'razorpay_payment_id': razorpay_payment_id,
+        }
+
+        try:
+            # Verify the payment signature
+            # client.utility.verify_payment_signature(params_dict)
+
+            # Retrieve the payment object from the database using the order ID
+            payment = Payment.objects.get(razorpay_order_id=razorpay_order_id)
+
+            # Mark the payment as successful
+            payment.status = "Success"
+            payment.save()
+
+            # Update the related appointment status
+            appointmentid = payment.appointmentid.id
+            print("id",appointmentid)
+            fetchdata = Appointment.objects.get(id=appointmentid)
+            fetchdata.status = "Paid"
+            fetchdata.save()
+
+            messages.success(request, "Payment Successful!")
+            return redirect("/userManageAppointment")
+
+        except razorpay.errors.SignatureVerificationError as e:
+            messages.error(request, f"Payment verification failed! Error: {str(e)}")
+            return redirect("/userManageAppointment")
+
+        except Exception as e:
+            messages.error(request, f"An error occurred! Error: {str(e)}")
+            return redirect("/userManageAppointment")
+
+
+def uploadReport(request,id):
+    context = {
+        "id":id
+    }
+    if request.method == "POST":
+        vetid = request.session["vet_log_id"]
+        reportdata = request.FILES['rfile']
+
+        desc = request.POST.get('d')
+
+        insertquery = reportFromVet(report=reportdata,Description=desc,appointmentid=Appointment(id=id),vetid=vetRegisterDB(id=vetid))
+
+        insertquery.save()
+
+
+
+
+
+
+    return render(request,"uploadReport.html",context)
 
 
 

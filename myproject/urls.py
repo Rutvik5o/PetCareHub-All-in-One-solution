@@ -63,7 +63,11 @@ urlpatterns = [
     path('terms',views.terms),
     path('pp',views.policy),
     path('team',views.team),
-    path('soon',views.Petcare2o)
+    path('soon',views.Petcare2o),
+    path('payment/success/',views.PaymentSuccess),
+    path('payment/<int:appointment_id>/', views.MakePayment),
+    path('uploadr/<int:id>',views.uploadReport)
+
 
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

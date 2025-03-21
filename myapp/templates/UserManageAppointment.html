@@ -89,6 +89,12 @@
 
 <body>
 
+{% if messages %}
+{% for i in messages %}
+<script>alert("{{ i }}");</script>
+{% endfor %}
+{% endif %}
+
     <!-- preloader -->
     <div class="preloader">
         <div class="loader">
@@ -152,6 +158,8 @@
                     </thead>
                     <tbody>
                     {% for i in data %}
+
+                    <input type="hidden" name=""
 
                         <tr>
                             <td> {{ i.id }}</td>
