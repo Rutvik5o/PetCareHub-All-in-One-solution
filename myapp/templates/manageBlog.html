@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from live.themewild.com/pawsy/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:36 GMT -->
+<!-- Mirrored from live.themewild.com/pawsy/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:57 GMT -->
 <head>
     <!-- meta tags -->
     <meta charset="UTF-8">
@@ -25,71 +25,12 @@
     <link rel="stylesheet" href="/static/css/magnific-popup.min.css">
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
-    <style>
-        /* Custom Table Styling */
-        .custom-table {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .custom-table thead {
-            
-            background: #ad5f2f !important;
-            background-color: #ad5f2f !important;
-            
-            
-        }
-        .custom-table th, .custom-table td {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #7f8c8d;
-        }
-        .custom-table tbody tr:hover {
-            background-color: #1abc9c;
-            color: #fff;
-        }
-        .btn-accept {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .btn-reject {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        /* Custom Table Styling */
-        .custom-table {
-           background-color: #2c3e50;
-           color: #ecf0f1;
-           border-radius: 10px;
-           overflow: hidden;
-           box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
-        }
-        .custom-table {
-            width: 100%; /* Make the table take full width */
-            max-width: 100%; /* Ensure it doesn’t exceed the container */
-        }
-        
-        .table-responsive {
-            width: 100%;
-            max-width: 100%;
-        }
-        
-        
-
-    </style>
 
 </head>
 
 <body>
 
-
+    <!-- preloader -->
     <div class="preloader">
         <div class="loader">
             <div></div>
@@ -100,7 +41,8 @@
     <!-- preloader end -->
 
 
-  <header class="header custom-header">
+    <!-- header area -->
+   <header class="header custom-header">
 
         <!-- top header -->
         <div class="header-top">
@@ -201,10 +143,11 @@
                                     <li><a class="dropdown-item" href="/ssp">Shop Single</a></li>
                                 </ul>
                             </li>  -->
-                                 <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+
 
 
                             <li class="nav-item"><a class="nav-link" href="blogpost">Publish Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/manageBlog">Manage Blog</a></li>
                         </ul>
                         <div class="header-nav-right">
 
@@ -232,6 +175,8 @@
             </div>
         </form>
     </div>
+    <!-- popup search end -->
+
 
 
 
@@ -240,84 +185,95 @@
         <!-- breadcrumb -->
         <div class="site-breadcrumb" style="background: url(/static/img/breadcrumb/01.jpg)">
             <div class="container">
-                <h2 class="breadcrumb-title">Manage Appointment</h2>
+                <h2 class="breadcrumb-title">Our Blog</h2>
                 <ul class="breadcrumb-menu">
-                    <li><a href="/">Home</a></li>
-                    <li class="active">Manage Appointment</li>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Our Blog</li>
                 </ul>
             </div>
         </div>
 
 
 
-        <!-- register area -->
-        
-        <!-- register area end -->
+        <!-- blog-area -->
+        <div class="blog-area py-120">
 
-        <!--- Table Area-->
-        <div class="container my-5">
-            <h3 class="text-center mb-4" style="color: #2c3e50; font-weight: bold;">Manage Appointment</h3>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead style="background-color:#ad5f2f;">
-                        <tr>
-                            <th>Serial No</th>
-                            <th>Customer Name</th>
-                            <th>Image</th>
-                            <th>Pet Name</th>
-                            <th>Pet Breed</th>
-                            <th>Pet Age</th>
-                            <th>Category</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Symptoms</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for i in data %}
-
-                        <tr>
-                            <td> {{i.id }}</td>
-                            <td>{{ i.userid }}</td>
-                            <td><img src="/media/{{ i.petphoto }}" class="product-img" alt="Pet Image" width="50"></td>
-                            <td>{{ i.petname }}</td>
-                            <td>{{ i.breed }}</td>
-                            <td>{{ i.age }}</td>
-                            <td>{{ i.petCategory }} </td>
-                             <td>{{ i.location }}</td>
-                            <td>{{ i.dateofappo }}</td>
-                            <td>{{ i.timeofappo }}</td>
-
-                            <td>{{ i.symptoms }}</td>
-                            <td>{{ i.status }}</td>
-                    <td>
-                        {% if i.status == "Approved" %}
-                           <p><i class="fas fa-check-circle"></i> Payment Request Sent</p>
-                        {% elif i.status == "Pending" %}
-                            <a href="/accept/{{ i.id }}" class="btn-accept">✔ Accept</a>
-                            <a href="/reject/{{ i.id }}" class="btn-reject">✖ Reject</a>
-                        {% elif i.status == "Paid" %}
-                        <p><i class="fas fa-check-circle"></i>Confirmed</p><hr>
-                    <a href="/uploadr/{{ i.id }}" class="btn btn-success btn-sm d-flex align-items-center gap-1 text-white text-decoration-none">
-                        <i class="fas fa-check-circle"></i> Appointment Completed
-                    </a>
-
-
-
-                        {% endif %}
-                    </td>                   </td>
-                        </tr>
-
-                    {% endfor %}
-
-
-                    </tbody>
-                </table>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto wow fadeInDown" data-wow-duration="1s" data-wow-delay=".25s">
+                        <div class="site-heading text-center">
+                            <span class="site-title-tagline">Our Blog</span>
+                            <h2 class="site-title">Get Our Latest <span>Blog</span></h2>
+                            <div class="heading-divider"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+    {% for i in fetchdata %}
+    <div class="col-md-6 col-lg-4">
+        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+            <div class="blog-item-img">
+                <img src="/media/{{ i.blogImage }}" alt="Thumb">
+            </div>
+            <div class="blog-item-info">
+                <h4 class="blog-title">
+                    <a href="#">There are many variations available suffered</a>
+                </h4>
+                <div class="blog-item-meta">
+                    <ul>
+                        <li><a href="#"><i class="far fa-user-circle"></i> By {{ i.vetid }}</a></li>
+                        <li><a href="#"><i class="far fa-calendar-alt"></i> {{ i.TimeStamp }}</a></li>
+                    </ul>
+                </div>
+                <a class="theme-btn" href="/blogs/{{ i.id }}">Read Blog<i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
+    </div>
+    {% empty %}
+    <p>No blogs available.</p>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="pagination-area">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {% if data.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1" aria-label="First">
+                    <i class="far fa-angle-double-left"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ data.previous_page_number }}" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </li>
+            {% endif %}
+
+            {% for num in data.paginator.page_range %}
+            <li class="page-item {% if num == data.number %}active{% endif %}">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% endfor %}
+
+            {% if data.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ data.next_page_number }}" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ data.paginator.num_pages }}" aria-label="Last">
+                    <i class="far fa-angle-double-right"></i>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+        <!-- blog-area end -->
 
 
     </main>
@@ -325,7 +281,7 @@
 
 
     <!-- footer area -->
-   
+    {% include 'footer.html' %}
     <!-- footer area end -->
 
 
@@ -350,53 +306,9 @@
     <script src="/static/js/masonry.pkgd.min.js"></script>
     <script src="/static/js/wow.min.js"></script>
     <script src="/static/js/main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const formContainer = document.querySelector('.slide-in');
-            formContainer.style.animation = 'slideIn 1s ease-out';
-
-            const togglePassword = document.querySelector('#togglePassword');
-            const password = document.querySelector('#password');
-
-            togglePassword.addEventListener('click', function (e) {
-                // toggle the type attribute
-                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-                password.setAttribute('type', type);
-                // toggle the eye slash icon
-                this.classList.toggle('fa-eye-slash');
-            });
-
-            const phoneNumber = document.querySelector('#phoneNumber');
-            const phoneError = document.querySelector('#phoneError');
-
-            phoneNumber.addEventListener('input', function (e) {
-                if (this.value.length > 10) {
-                    this.value = this.value.slice(0, 10);
-                }
-            });
-
-            phoneNumber.addEventListener('blur', function (e) {
-                if (this.value.length !== 10) {
-                    phoneError.classList.remove('hidden');
-                } else {
-                    phoneError.classList.add('hidden');
-                }
-            });
-
-            const registerForm = document.querySelector('#registerForm');
-            registerForm.addEventListener('submit', function (e) {
-                if (phoneNumber.value.length !== 10) {
-                    e.preventDefault();
-                    phoneError.classList.remove('hidden');
-                }
-            });
-        });
-        
-
-    </script>
 
 </body>
 
 
-<!-- Mirrored from live.themewild.com/pawsy/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:36 GMT -->
+<!-- Mirrored from live.themewild.com/pawsy/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:57 GMT -->
 </html>

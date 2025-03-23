@@ -50,6 +50,7 @@ urlpatterns = [
     path('logout/',views.logout),
     path('appointment',views.appointmentRequest),
     path('manageAppoint/',views.manageAppoint),
+    path('manageBlog/',views.manageBlogpage),
     path('vlogout',views.vetlogout),
     path('accept/<int:id>',views.accept),
     path('reject/<int:id>',views.reject),
