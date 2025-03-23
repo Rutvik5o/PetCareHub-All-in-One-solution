@@ -40,7 +40,6 @@ class lettershow(admin.ModelAdmin):
     list_display = ['id','email']
 
 @admin.register(Payment)
-
 class showpayment(admin.ModelAdmin):
 
     list_display = ['id','userid','appointmentid','amount','timestamp','status','razorpay_order_id']

@@ -122,8 +122,6 @@ class newsletter(models.Model):
     email = models.CharField(max_length=30)
 
 
-
-
 class Payment(models.Model):
     userid = models.ForeignKey(userRegisterDB, on_delete=models.CASCADE)
     appointmentid = models.ForeignKey(Appointment, on_delete=models.CASCADE)
@@ -136,7 +134,6 @@ class Payment(models.Model):
         return f"Payment {self.id} - {self.status}"
 
 
-
 class reportFromVet(models.Model):
 
     appointmentid = models.ForeignKey(Appointment, on_delete=models.CASCADE)
@@ -144,11 +141,4 @@ class reportFromVet(models.Model):
     report = models.FileField(upload_to='files',max_length=250)
     Description = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
-
-
-
-
-
-
-
 

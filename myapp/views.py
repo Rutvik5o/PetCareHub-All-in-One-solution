@@ -351,9 +351,9 @@ def reject(request,id):
 
 
 def UserAppointment(request):
+    userid = request.session.get('log_id')
+    user_name = request.session.get('log_name')
 
-    userid = request.session["log_id"]
-    user_name = request.session["log_name"]
 
     fetchdata = Appointment.objects.filter(userid=userid)
 
@@ -458,6 +458,7 @@ def MakePayment(request, appointment_id):
         amount=amount,
         razorpay_order_id=razorpay_order['id'],
     )
+
     payment.save()
 
     # Render the payment page with necessary details
@@ -559,10 +560,3 @@ def manageBlogpage(request):
         "fetchdata":data
     }
     return render(request, "manageBlog.html", context)
-
-
-
-
-
-
-
