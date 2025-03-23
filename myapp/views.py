@@ -426,8 +426,6 @@ def Petcare2o(request):
 
     return render(request,"coming-soon.html")
 
-    if not vet_id:
-        return redirect("/vetLogin")  # redirect if session is missing
 
 def MakePayment(request, appointment_id):
     # Retrieve the appointment object
@@ -470,7 +468,7 @@ def MakePayment(request, appointment_id):
         "currency": "INR",
     })
 
-    fetchdata = Blog.objects.all().order_by('-TimeStamp')  # Order by latest blogs
+
 
 
 @csrf_exempt
@@ -537,23 +535,32 @@ def uploadReport(request,id):
         insertquery = reportFromVet(report=reportdata,Description=desc,appointmentid=Appointment(id=id),vetid=vetRegisterDB(id=vetid))
 
         insertquery.save()
+    return render(request, "uploadReport.html", context)
 
 
-    # Apply pagination
-    paginator = Paginator(fetchdata, 3)  # Show 6 blogs per page
-    page_number = request.GET.get('page')
-    page_data = paginator.get_page(page_number)
+
 def manageBlogpage(request):
+
     vet_id = request.session["vet_log_name"]
     print(vet_id)
+    if not vet_id:
+        return redirect("/vetLogin")  # redirect if session is missing
     data = Blog.objects.filter(vetid=vet_id)
+    fetchdata = Blog.objects.all().order_by('-TimeStamp')  # Order by latest blogs
+
+    # Apply pagination
+    page_number = request.GET.get('page')
+    paginator = Paginator(fetchdata, 3)  # Show 6 blogs per page
+    page_data = paginator.get_page(page_number)
+
+
     context = {
         "data": page_data,
         "fetchdata":data
     }
     return render(request, "manageBlog.html", context)
 
-    return render(request,"uploadReport.html",context)
+
 
 
 
