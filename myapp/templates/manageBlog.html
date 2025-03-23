@@ -210,25 +210,43 @@
                 </div>
                 <div class="row">
     {% for i in fetchdata %}
-    <div class="col-md-6 col-lg-4">
-        <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
-            <div class="blog-item-img">
-                <img src="/media/{{ i.blogImage }}" alt="Thumb">
-            </div>
-            <div class="blog-item-info">
+  <div class="col-md-6 col-lg-4">
+    <div class="blog-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+        <div class="blog-item-img">
+            <img src="/media/{{ i.blogImage }}" alt="Thumb">
+        </div>
+        <div class="blog-item-info">
+            <div class="d-flex justify-content-between align-items-center">
                 <h4 class="blog-title">
-                    <a href="#">There are many variations available suffered</a>
+                    <a href="#">{{ i.blogTitle }}</a>
                 </h4>
-                <div class="blog-item-meta">
-                    <ul>
-                        <li><a href="#"><i class="far fa-user-circle"></i> By {{ i.vetid }}</a></li>
-                        <li><a href="#"><i class="far fa-calendar-alt"></i> {{ i.TimeStamp }}</a></li>
+
+                <!-- Three-dot menu -->
+                <div class="dropdown">
+                    <button class="btn btn-light" type="button" id="dropdownMenuButton{{ i.id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i> <!-- Three-dot icon -->
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ i.id }}">
+                         <li>
+                        <a class="dropdown-item text-danger delete-blog" href="/deleteBlog/{{ i.id }}" data-id="">
+                            <i class="fas fa-trash-alt"></i> Delete Blog
+                        </a>
+                    </li>
                     </ul>
                 </div>
-                <a class="theme-btn" href="/blogs/{{ i.id }}">Read Blog<i class="fas fa-arrow-right"></i></a>
             </div>
+
+            <div class="blog-item-meta">
+                <ul>
+                    <li><a href="#"><i class="far fa-user-circle"></i> By {{ i.vetid }}</a></li>
+                    <li><a href="#"><i class="far fa-calendar-alt"></i> {{ i.TimeStamp }}</a></li>
+                </ul>
+            </div>
+            <a class="theme-btn" href="/blogs/{{ i.id }}">Read Blog <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
+</div>
+
     {% empty %}
     <p>No blogs available.</p>
     {% endfor %}

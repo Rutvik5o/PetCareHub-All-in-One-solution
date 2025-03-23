@@ -560,3 +560,12 @@ def manageBlogpage(request):
         "fetchdata":data
     }
     return render(request, "manageBlog.html", context)
+
+
+def deleteBlog(request,id):
+
+    data = Blog.objects.get(id=id)
+
+    data.delete()
+
+    return redirect("/manageBlog")

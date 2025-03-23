@@ -67,7 +67,8 @@ urlpatterns = [
     path('soon',views.Petcare2o),
     path('payment/success/',views.PaymentSuccess),
     path('payment/<int:appointment_id>/', views.MakePayment),
-    path('uploadr/<int:id>',views.uploadReport)
+    path('uploadr/<int:id>',views.uploadReport),
+    path('deleteBlog/<int:id>',views.deleteBlog)
 
 
 
