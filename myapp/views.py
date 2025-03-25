@@ -96,6 +96,9 @@ def aboutour(request):
 def pricingpage(request):
     return render(request,"pricing.html")
 
+def vetHomePage(request):
+    return render(request,"vetHomePage.html")
+
 #def errorpage(request,exception):
  #   return render(request,"404.html",status=404)
 
@@ -231,12 +234,12 @@ def vetsinglepage(request,id): #for viewinng single page of pet
 
 def gotoShelter(request):
     petid = request.POST.get("petid")
-
-
     pet = petDB.objects.get(id=petid)
-
-
     shelter = shelterDB.objects.get(id=pet.ShelterId.id)
+
+    userLogged_in = request.session.get("log_id")
+    if not userLogged_in:
+        return redirect("/login")
 
     context = {
         "fetchsingle": shelter
@@ -547,12 +550,16 @@ def manageBlogpage(request):
     if not vet_id:
         return redirect("/vetLogin")  # redirect if session is missing
     data = Blog.objects.filter(vetid=vet_id)
-    fetchdata = Blog.objects.all().order_by('-TimeStamp')  # Order by latest blogs
+    fetchpet = Blog.objects.all().order_by('-TimeStamp')  # Fetch pets, latest first
 
     # Apply pagination
+    paginator = Paginator(fetchpet, 6)  # Show 6 pets per page
     page_number = request.GET.get('page')
-    paginator = Paginator(fetchdata, 3)  # Show 6 blogs per page
     page_data = paginator.get_page(page_number)
+
+    context = {
+        "datapet": page_data
+    }
 
 
     context = {
