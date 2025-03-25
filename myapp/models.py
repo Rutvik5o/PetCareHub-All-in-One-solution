@@ -118,7 +118,6 @@ class Blog(models.Model):
 
 
 class newsletter(models.Model):
-
     email = models.CharField(max_length=30)
 
 
@@ -135,7 +134,6 @@ class Payment(models.Model):
 
 
 class reportFromVet(models.Model):
-
     appointmentid = models.ForeignKey(Appointment, on_delete=models.CASCADE)
     vetid = models.ForeignKey(vetRegisterDB, on_delete=models.CASCADE)
     report = models.FileField(upload_to='files',max_length=250)

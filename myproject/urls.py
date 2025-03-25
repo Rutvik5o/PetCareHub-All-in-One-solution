@@ -69,9 +69,8 @@ urlpatterns = [
     path('payment/success/',views.PaymentSuccess),
     path('payment/<int:appointment_id>/', views.MakePayment),
     path('uploadr/<int:id>',views.uploadReport),
-    path('deleteBlog/<int:id>',views.deleteBlog)
-
-
+    path('deleteBlog/<int:id>',views.deleteBlog),
+    path('searchvet', views.searchvets),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

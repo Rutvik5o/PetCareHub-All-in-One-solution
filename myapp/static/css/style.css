@@ -41,7 +41,7 @@ body {
   font-style: normal;
   font-size: 16px;
   font-weight: normal;
-  color: #FFA500;
+  color: #c98449;
   line-height: 1.8;
 }
 
@@ -711,7 +711,7 @@ header css
 ====================== */
 
 .custom-header {
-  background: #FFA500;
+  background: linear-gradient(to left , #c98449, #8f6b0a);
 }
 
 

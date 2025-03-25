@@ -149,7 +149,7 @@
                     {% for i in data %}
 
                         <tr>
-                            <td> {{i.id }}</td>
+                            <td>  {{forloop.counter }}</td>
                             <td>{{ i.userid }}</td>
                             <td><img src="/media/{{ i.petphoto }}" class="product-img" alt="Pet Image" width="50"></td>
                             <td>{{ i.petname }}</td>
@@ -170,15 +170,18 @@
                             <a href="/reject/{{ i.id }}" class="btn-reject">✖ Reject</a>
                         {% elif i.status == "Paid" %}
                         <p><i class="fas fa-check-circle"></i>Confirmed</p><hr>
-                    <a href="/uploadr/{{ i.id }}" class="btn btn-success btn-sm d-flex align-items-center gap-1 text-white text-decoration-none">
-                        <i class="fas fa-check-circle"></i> Appointment Completed
-                    </a>
+                            {%if i.report_status == "Report Available" %}
+                             <i class="fas fa-check-circle"></i> Appointment Completed
 
-
-
+                            {%else%}
+                            <a href="/uploadr/{{ i.id }}" class="btn btn-success btn-sm d-flex align-items-center gap-1 text-white text-decoration-none">
+                                <i class="fas fa-check-circle"></i> Appointment Completed
+                            </a>
+                            {%endif%}
                         {% endif %}
-                    </td>                   </td>
-                        </tr>
+                    </td>
+                    </td>
+                    </tr>
 
                     {% endfor %}
 

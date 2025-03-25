@@ -121,6 +121,8 @@ def fetchuserdata(request):
                                    PhoneNo=u_phone)
     userDataQuery.save()
 
+    messages.success(request, "✅ Register Successfully")
+
     return render(request,"register.html")
 
 def fetchvetdata(request):
@@ -145,6 +147,7 @@ def fetchvetdata(request):
                                  Phone=v_phone, LicenseFile=v_file, Address=v_address, Specialization=v_specialization,
                                  YearsOfExperience=v_yearsofexp, ClinicName=v_clinicname,Price=v_price)
     vetDataQuery.save()
+    messages.success(request, "✅ Register Successfully")
 
     return render(request,"vetRegister.html")
 
@@ -161,9 +164,10 @@ def checklogindata(request):
         request.session['log_name'] = userdata.Name
 
         print("name in session=> ", request.session.get('log_name'))  # ✅ Use .get() to avoid KeyError
-
+        messages.success(request, "✅ Login Successful!")
     except:
         print('fail')
+        messages.success(request, "❌ Invalid Details!")
         userdata = None
 
 
@@ -175,7 +179,7 @@ def checklogindata(request):
         return render(request,"index.html")
     else:
         print('Invalid Email or Password')
-        messages.error(request,"Invalid Email or Password!!")
+        messages.error(request,"❌ Invalid Details!")
 
 
     return render(request,"login.html")
@@ -196,16 +200,18 @@ def checkVetlogindata(request):
         request.session['vet_log_id'] = vetdata.id
         request.session['vet_log_name'] = vetdata.Name
         request.session['vet_log_photo'] = vetdata.Photo.url
+
     except:
         print('fail')
         vetdata = None
 
+
     if vetdata is not None:
-        print('success!!')
+
+        messages.success(request, "✅ Login Succesfully.")
         return render(request,"vetHomePage.html")
     else:
-        print('Invalid Email or Password')
-        messages.error(request,"Invalid EMAIL or PASSWORD!!")
+        messages.error(request,"❌ Invalid EMAIL or PASSWORD!!")
 
     return render(request,"vetLogin.html")
 
@@ -257,6 +263,7 @@ def logout(request): #user logout
     try:
         del request.session["log_id"]
         del request.session["log_name"]
+        messages.success(request, " ╰┈➤ Logout Successful.")
     except:
         None
     return redirect("/")
@@ -266,6 +273,7 @@ def vetlogout(request): #vet logout
         del request.session["vet_log_id"]
         del request.session["vet_log_name"]
         del request.session["vet_log_photo"]
+        messages.success(request, "╰┈➤ Logout Successful.")
     except:
         None
     return redirect("/vetLogin")
@@ -326,17 +334,23 @@ def appointmentRequest(request):
     return render(request,"vetAppointment.html")
 
 
+
 def manageAppoint(request):
+    vet_id = request.session.get("vet_log_id")  # Get the logged-in vet ID
+    fetchdata = Appointment.objects.filter(vetid=vet_id)  # Fetch appointments for the vet
 
-    vet_id = request.session["vet_log_id"]
-    fetchdata = Appointment.objects.filter(vetid=vet_id)
+    # Append report status to each appointment
+    for appointment in fetchdata:
+        report_exists = reportFromVet.objects.filter(appointmentid=appointment).exists()
+        appointment.report_status = "Report Available" if report_exists else "No Report"
 
+    print(fetchdata)
     context = {
-
-        "data" : fetchdata
+        "data": fetchdata
     }
 
-    return render(request,"manageAppointment.html",context)
+    return render(request, "manageAppointment.html", context)
+
 
 def accept(request,id):
     data = Appointment.objects.get(id=id)
@@ -357,12 +371,14 @@ def UserAppointment(request):
     userid = request.session.get('log_id')
     user_name = request.session.get('log_name')
 
-
     fetchdata = Appointment.objects.filter(userid=userid)
+
+
 
     context = {
         "data": fetchdata
     }
+
 
 
     print(userid)
@@ -576,3 +592,19 @@ def deleteBlog(request,id):
     data.delete()
 
     return redirect("/manageBlog")
+
+def searchvets(request):
+    vets = vetRegisterDB.objects.all()  # Fetch all vets initially
+
+    if request.method == "POST":
+        query = request.POST.get("searchvet", "").strip()
+        if query:
+            vets = vetRegisterDB.objects.filter(
+                Name__icontains=query
+            ) | vetRegisterDB.objects.filter(
+                Specialization__icontains=query
+            ) | vetRegisterDB.objects.filter(
+                ClinicName__icontains=query
+            )
+
+    return render(request, "searchvet.html", {"vets": vets})

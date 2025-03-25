@@ -162,7 +162,7 @@
                     <input type="hidden" name=""
 
                         <tr>
-                            <td> {{ i.id }}</td>
+                            <td> {{ forloop.counter }}</td>
 
 
                             <td><img src="/media/{{ i.petphoto }}" class="product-img" alt="Pet Image" width="50"></td>
@@ -182,7 +182,7 @@
                                     <p> - </p>
                                 {% elif i.status == "Approved" %}
                                     <a href="/payment/{{ i.id }}" class="btn-payment">💳 Make Payment</a>
-                                {% endif %}
+                               {% endif %}
                             </td>
 
 
