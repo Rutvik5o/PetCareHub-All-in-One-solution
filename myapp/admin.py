@@ -49,3 +49,10 @@ class showpayment(admin.ModelAdmin):
 class showreport(admin.ModelAdmin):
 
     list_display = ['id','appointmentid','vetid','report','Description','timestamp']
+
+
+@admin.register(GetIntoTouch)
+
+class showGetIntoTouch(admin.ModelAdmin):
+
+    list_display = ['Name','Email','Subject','Message']

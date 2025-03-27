@@ -17,6 +17,9 @@ def indexpage(request):
 def servicepage(request):
     return render(request,"service-single.html")
 
+def contact(request):
+    return render(request,"contact.html")
+
 def blogpage(request):
     fetchdata = Blog.objects.all().order_by('-TimeStamp')  # Order by latest blogs
 
@@ -433,6 +436,23 @@ def terms(request):
 
     return render(request,"terms.html")
 
+def getIntoTouch(request):
+
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    subject = request.POST.get('subject')
+    msg = request.POST.get('message')
+
+    insertdata = GetIntoTouch(Name=name,Email=email,Subject=subject,Message=msg)
+
+    insertdata.save()
+
+    messages.success(request,"Thanks For Message")
+
+
+
+    return render(request,"contact.html")
+
 def policy(request):
 
     return render(request,"privacy.html")
@@ -608,3 +628,8 @@ def searchvets(request):
             )
 
     return render(request, "searchvet.html", {"vets": vets})
+
+
+def gallery(request):
+
+    return render(request,"gallery.html")

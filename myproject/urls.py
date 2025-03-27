@@ -71,6 +71,9 @@ urlpatterns = [
     path('uploadr/<int:id>',views.uploadReport),
     path('deleteBlog/<int:id>',views.deleteBlog),
     path('searchvet', views.searchvets),
+    path('contact/',views.contact),
+    path('getTouch',views.getIntoTouch),
+    path('gallery/',views.gallery)
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
