@@ -279,7 +279,7 @@ def vetlogout(request): #vet logout
         messages.success(request, "╰┈➤ Logout Successful.")
     except:
         None
-    return redirect("/vetLogin")
+    return redirect("/")
 
 
 
@@ -414,6 +414,7 @@ def fetcharticle(request):
 
     insertquery = Blog(blogTitle=Title,blogImage=Image,vetid=vet_id,Description=article,vetPhoto=vet_photo)
     insertquery.save()
+    messages.success(request,"✅ Blog Has Been Posted")
     return render(request,"vetHomePage.html")
 
 
@@ -610,6 +611,8 @@ def deleteBlog(request,id):
     data = Blog.objects.get(id=id)
 
     data.delete()
+
+    messages.success(request,"🗑 Blog Has Been Deleted")
 
     return redirect("/manageBlog")
 
