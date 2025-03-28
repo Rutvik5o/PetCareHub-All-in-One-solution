@@ -12,7 +12,7 @@
     <meta name="keywords" content="">
 
     <!-- title -->
-    <title>Pawsy - Pet Care Services HTML5 Template</title>
+    <title>PetCareHub: All in one Solution</title>
 
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="/static/img/logo/favicon.png">
@@ -69,8 +69,8 @@
                 <div class="col-md-5 mx-auto">
                     <div class="login-form">
                         <div class="login-header">
-                            <img src="/static/img/logo/logo.png" alt="">
-                            <p>Create your pawsy account</p>
+                            <img src="/static/img/logo/logo4.png" alt="">
+                            <p>Create your PetCareHub account</p>
                         </div>
                         <form action="/fetchuserdata" method="post">
                             {% csrf_token %}
@@ -84,7 +84,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input type="password" class="form-control" name="upassword" placeholder="Your Password" id="password" required>
+                                <input type="password"
+                                       class="form-control"
+                                       name="upassword"
+                                       placeholder="Your Password"
+                                       id="password"
+                                       required
+                                       pattern="^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$"
+                                       title="Password must be at least 8 characters long, contain at least one uppercase letter and one special character.">
+
                                 <i id="togglePassword" class="#"></i>
                             </div>
                             <div class="form-group">
@@ -92,6 +100,7 @@
                                 <textarea rows="4" cols="45" class="form-control" name="uaddress" placeholder="Address" type="text" required></textarea>
                             </div>
                             <div class="form-group">
+                                <label>Gender</label>
                                 <select class="form-control" name="ugender" required>
                                     <option value="" disabled selected>Gender</option>
                                     <option value="male">Male</option>
@@ -280,6 +289,23 @@
                 }
             });
         });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const password = document.querySelector('#password');
+    const form = document.querySelector('form');
+
+    // Password validation pattern
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
+
+    form.addEventListener('submit', function (e) {
+        if (!passwordPattern.test(password.value)) {
+            e.preventDefault();
+            alert("Password must be at least 8 characters long, contain at least one uppercase letter and one special character.");
+        }
+    });
+});
+
         
 
     </script>
