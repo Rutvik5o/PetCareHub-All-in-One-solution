@@ -126,6 +126,7 @@
         <!--- Table Area-->
         <div class="container my-5">
             <h3 class="text-center mb-4" style="color: #2c3e50; font-weight: bold;">Manage Appointment</h3>
+            {% if data %}
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead style="background-color:#ad5f2f;">
@@ -136,7 +137,7 @@
                             <th>Pet Name</th>
                             <th>Pet Breed</th>
                             <th>Pet Age</th>
-                            <th>Category</th>
+                            <th>Contact</th>
                             <th>Location</th>
                             <th>Date</th>
                             <th>Time</th>
@@ -155,7 +156,7 @@
                             <td>{{ i.petname }}</td>
                             <td>{{ i.breed }}</td>
                             <td>{{ i.age }}</td>
-                            <td>{{ i.petCategory }} </td>
+                            <td>{{ i.userid.PhoneNo }}</td>
                              <td>{{ i.location }}</td>
                             <td>{{ i.dateofappo }}</td>
                             <td>{{ i.timeofappo }}</td>
@@ -189,6 +190,10 @@
                     </tbody>
                 </table>
             </div>
+             {% else %}
+            <br><br><br><br><br>
+              <h2 class="text-center" style="color: red; font-size: 25px;">No Appointment has been booked</h2>
+              {% endif %}
         </div>
 
 
@@ -197,6 +202,8 @@
 
 
     <!-- footer area -->
+    <br><br><br><br><br><b></b>
+    {% include 'footer.html' %}
    
     <!-- footer area end -->
 

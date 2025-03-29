@@ -89,11 +89,7 @@
 
 <body>
 
-{% if messages %}
-{% for i in messages %}
-<script>alert("{{ i }}");</script>
-{% endfor %}
-{% endif %}
+
 
     <!-- preloader -->
     <div class="preloader">
@@ -131,6 +127,7 @@
         <!-- register area end -->
 
         <!--- Table Area-->
+        <br><br>
         <div class="container my-5">
             <h3 class="text-center mb-4" style="color: #2c3e50; font-weight: bold;">View Appointment</h3>
             {% if data %}
@@ -145,8 +142,9 @@
                             <th>Pet Breed</th>
                             <th>Pet Age</th>
                             <th>Vet Name</th>
-                            <th>Category</th>
+                          <!--  <th>Category</th>-->
                             <th>Date</th>
+                            <th>Time</th>
                             <th>Phone Number</th>
                             <th>Symptoms</th>
                             <th>Status</th>
@@ -168,8 +166,10 @@
                             <td>{{ i.breed }}</td>
                             <td>{{ i.age }}</td>
                             <td> {{ i.vetid }}</td>
-                            <td>{{ i.petCategory }} </td>
+                            <!--<td>{{ i.petCategory }} </td>-->
                             <td>{{ i.dateofappo }}</td>
+                            <td> {{ i.timeofappo }}</td>
+
                            <td>{{ i.userid.PhoneNo }}</td>
                             <td>{{ i.symptoms }}</td>
                             <td>{{ i.status }}</td>
@@ -181,7 +181,7 @@
                                 {% elif i.status == "Approved" %}
                                     <a href="/payment/{{ i.id }}" class="btn-payment">💳 Make Payment</a>
                                {% elif i.status == "Appointment Completed" %}
-                                    <a href="#">Download Report</a>
+                                    <a href="/download_report/{{ i.id }}">Download Report</a>
                                {% endif %}
                             </td>
 
@@ -205,8 +205,9 @@
     </main>
 
 
-
+<br><br>
     <!-- footer area -->
+    {% include 'footer.html' %}
 
     <!-- footer area end -->
 

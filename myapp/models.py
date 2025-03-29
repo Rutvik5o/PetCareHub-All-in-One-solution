@@ -1,5 +1,8 @@
+from encodings.punycode import selective_find
+
 from django.db import models
 from django.utils.safestring import mark_safe
+import re
 # Create your models here.
 class userRegisterDB(models.Model):
     Name = models.CharField(max_length=30)
@@ -44,7 +47,7 @@ class shelterDB(models.Model):
     shelterContact = models.BigIntegerField()
     shelterAddress = models.TextField()
     shelterImage = models.ImageField(upload_to="photos",default="",null=True)
-    shelterLocationUrl = models.URLField(blank=True,null=True)
+    shelterLocationUrl = models.TextField(null=True)
     TimeStamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -52,6 +55,16 @@ class shelterDB(models.Model):
 
     def shelter_photo(self):
         return mark_safe('<img src="{}" width="100"/>'.format(self.shelterImage.url))
+
+    # def save(self, *args, **kwargs):
+    #     if self.shelterLocationUrl and "google.com/maps/place" in self.shelterLocationUrl:
+    #         # Extract Coordinates
+    #         match = re.search(r'@(-?\d+\.\d+,-?\d+\.\d+)', self.shelterLocationUrl)
+    #         if match:
+    #             lat, lng = match.group(1).split(',')
+    #             self.shelterLocationUrl = f"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d{lng}!3d{lat}"
+    #
+    #     super(shelterDB, self).save(*args, **kwargs)
 
     shelter_photo.allow_tags = True
 
@@ -99,7 +112,7 @@ class Appointment(models.Model):
         return mark_safe('<img src="{}" width="100"/>'.format(self.petphoto.url))
 
     def __str__(self):
-        return self.vetid.Name
+        return f"ApID - {self.id}"
 
 
 
@@ -139,6 +152,11 @@ class reportFromVet(models.Model):
     report = models.FileField(upload_to='files',max_length=250)
     Description = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    # def __str__(self):
+    #     return f"by {self.appointmentid.userid.Name}"
+
+
 
 
 class GetIntoTouch(models.Model):

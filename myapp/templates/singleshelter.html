@@ -105,10 +105,17 @@
 
 
 
-                                    <!-- Google Map Embed -->
-                                    <div class="map-container">
-                                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117501.90986178644!2d72.51477240594119!3d23.02617033685893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8347345fae2b%3A0x38e7b32906bbcafa!2sPresident%20Science%20College!5e0!3m2!1sen!2sin!4v1742534364788!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                    </div>
+                                  {% if fetchsingle.shelterLocationUrl %}
+    <div class="map-container">
+        <iframe src="{{ fetchsingle.shelterLocationUrl }}" width="600" height="450"
+                style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+{% else %}
+    <p>No location available.</p>
+{% endif %}
+
+
+
 
 
 

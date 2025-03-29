@@ -76,6 +76,14 @@
                         </div>
                     </div>
                 </div>
+                  <div class="widget search">
+                                <h5 class="widget-title">Search</h5>
+                                <form class="search-form" method="post" action="/blogsearch/" >
+                                    {% csrf_token %}
+                                    <input type="text" name="bquery" class="form-control" placeholder="Search Here...">
+                                    <button type="submit"><i class="far fa-search"></i></button>
+                                </form>
+                            </div>
                 <div class="row">
     {% for i in data %}
     <div class="col-md-6 col-lg-4">
@@ -85,7 +93,7 @@
             </div>
             <div class="blog-item-info">
                 <h4 class="blog-title">
-                    <a href="#">There are many variations available suffered</a>
+                    <a href="#">{{ i.blogTitle }}</a>
                 </h4>
                 <div class="blog-item-meta">
                     <ul>

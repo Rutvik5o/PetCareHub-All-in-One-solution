@@ -132,6 +132,29 @@
     </nav>
 </div>
 
+                <h2>Pets</h2>
+<div class="row">
+    {% for p in pets %}
+    <div class="col-md-6 col-lg-3">
+        <div class="team-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+            <div class="team-img">
+                <a href="/pet/{{ p.id }}">
+                    <img src="/media/{{ p.petImage }}" alt="thumb">
+                </a>
+            </div>
+            <div class="team-content">
+                <div class="team-bio">
+                    <h5><a href="#">{{ p.petName }}</a></h5>
+                    <span>{{ p.petBreed }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No pets found.</p>
+    {% endfor %}
+</div>
+
 
 
 

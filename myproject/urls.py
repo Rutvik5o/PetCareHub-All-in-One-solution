@@ -73,7 +73,10 @@ urlpatterns = [
     path('searchvet', views.searchvets),
     path('contact/',views.contact),
     path('getTouch',views.getIntoTouch),
-    path('gallery/',views.gallery)
+    path('gallery/',views.gallery),
+    path('404/',views.errorpage),
+    path('blogsearch/',views.blogsearch),
+    path('download_report/<int:appointment_id>/', views.download_report),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

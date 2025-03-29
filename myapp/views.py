@@ -2,7 +2,7 @@ from asyncio import AbstractEventLoopPolicy
 from django.views.decorators.csrf import csrf_exempt
 
 
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse, Http404
 from django.shortcuts import render , redirect
 from django.utils.termcolors import color_names
 from django.core.paginator import Paginator
@@ -17,6 +17,9 @@ def indexpage(request):
 
 def servicepage(request):
     return render(request,"service-single.html")
+
+def errorpage(request):
+    return render(request,"404.html")
 
 def contact(request):
     return render(request,"contact.html")
@@ -33,6 +36,19 @@ def blogpage(request):
         "data": page_data
     }
     return render(request, "blog.html", context)
+
+def blogsearch(request):
+    blogs = Blog.objects.all().order_by('-TimeStamp')  # Order by latest blogs
+    if request.method == "POST":
+        query = request.POST.get("bquery", "").strip()
+        if query:
+            blogs = Blog.objects.filter(
+                blogTitle__icontains=query
+            ) | Blog.objects.filter(
+                Description__icontains=query
+            )
+
+    return render(request,"blog.html",{"data":blogs})
 
 def loginpage(request):
     return render(request,"login.html")
@@ -101,6 +117,9 @@ def pricingpage(request):
     return render(request,"pricing.html")
 
 def vetHomePage(request):
+    vet_loggded_in = request.session.get("vet_log_id")
+    if not vet_loggded_in:
+        return redirect("/vetLogin")
     return render(request,"vetHomePage.html")
 
 #def errorpage(request,exception):
@@ -255,6 +274,9 @@ def gotoShelter(request):
         "fetchsingle": shelter
     }
 
+    shelter = shelterDB.objects.first()  # Fetch first shelter entry
+    print(shelter.shelterLocationUrl)
+
     return render(request, "singleshelter.html", context)
 
 
@@ -285,6 +307,9 @@ def vetlogout(request): #vet logout
 
 
 def makeAppointment(request):
+    userLogged_in = request.session.get("log_id")
+    if not userLogged_in:
+        return redirect("/login")
     vetid = request.POST.get("vetid")
     fetchcatdata = petCategoryDB.objects.all()
     print(vetid)
@@ -337,11 +362,16 @@ def appointmentRequest(request):
 
     messages.success(request,"✅ Appointment Requested")
 
-    return render(request,"vetAppointment.html")
+    return redirect("/userManageAppointment")
+
+   # return render(request,"vetAppointment.html")
 
 
 
 def manageAppoint(request):
+    vet_loggded_in = request.session.get("vet_log_id")
+    if not vet_loggded_in:
+        return redirect("/vetLogin")
     vet_id = request.session.get("vet_log_id")  # Get the logged-in vet ID
     fetchdata = Appointment.objects.filter(vetid=vet_id)  # Fetch appointments for the vet
 
@@ -354,6 +384,8 @@ def manageAppoint(request):
     context = {
         "data": fetchdata
     }
+
+
 
     return render(request, "manageAppointment.html", context)
 
@@ -394,6 +426,15 @@ def UserAppointment(request):
 
     return render(request,"UserManageAppointment.html",context)
 
+def download_report(request, appointment_id):
+    try:
+        # Fetch the report for the given appointment
+        report = reportFromVet.objects.get(appointmentid=appointment_id)
+        response = FileResponse(report.report.open(), as_attachment=True)
+        return response
+    except reportFromVet.DoesNotExist:
+        raise Http404("Report not found")
+
 
 def cancelappointment(request,id):
 
@@ -404,6 +445,9 @@ def cancelappointment(request,id):
     return redirect("/userManageAppointment")
 
 def blogP(request):
+    vet_loggded_in = request.session.get("vet_log_id")
+    if not vet_loggded_in:
+        return redirect("/vetLogin")
 
     return render(request,"blogPost.html")
 
@@ -587,11 +631,16 @@ def uploadReport(request,id):
         fetchdata.save()
 
         messages.success(request,"Report Has Been Uploaded")
+
+        return redirect("/manageAppoint")
     return render(request, "uploadReport.html", context)
 
 
 
 def manageBlogpage(request):
+    vet_loggded_in = request.session.get("vet_log_id")
+    if not vet_loggded_in:
+        return redirect("/vetLogin")
 
     vet_id = request.session["vet_log_name"]
     print(vet_id)
@@ -641,7 +690,16 @@ def searchvets(request):
                 ClinicName__icontains=query
             )
 
-    return render(request, "searchvet.html", {"vets": vets})
+            # Searching pets
+            pets = petDB.objects.filter(
+                petName__icontains=query
+            ) | petDB.objects.filter(
+                petBreed__icontains=query
+            ) | petDB.objects.filter(
+                petCategory__petCategory__icontains=query  # Assuming petCategory has a name field
+            )
+
+    return render(request, "searchvet.html", {"vets": vets,"pets":pets})
 
 
 def gallery(request):
