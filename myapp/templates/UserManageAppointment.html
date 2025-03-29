@@ -147,11 +147,9 @@
                             <th>Vet Name</th>
                             <th>Category</th>
                             <th>Date</th>
-                            <th>Time</th>
+                            <th>Phone Number</th>
                             <th>Symptoms</th>
                             <th>Status</th>
-
-
                             <th>Actions</th>
 
                         </tr>
@@ -159,7 +157,7 @@
                     <tbody>
                     {% for i in data %}
 
-                    <input type="hidden" name=""
+
 
                         <tr>
                             <td> {{ forloop.counter }}</td>
@@ -172,7 +170,7 @@
                             <td> {{ i.vetid }}</td>
                             <td>{{ i.petCategory }} </td>
                             <td>{{ i.dateofappo }}</td>
-                            <td>{{ i.timeofappo }}</td>
+                           <td>{{ i.userid.PhoneNo }}</td>
                             <td>{{ i.symptoms }}</td>
                             <td>{{ i.status }}</td>
                            <td>
@@ -182,8 +180,11 @@
                                     <p> - </p>
                                 {% elif i.status == "Approved" %}
                                     <a href="/payment/{{ i.id }}" class="btn-payment">💳 Make Payment</a>
+                               {% elif i.status == "Appointment Completed" %}
+                                    <a href="#">Download Report</a>
                                {% endif %}
                             </td>
+
 
 
                         </tr>

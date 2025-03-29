@@ -168,7 +168,7 @@
                         {% elif i.status == "Pending" %}
                             <a href="/accept/{{ i.id }}" class="btn-accept">✔ Accept</a>
                             <a href="/reject/{{ i.id }}" class="btn-reject">✖ Reject</a>
-                        {% elif i.status == "Paid" %}
+                        {% elif i.status == "Your Appointment is Scheduled" %}
                         <p><i class="fas fa-check-circle"></i>Confirmed</p><hr>
                             {%if i.report_status == "Report Available" %}
                              <i class="fas fa-check-circle"></i> Appointment Completed

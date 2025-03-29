@@ -1,6 +1,7 @@
 from asyncio import AbstractEventLoopPolicy
 from django.views.decorators.csrf import csrf_exempt
 
+
 from django.http import HttpResponse
 from django.shortcuts import render , redirect
 from django.utils.termcolors import color_names
@@ -332,7 +333,9 @@ def appointmentRequest(request):
 
     insertquery.save()
 
-    print("data Stored Succsefully")
+
+
+    messages.success(request,"✅ Appointment Requested")
 
     return render(request,"vetAppointment.html")
 
@@ -359,6 +362,7 @@ def accept(request,id):
     data = Appointment.objects.get(id=id)
     data.status = "Approved"
     data.save()
+    messages.success(request,"Appointment Approved")
     return redirect("/manageAppoint")
 
 
@@ -367,6 +371,7 @@ def reject(request,id):
     data.status = "Rejected"
 
     data.save()
+    messages.success(request,"Appointment Rejected")
     return redirect("/manageAppoint")
 
 
@@ -548,7 +553,7 @@ def PaymentSuccess(request):
             appointmentid = payment.appointmentid.id
             print("id",appointmentid)
             fetchdata = Appointment.objects.get(id=appointmentid)
-            fetchdata.status = "Paid"
+            fetchdata.status = "Your Appointment is Scheduled"
             fetchdata.save()
 
             messages.success(request, "Payment Successful!")
@@ -576,6 +581,12 @@ def uploadReport(request,id):
         insertquery = reportFromVet(report=reportdata,Description=desc,appointmentid=Appointment(id=id),vetid=vetRegisterDB(id=vetid))
 
         insertquery.save()
+
+        fetchdata = Appointment.objects.get(id=id)
+        fetchdata.status = "Appointment Completed"
+        fetchdata.save()
+
+        messages.success(request,"Report Has Been Uploaded")
     return render(request, "uploadReport.html", context)
 
 
