@@ -101,18 +101,19 @@
                             <h5>Email: <span>{{ fetchsingle.shelterEmail }}</span></h5><br>
                             <h5>Contact : <span>{{ fetchsingle.shelterContact }}</span></h5><br>
                             <h5>Address : <span>{{ fetchsingle.shelterAddress }}</span></h5><br>
-                            <h5>Location Url : <span>{{ fetchsingle.shelterLocationUrl }}</span></h5><br>
+                          <!--  <h5>Location Url : <span><a href="{{ fetchsingle.shelterLocationUrl }}">Click here</a></span></h5><br> -->
 
 
 
                                   {% if fetchsingle.shelterLocationUrl %}
-    <div class="map-container">
-        <iframe src="{{ fetchsingle.shelterLocationUrl }}" width="600" height="450"
-                style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-{% else %}
-    <p>No location available.</p>
-{% endif %}
+                            <h5>Google Map:</h5><br>
+                                        <div class="map-container">
+                                            <iframe src="{{ fetchsingle.shelterLocationUrl }}" width="600" height="450"
+                                                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                                                            </div>
+                                {% else %}
+                                        <p>No location available.</p>
+                                {% endif %}
 
 
 
