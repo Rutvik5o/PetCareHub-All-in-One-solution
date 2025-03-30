@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from live.themewild.com/pawsy/vetWithdraw.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:52 GMT -->
+<head>
+    <!-- meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- title -->
+    <title>Pawsy - Pet Care Services HTML5 Template</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/img/logo/favicon.png">
+
+    <!-- css -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/all-fontawesome.min.css">
+    <link rel="stylesheet" href="/static/css/icomoon.css">
+    <link rel="stylesheet" href="/static/css/animate.min.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+    <!-- preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- preloader end -->
+
+
+    {% include 'vetNav.html' %}
+    <!-- popup search end -->
+
+
+
+<main class="main">
+
+    <!-- breadcrumb -->
+    <div class="site-breadcrumb" style="background: url(/static/img/breadcrumb/01.jpg)">
+        <div class="container">
+            <h2 class="breadcrumb-title">Bank Payment Checkout</h2>
+            <ul class="breadcrumb-menu">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Bank Payment Checkout</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- bank payment info -->
+    <div class="bank-payment py-120">
+        <div class="container">
+            <div class="checkout-widget">
+                <h4 class="checkout-widget-title">Bank Payment Info</h4>
+                <div class="checkout-form">
+                    <form action="/withdraw/{{ id }}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                      <input type="hidden" name="apid" value="{{ id }}">
+                                      <input type="hidden" name="vetid" value="{{ vet_id }}">
+
+                                    <label>Account Holder Name</label>
+                                    <input type="text" class="form-control" placeholder="Name On Account" name="hol" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Account Number</label>
+                                    <input type="text" class="form-control" name="acc" placeholder="Your Account Number" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Bank Name</label>
+                                    <input type="text" class="form-control" placeholder="Your Bank Name"  name = "bank" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>IFSC Code</label>
+                                    <input type="text" class="form-control" placeholder="Your IFSC Code" name="ifsc" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-end mt-40">
+                            <button type="submit" class="theme-btn">Withdraw Payment<i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bank payment end -->
+
+</main>
+        <!-- shop checkout end -->
+
+
+
+
+
+
+    <!-- footer area -->
+    {% include 'footer.html' %}
+    <!-- footer area end -->
+
+
+
+
+    <!-- scroll-top -->
+    <a href="#" id="scroll-top"><i class="far fa-angle-up"></i></a>
+    <!-- scroll-top end -->
+
+
+    <!-- js -->
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/static/js/jquery-3.6.0.min.js"></script>
+    <script src="/static/js/modernizr.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/isotope.pkgd.min.js"></script>
+    <script src="/static/js/jquery.appear.min.js"></script>
+    <script src="/static/js/jquery.easing.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/counter-up.js"></script>
+    <script src="/static/js/masonry.pkgd.min.js"></script>
+    <script src="/static/js/wow.min.js"></script>
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+
+<!-- Mirrored from live.themewild.com/pawsy/vetWithdraw.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:52 GMT -->
+</html>

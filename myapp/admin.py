@@ -51,8 +51,9 @@ class showreport(admin.ModelAdmin):
     list_display = ['id','appointmentid','vetid','report','Description','timestamp']
 
 
-@admin.register(GetIntoTouch)
+@admin.register(WithdrawVet)
 
-class showGetIntoTouch(admin.ModelAdmin):
+class ShowVetWithdraw(admin.ModelAdmin):
 
-    list_display = ['Name','Email','Subject','Message']
+    list_display = ['appointmentid','vetid','account_holder_name','account_number','bank_name','ifsc_code','withdrawStatus']
+

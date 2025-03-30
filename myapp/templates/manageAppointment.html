@@ -148,6 +148,7 @@
                     </thead>
                     <tbody>
                     {% for i in data %}
+                      {% for b in bank %}
 
                         <tr>
                             <td>  {{forloop.counter }}</td>
@@ -155,7 +156,7 @@
                             <td><img src="/media/{{ i.petphoto }}" class="product-img" alt="Pet Image" width="50"></td>
                             <td>{{ i.petname }}</td>
                             <td>{{ i.breed }}</td>
-                            <td>{{ i.age }}</td>
+                            <td>{{ i.data }}</td>
                             <td>{{ i.userid.PhoneNo }}</td>
                              <td>{{ i.location }}</td>
                             <td>{{ i.dateofappo }}</td>
@@ -166,6 +167,19 @@
                     <td>
                         {% if i.status == "Approved" %}
                            <p><i class="fas fa-check-circle"></i> Payment Request Sent</p>
+                       {% elif i.status == "Appointment Completed" %}
+                            {% if b %}
+                                {% if b.withdrawStatus == "Payment Request Sent" %}
+
+                              <p><i class="fas fa-check-circle"></i> Withdraw Request Sent</p>
+                                {% else %}
+                                    <a href="/withdraw/{{ i.id }}">Withdraw Payment</a>
+                                {% endif %}
+                            {% else %}
+                                <a href="/withdraw/{{ i.id }}">Withdraw Payment</a>
+                            {% endif %}
+
+
                         {% elif i.status == "Pending" %}
                             <a href="/accept/{{ i.id }}" class="btn-accept">✔ Accept</a>
                             <a href="/reject/{{ i.id }}" class="btn-reject">✖ Reject</a>
@@ -178,11 +192,15 @@
                             <a href="/uploadr/{{ i.id }}" class="btn btn-success btn-sm d-flex align-items-center gap-1 text-white text-decoration-none">
                                 <i class="fas fa-check-circle"></i> Appointment Completed
                             </a>
+
                             {%endif%}
                         {% endif %}
                     </td>
-                    </td>
+
+
+
                     </tr>
+                    {% endfor %}
 
                     {% endfor %}
 

@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 from django.http import HttpResponse, FileResponse, Http404
-from django.shortcuts import render , redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.termcolors import color_names
 from django.core.paginator import Paginator
 import razorpay
@@ -373,7 +373,11 @@ def manageAppoint(request):
     if not vet_loggded_in:
         return redirect("/vetLogin")
     vet_id = request.session.get("vet_log_id")  # Get the logged-in vet ID
-    fetchdata = Appointment.objects.filter(vetid=vet_id)  # Fetch appointments for the vet
+
+    fetchdata = Appointment.objects.filter(vetid=vet_id)
+    fetch = WithdrawVet.objects.filter(vetid=vet_id)
+
+    # Fetch appointments for the vet
 
     # Append report status to each appointment
     for appointment in fetchdata:
@@ -382,7 +386,8 @@ def manageAppoint(request):
 
     print(fetchdata)
     context = {
-        "data": fetchdata
+        "data": fetchdata,
+        "bank" : fetch
     }
 
 
@@ -636,6 +641,71 @@ def uploadReport(request,id):
     return render(request, "uploadReport.html", context)
 
 
+def withdraw(request,id):
+
+
+    appointment = get_object_or_404(Appointment, id=id)
+
+    # Fetch the vetid from the Appointment object
+    vet_id = appointment.vetid
+
+    # Print the vet_id
+
+    vet = vetRegisterDB.objects.get(Name=vet_id)  # Assuming 'name' is the field for vet's name
+    vetID = vet.id  # Get the vet ID
+
+
+    context = {
+        "id": id,
+        "vet_id": vetID
+
+    }
+
+    # Fetch the appointment object based on the appointment ID
+
+
+
+
+    if request.method == "POST":
+
+        appointmenid = request.POST.get('apid')
+        vetid = request.POST.get('vetid')
+        accno = request.POST.get('acc')
+        holder = request.POST.get('hol')
+        bank = request.POST.get('bank')
+        ifsc = request.POST.get('ifsc')
+
+        try:
+            appointment = Appointment.objects.get(id=appointmenid)
+            vet = vetRegisterDB.objects.get(id=vetid)
+        except Appointment.DoesNotExist or vetRegisterDB.DoesNotExist:
+            # Handle case where the appointment or vet does not exist
+            return HttpResponse("Appointment or Vet not found", status=404)
+
+
+
+        withdraw = WithdrawVet(
+            appointmentid=appointment,
+            vetid=vet,
+            account_holder_name=holder,
+            account_number=accno,
+            bank_name=bank,
+            ifsc_code=ifsc,
+        )
+
+        # Save the record to the database
+        withdraw.save()
+
+        withdraw.withdrawStatus = "Payment Request Sent"  # Update status
+        withdraw.save()  # Save the object again with the updated status
+
+
+        messages.success(request, "insert to Admin")
+
+        return redirect("/manageAppoint")
+    return render(request, "vetWithdraw.html", context)
+
+
 
 def manageBlogpage(request):
     vet_loggded_in = request.session.get("vet_log_id")
@@ -705,3 +775,4 @@ def searchvets(request):
 def gallery(request):
 
     return render(request,"gallery.html")
+

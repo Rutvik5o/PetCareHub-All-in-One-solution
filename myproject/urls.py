@@ -77,6 +77,7 @@ urlpatterns = [
     path('404/',views.errorpage),
     path('blogsearch/',views.blogsearch),
     path('download_report/<int:appointment_id>/', views.download_report),
+    path('withdraw/<int:id>',views.withdraw)
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

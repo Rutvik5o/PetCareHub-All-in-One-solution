@@ -168,3 +168,21 @@ class GetIntoTouch(models.Model):
 
 
 
+class WithdrawVet(models.Model):
+
+    appointmentid = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    vetid = models.ForeignKey(vetRegisterDB,on_delete=models.CASCADE)
+    account_holder_name = models.CharField(max_length=255)
+    account_number = models.CharField(max_length=20)
+    bank_name = models.CharField(max_length=255)
+    ifsc_code = models.CharField(max_length=11)
+    withdrawStatus = models.CharField(max_length=30,null=True,default="Pending")
+
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.account_holder_name} - {self.bank_name}"
+
+
+
+
