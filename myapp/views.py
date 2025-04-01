@@ -21,6 +21,9 @@ def servicepage(request):
 def errorpage(request):
     return render(request,"404.html")
 
+def developedby(request):
+    return render(request,"DevelopBy.html")
+
 def contact(request):
     return render(request,"contact.html")
 
