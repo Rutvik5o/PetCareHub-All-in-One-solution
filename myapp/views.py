@@ -27,6 +27,14 @@ def developedby(request):
 def contact(request):
     return render(request,"contact.html")
 
+def vetSingleBlogpage(request,id):
+    fetchdata = Blog.objects.get(id=id)
+
+    context = {
+        "fetchsingle": fetchdata
+    }
+    return render(request,"vetBlogSingle.html",context)
+
 def blogpage(request):
     fetchdata = Blog.objects.all().order_by('-TimeStamp')  # Order by latest blogs
 
@@ -369,31 +377,32 @@ def appointmentRequest(request):
 
    # return render(request,"vetAppointment.html")
 
-
-
 def manageAppoint(request):
     vet_loggded_in = request.session.get("vet_log_id")
     if not vet_loggded_in:
         return redirect("/vetLogin")
-    vet_id = request.session.get("vet_log_id")  # Get the logged-in vet ID
 
-    fetchdata = Appointment.objects.filter(vetid=vet_id)
-    fetch = WithdrawVet.objects.filter(vetid=vet_id)
+    vet_id = request.session.get("vet_log_id")
 
-    # Fetch appointments for the vet
+    # Get appointments and withdrawals for the vet
+    appointments = Appointment.objects.filter(vetid=vet_id)
+    withdrawals = WithdrawVet.objects.filter(vetid=vet_id)
 
-    # Append report status to each appointment
-    for appointment in fetchdata:
+    # Map appointment.id to related WithdrawVet
+    withdraw_map = {}
+    for w in withdrawals:
+        if w.appointmentid:  # Make sure the appointment exists
+            withdraw_map[w.appointmentid.id] = w
+
+    # Attach report status and matching withdraw object to each appointment
+    for appointment in appointments:
         report_exists = reportFromVet.objects.filter(appointmentid=appointment).exists()
         appointment.report_status = "Report Available" if report_exists else "No Report"
+        appointment.withdraw = withdraw_map.get(appointment.id)  # Add related withdraw object or None
 
-    print(fetchdata)
     context = {
-        "data": fetchdata,
-        "bank" : fetch
+        "data": appointments
     }
-
-
 
     return render(request, "manageAppointment.html", context)
 

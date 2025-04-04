@@ -124,54 +124,52 @@
         <!-- register area end -->
 
         <!--- Table Area-->
-        <div class="container my-5">
-            <h3 class="text-center mb-4" style="color: #2c3e50; font-weight: bold;">Manage Appointment</h3>
-            {% if data %}
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead style="background-color:#ad5f2f;">
-                        <tr>
-                            <th>Serial No</th>
-                            <th>Customer Name</th>
-                            <th>Image</th>
-                            <th>Pet Name</th>
-                            <th>Pet Breed</th>
-                            <th>Pet Age</th>
-                            <th>Contact</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Symptoms</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for i in data %}
-                      {% for b in bank %}
+       <div class="container my-5">
+    <h3 class="text-center mb-4" style="color: #2c3e50; font-weight: bold;">Manage Appointment</h3>
 
-                        <tr>
-                            <td>  {{forloop.counter }}</td>
-                            <td>{{ i.userid }}</td>
-                            <td><img src="/media/{{ i.petphoto }}" class="product-img" alt="Pet Image" width="50"></td>
-                            <td>{{ i.petname }}</td>
-                            <td>{{ i.breed }}</td>
-                            <td>{{ i.data }}</td>
-                            <td>{{ i.userid.PhoneNo }}</td>
-                             <td>{{ i.location }}</td>
-                            <td>{{ i.dateofappo }}</td>
-                            <td>{{ i.timeofappo }}</td>
-
-                            <td>{{ i.symptoms }}</td>
-                            <td>{{ i.status }}</td>
+    {% if data %}
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead style="background-color:#ad5f2f;">
+                <tr>
+                    <th>Serial No</th>
+                    <th>Customer Name</th>
+                    <th>Image</th>
+                    <th>Pet Name</th>
+                    <th>Pet Breed</th>
+                    <th>Pet Age</th>
+                    <th>Contact</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Symptoms</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.userid }}</td>
+                    <td><img src="/media/{{ i.petphoto }}" class="product-img" alt="Pet Image" width="50"></td>
+                    <td>{{ i.petname }}</td>
+                    <td>{{ i.breed }}</td>
+                    <td>{{ i.data }}</td>
+                    <td>{{ i.userid.PhoneNo }}</td>
+                    <td>{{ i.location }}</td>
+                    <td>{{ i.dateofappo }}</td>
+                    <td>{{ i.timeofappo }}</td>
+                    <td>{{ i.symptoms }}</td>
+                    <td>{{ i.status }}</td>
                     <td>
                         {% if i.status == "Approved" %}
-                           <p><i class="fas fa-check-circle"></i> Payment Request Sent</p>
-                       {% elif i.status == "Appointment Completed" %}
-                            {% if b %}
-                                {% if b.withdrawStatus == "Payment Request Sent" %}
+                            <p><i class="fas fa-check-circle"></i> Payment Request Sent</p>
 
-                              <p><i class="fas fa-check-circle"></i> Withdraw Request Sent</p>
+                        {% elif i.status == "Appointment Completed" %}
+                            {% if i.withdraw %}
+                                {% if i.withdraw.withdrawStatus == "Payment Request Sent" %}
+                                    <p><i class="fas fa-check-circle"></i> Withdraw Request Sent</p>
                                 {% else %}
                                     <a href="/withdraw/{{ i.id }}">Withdraw Payment</a>
                                 {% endif %}
@@ -179,40 +177,32 @@
                                 <a href="/withdraw/{{ i.id }}">Withdraw Payment</a>
                             {% endif %}
 
-
                         {% elif i.status == "Pending" %}
-                            <a href="/accept/{{ i.id }}" class="btn-accept">✔ Accept</a>
-                            <a href="/reject/{{ i.id }}" class="btn-reject">✖ Reject</a>
+                            <a href="/accept/{{ i.id }}" class="btn btn-success btn-sm">✔ Accept</a>
+                            <a href="/reject/{{ i.id }}" class="btn btn-danger btn-sm">✖ Reject</a>
+
                         {% elif i.status == "Your Appointment is Scheduled" %}
-                        <p><i class="fas fa-check-circle"></i>Confirmed</p><hr>
-                            {%if i.report_status == "Report Available" %}
-                             <i class="fas fa-check-circle"></i> Appointment Completed
-
-                            {%else%}
-                            <a href="/uploadr/{{ i.id }}" class="btn btn-success btn-sm d-flex align-items-center gap-1 text-white text-decoration-none">
+                            <p><i class="fas fa-check-circle"></i> Confirmed</p><hr>
+                            {% if i.report_status == "Report Available" %}
                                 <i class="fas fa-check-circle"></i> Appointment Completed
-                            </a>
-
-                            {%endif%}
+                            {% else %}
+                                <a href="/uploadr/{{ i.id }}" class="btn btn-success btn-sm d-flex align-items-center gap-1 text-white text-decoration-none">
+                                    <i class="fas fa-check-circle"></i> Appointment Completed
+                                </a>
+                            {% endif %}
                         {% endif %}
                     </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <br><br><br><br><br>
+    <h2 class="text-center" style="color: red; font-size: 25px;">No Appointment has been booked</h2>
+    {% endif %}
+</div>
 
-
-
-                    </tr>
-                    {% endfor %}
-
-                    {% endfor %}
-
-
-                    </tbody>
-                </table>
-            </div>
-             {% else %}
-            <br><br><br><br><br>
-              <h2 class="text-center" style="color: red; font-size: 25px;">No Appointment has been booked</h2>
-              {% endif %}
-        </div>
 
 
     </main>
