@@ -29,6 +29,7 @@ urlpatterns = [
     path('service-single/',views.servicepage),
     path('blog/',views.blogpage),
     path('blogs/<int:id>',views.blogsinglepage),
+    path('vetSingleBlogs/<int:id>',views.vetSingleBlogpage),
     path('login/',views.loginpage),
     path('vetLogin/',views.vetLoginpage),
     path('register/',views.registerpage),

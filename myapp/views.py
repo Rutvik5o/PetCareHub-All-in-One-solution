@@ -27,6 +27,14 @@ def developedby(request):
 def contact(request):
     return render(request,"contact.html")
 
+def vetSingleBlogpage(request,id):
+    fetchdata = Blog.objects.get(id=id)
+
+    context = {
+        "fetchsingle": fetchdata
+    }
+    return render(request,"vetBlogSingle.html",context)
+
 def blogpage(request):
     fetchdata = Blog.objects.all().order_by('-TimeStamp')  # Order by latest blogs
 
