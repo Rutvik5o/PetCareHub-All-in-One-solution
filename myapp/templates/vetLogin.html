@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from live.themewild.com/pawsy/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
+<!-- Mirrored from live.themewild.com/PetCareHub/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
 <head>
     <!-- meta tags -->
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
     <title>PetCare- Pet Care Services HTML5 Template</title>
 
     <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="/static/img/logo/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/static/img/logo/faviconimg.png">
 
     <!-- css -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="/static/css/magnific-popup.min.css">
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
 
 </head>
 
@@ -79,17 +83,20 @@
                                 <label>Email Address</label>
                                 <input type="email" name="vemail" class="form-control" placeholder="Your Email" required>
                             </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password"
-                                       name="vpassword"
-                                       class="form-control"
-                                       title="Password must be at least 8 characters long, contain at least one uppercase letter and one special character."
-                                       placeholder="Your Password"
-                                       required
-                                >
-                                <!--  pattern="^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$" -->
-                            </div>
+                          <div class="form-group position-relative">
+                        <label>Password</label>
+                        <input type="password"
+                               name="vpassword"
+                               class="form-control"
+                               id="vpassword"
+                               title="Password must be at least 8 characters long, contain at least one uppercase letter and one special character."
+                               placeholder="Your Password"
+                               required
+                        >
+
+                        <!-- Eye icon for toggling password visibility -->
+                        <i id="toggleVPassword" class="fas fa-eye position-absolute" style="top: 38px; right: 15px; cursor: pointer;"></i>
+                    </div>
                             <div class="d-flex justify-content-between mb-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="remember">
@@ -100,7 +107,8 @@
                                 <a href="forgot-password.html" class="forgot-pass">Forgot Password?</a>
                             </div>
                             <div class="d-flex align-items-center">
-                                <button type="submit" class="theme-btn"><i class="far fa-sign-in"></i> Login</button>
+                             <button type="submit" class="theme-btn"><i class="fas fa-right-to-bracket"></i> Login</button>
+
                             </div>
                         </form>
                         <div class="login-footer">
@@ -116,6 +124,19 @@
     </main>
 
 
+
+
+<script>
+    const toggleVPassword = document.getElementById("toggleVPassword");
+    const vpassword = document.getElementById("vpassword");
+
+    toggleVPassword.addEventListener("click", function () {
+        const type = vpassword.getAttribute("type") === "password" ? "text" : "password";
+        vpassword.setAttribute("type", type);
+        this.classList.toggle("fa-eye");
+        this.classList.toggle("fa-eye-slash");
+    });
+</script>
 
     <!-- footer area -->
     {% include 'footer.html' %}
@@ -147,5 +168,5 @@
 </body>
 
 
-<!-- Mirrored from live.themewild.com/pawsy/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
+<!-- Mirrored from live.themewild.com/PetCareHub/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
 </html>

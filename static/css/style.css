@@ -1,5 +1,5 @@
 /* =====================================================
-Template Name   : Pawsy
+Template Name   : PetCareHub
 Description     : Pet Care Services HTML5 Template
 Author          : Themesland
 Version         : 1.2

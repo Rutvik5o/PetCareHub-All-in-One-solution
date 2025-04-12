@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from live.themewild.com/pawsy/adoption.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
+<!-- Mirrored from live.themewild.com/PetCareHub/adoption.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
 <head>
     <!-- meta tags -->
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
     <title>PetCare Hub : All In One Solution</title>
 
     <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="/static/img/logo/favicon.png">
+   <link rel="icon" type="image/x-icon" href="/static/img/logo/faviconimg.png">
 
     <!-- css -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
@@ -28,6 +28,18 @@
 
 
 </head>
+<style>
+    .feature-img img {
+        border-radius: 15px;
+        width: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-img img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+</style>
 
 
 
@@ -53,7 +65,7 @@
             <div class="container">
                 <h2 class="breadcrumb-title">Manage Appointment</h2>
                 <ul class="breadcrumb-menu">
-                   <li><a href="/vetHomePage">Home</a></li>
+                   <li><a href="/vetHome">Home</a></li>
                     <li class="active">Manage Appoinment</li>
 
 
@@ -64,17 +76,251 @@
 
 
 
+<br><br><br><br><br><br>
+<div class="container text-center">
+    <!-- Vet Profile Section -->
+    <div class="card mx-auto shadow p-4 mb-5 bg-white rounded" style="max-width: 500px;">
+        <div class="text-center">
+          <!-- Image with Gradient Border and Larger Size -->
+          <img src="{{ request.session.vet_log_photo }}" alt="Vet Profile Picture" class="mb-3" width="200" height="200" style="border: 6px solid; border-image: linear-gradient(to right, #2c3e50, #3498db); border-image-slice: 1; border-radius: 8px;">
+        </div>
 
-            <br><br><br><br><br><br>
-          <center> <h1 class="breadcrumb-title">Welcome, {{ request.session.vet_log_name }}</h1>
-                <br><br>
-           <a href="/manageAppoint" class="btn btn-outline-dark me-2">Manage Appointment</a>
-           <a href="/manageBlog" class="btn btn-outline-dark me-2">Manage Blogs</a>
-           <a href="/blogpost" class="btn btn-outline-dark me-2">Publish Blog</a>
-           <a href="/vlogout" class="btn btn-outline-dark me-2">Logout</a>
-              </center>
+        <h2 class="breadcrumb-title">Welcome, {{ request.session.vet_log_name }}</h2>
 
-           <br><br><br><br><br><br>
+        <!-- Specialized Text with Icon -->
+        <div class="d-flex justify-content-center align-items-center mt-3">
+            <i class="fas fa-stethoscope me-2" style="font-size: 1.5em; color: #2c3e50;"></i>
+            <span style="font-size: 1.2em; font-weight: bold;">Specialized in: {{ request.session.vet_spe }}</span>
+        </div>
+    </div>
+
+    <!-- Main Buttons -->
+    <!--
+    <a href="/manageAppoint" class="btn btn-outline-dark me-2">Manage Appointment</a>
+    <a href="/manageBlog" class="btn btn-outline-dark me-2">Manage Blogs</a>
+    <a href="/blogpost" class="btn btn-outline-dark me-2">Publish Blog</a>
+    <a href="/vlogout" class="btn btn-outline-dark me-2">Logout</a>-->
+</div>
+
+
+        <!-- service-area -->
+<div class="feature-area bg pt-100 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto wow fadeInDown" data-wow-duration="1s" data-wow-delay=".25s">
+                <div class="site-heading text-center">
+                    <span class="site-title-tagline">Key Features</span>
+                    <h2 class="site-title">Important <span>Website Features</span></h2>
+                    <div class="heading-divider"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Withdraw Payment Section -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+                    <div class="feature-img">
+                        <img src="/static/img/service/01.jpg" alt="Withdraw Payment" class="feature-img-style">
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">
+                            <br>
+                            <a href="#">Withdraw Payments</a>
+                        </h3>
+                        <p class="feature-text">
+                            Once the report is uploaded, you can request payment withdrawal. Payments will be processed through bank services and may take up to 72 hours. Ensure reports are properly uploaded before making a request.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Images Showcase -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
+                    <div class="feature-img">
+                        <img src="/static/img/service/02.jpg" alt="Pet Image Showcase" class="feature-img-style">
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">
+                            <br>
+                            <a href="#">Pet Showcase</a>
+                        </h3>
+                        <p class="feature-text">
+                            Upload images of the pets you care for or those available for adoption. This helps clients and visitors learn more about our services and the animals we serve.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suggest Blog Post Section -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
+                    <div class="feature-img">
+                        <img src="/static/img/service/03.jpg" alt="Suggest Blog" class="feature-img-style">
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">
+                            <br>
+                            <a href="#">Write a Blog</a>
+                        </h3>
+                        <p class="feature-text">
+                            Share your knowledge and expertise with the community by writing a blog post. Educate pet owners on health, care, and training topics. Publish your posts directly to the website.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialized Feature Section -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+                    <div class="feature-img">
+                        <img src="/static/img/service/04.jpg" alt="Specialized Feature" class="feature-img-style">
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">
+                            <br>
+                            <a href="#">Specialized Feature</a>
+                        </h3>
+                        <p class="feature-text">
+                            Highlight your specialization within the pet care industry. Whether you're an expert in veterinary care, pet training, or health & wellness, showcase your unique abilities here.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health & Wellness Section -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
+                    <div class="feature-img">
+                        <img src="/static/img/service/05.jpg" alt="Health & Wellness" class="feature-img-style">
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">
+                            <br>
+                            <a href="#">Health & Wellness</a>
+                        </h3>
+                        <p class="feature-text">
+                            Offering services to improve the health and wellness of pets. From checkups to treatment plans, this section highlights how you can contribute to the well-being of animals under your care.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Boarding Section -->
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
+                    <div class="feature-img">
+                        <img src="/static/img/service/06.jpg" alt="Pet Boarding" class="feature-img-style">
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">
+                            <br>
+                            <a href="#">Pet Boarding</a>
+                        </h3>
+                        <p class="feature-text">
+                            Offering a safe and comfortable environment for pets while their owners are away. Ensure pets are well taken care of with the best facilities and professional services.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        <!-- service-area end -->
+<div class="pricing-area bg py-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto wow fadeInDown" data-wow-duration="1s" data-wow-delay=".25s">
+                <div class="site-heading text-center">
+                    <span class="site-title-tagline">Rules</span>
+                    <h2 class="site-title">Our Rules <span>of Service</span></h2>
+                    <div class="heading-divider"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Rule Card 1 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="pricing-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".25s">
+                    <div class="pricing-header">
+                        <div class="pricing-content">
+                            <h4>Appointment Timing</h4>
+                        </div>
+                    </div>
+                    <div class="pricing-feature">
+                        <ul>
+                            <li>Vet must strictly follow the scheduled appointment time.</li>
+                            <li>Failure to attend an appointment may result in account suspension.</li>
+                            <li>Calling the user 30 minutes prior to the visit is mandatory.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rule Card 2 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="pricing-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".50s">
+                    <div class="pricing-header">
+                        <div class="pricing-content">
+                            <h4>Post-Appointment Report</h4>
+                        </div>
+                    </div>
+                    <div class="pricing-feature">
+                        <ul>
+                            <li>After every visit, a detailed appointment report must be submitted.</li>
+                            <li>Reports should include pet condition, diagnosis, and suggestions.</li>
+                            <li>Report must be uploaded to the website within 12 hours of completion.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rule Card 3 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="pricing-item wow fadeInUp" data-wow-duration="1s" data-wow-delay=".75s">
+                    <div class="pricing-header">
+                        <div class="pricing-content">
+                            <h4>Payment & Withdrawal</h4>
+                        </div>
+                    </div>
+                    <div class="pricing-feature">
+                        <ul>
+                            <li>Payments can only be withdrawn after the report is uploaded.</li>
+                            <li>All withdrawals must be made through a registered bank account.</li>
+                            <li>Processing time for payments is up to 72 hours.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rule Card 4 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="pricing-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
+                    <div class="pricing-header">
+                        <div class="pricing-content">
+                            <h4>Service Quality</h4>
+                        </div>
+                    </div>
+                    <div class="pricing-feature">
+                        <ul>
+                            <li>Negative reviews from users will be investigated by the admin.</li>
+                            <li>Repeated complaints may lead to penalties or account suspension.</li>
+                            <li>Maintain professional behavior and hygiene during visits.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -114,5 +360,5 @@
 </body>
 
 
-<!-- Mirrored from live.themewild.com/pawsy/adoption.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
+<!-- Mirrored from live.themewild.com/PetCareHub/adoption.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:35 GMT -->
 </html>

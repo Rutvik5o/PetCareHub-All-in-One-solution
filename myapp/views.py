@@ -234,6 +234,7 @@ def checkVetlogindata(request):
         request.session['vet_log_id'] = vetdata.id
         request.session['vet_log_name'] = vetdata.Name
         request.session['vet_log_photo'] = vetdata.Photo.url
+        request.session['vet_spe'] = vetdata.Specialization
 
     except:
         print('fail')
@@ -653,33 +654,24 @@ def uploadReport(request,id):
     return render(request, "uploadReport.html", context)
 
 
-def withdraw(request,id):
 
 
+def withdraw(request, id):
     appointment = get_object_or_404(Appointment, id=id)
-
-    # Fetch the vetid from the Appointment object
     vet_id = appointment.vetid
 
-    # Print the vet_id
-
-    vet = vetRegisterDB.objects.get(Name=vet_id)  # Assuming 'name' is the field for vet's name
-    vetID = vet.id  # Get the vet ID
-
+    # Fix: use filter().first() to avoid MultipleObjectsReturned
+    vet = vetRegisterDB.objects.filter(Name=vet_id).first()
+    if not vet:
+        return HttpResponse("Vet not found", status=404)
+    vetID = vet.id
 
     context = {
         "id": id,
         "vet_id": vetID
-
     }
 
-    # Fetch the appointment object based on the appointment ID
-
-
-
-
     if request.method == "POST":
-
         appointmenid = request.POST.get('apid')
         vetid = request.POST.get('vetid')
         accno = request.POST.get('acc')
@@ -690,11 +682,8 @@ def withdraw(request,id):
         try:
             appointment = Appointment.objects.get(id=appointmenid)
             vet = vetRegisterDB.objects.get(id=vetid)
-        except Appointment.DoesNotExist or vetRegisterDB.DoesNotExist:
-            # Handle case where the appointment or vet does not exist
+        except (Appointment.DoesNotExist, vetRegisterDB.DoesNotExist):
             return HttpResponse("Appointment or Vet not found", status=404)
-
-
 
         withdraw = WithdrawVet(
             appointmentid=appointment,
@@ -704,18 +693,14 @@ def withdraw(request,id):
             bank_name=bank,
             ifsc_code=ifsc,
         )
-
-        # Save the record to the database
+        withdraw.withdrawStatus = "Payment Request Sent"
         withdraw.save()
 
-        withdraw.withdrawStatus = "Payment Request Sent"  # Update status
-        withdraw.save()  # Save the object again with the updated status
-
-
-        messages.success(request, "insert to Admin")
-
+        messages.success(request, "Insert to Admin")
         return redirect("/manageAppoint")
+
     return render(request, "vetWithdraw.html", context)
+
 
 
 
