@@ -69,7 +69,7 @@
                             <img src="/static/img/logo/logo4.png" alt=""><br>
                            <br><br> <p><h3>Appointment of Vet</h3></p>
                         </div>
-                        <form action="/appointment" method="POST" enctype="multipart/form-data">
+                        <form id="registerForm" action="/appointment" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                        <!--     <div class="form-group">
                                 <label>Full Name</label>
@@ -343,7 +343,26 @@
             disableInvalidDates();
         });
 
+
+
     </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('#registerForm');
+        const termsCheckbox = document.querySelector('#agree');
+        const agreeError = document.querySelector('#agreeError');
+
+        form.addEventListener('submit', function (e) {
+            if (!termsCheckbox.checked) {
+                e.preventDefault(); // Prevent form submission
+                agreeError.style.display = 'block'; // Show error
+            } else {
+                agreeError.style.display = 'none'; // Hide error
+            }
+        });
+    });
+</script>
+
 
 
 

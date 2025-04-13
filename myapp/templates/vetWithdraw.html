@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- Mirrored from live.themewild.com/PetCareHub/vetWithdraw.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:52 GMT -->
 <head>
     <!-- meta tags -->
     <meta charset="UTF-8">
@@ -40,11 +37,8 @@
     </div>
     <!-- preloader end -->
 
-
     {% include 'vetNav.html' %}
     <!-- popup search end -->
-
-
 
 <main class="main">
 
@@ -80,19 +74,23 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Account Number</label>
-                                    <input type="text" class="form-control" name="acc" placeholder="Your Account Number" required>
+                                    <input type="text" class="form-control" name="acc" placeholder="Your Account Number" required
+                                           minlength="11" maxlength="16" pattern="\d{11,16}">
+                                    <small class="form-text text-muted">Account number must be between 11 to 16 digits.</small>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Bank Name</label>
-                                    <input type="text" class="form-control" placeholder="Your Bank Name"  name = "bank" required>
+                                    <input type="text" class="form-control" placeholder="Your Bank Name" name="bank" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>IFSC Code</label>
-                                    <input type="text" class="form-control" placeholder="Your IFSC Code" name="ifsc" required>
+                                    <input type="text" class="form-control" placeholder="Your IFSC Code" name="ifsc" required
+                                           pattern="^[A-Za-z]{4}0[A-Z0-9a-z]{6}$">
+                                    <small class="form-text text-muted">IFSC code must be in the format: XXXX0XXXXXX (e.g., SBIN0001234)</small>
                                 </div>
                             </div>
                         </div>
@@ -109,25 +107,17 @@
 </main>
         <!-- shop checkout end -->
 
-
-
-
-
-
     <!-- footer area -->
     {% include 'footer.html' %}
     <!-- footer area end -->
-
-
-
 
     <!-- scroll-top -->
     <a href="#" id="scroll-top"><i class="fa fa-angle-up"></i></a>
     <!-- scroll-top end -->
 
-
     <!-- js -->
-    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/static/js/jquery-3.6.0.min.js"></script>
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="/static/js/jquery-3.6.0.min.js"></script>
     <script src="/static/js/modernizr.min.js"></script>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script src="/static/js/imagesloaded.pkgd.min.js"></script>
@@ -142,7 +132,4 @@
     <script src="/static/js/main.js"></script>
 
 </body>
-
-
-<!-- Mirrored from live.themewild.com/PetCareHub/vetWithdraw.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:52 GMT -->
 </html>
