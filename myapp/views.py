@@ -301,7 +301,7 @@ def logout(request): #user logout
     try:
         del request.session["log_id"]
         del request.session["log_name"]
-        messages.success(request, " ╰┈➤ Logout Successful.")
+        messages.success(request, " 🔓 Logout Successful.")
     except:
         None
     return redirect("/")
@@ -311,7 +311,7 @@ def vetlogout(request): #vet logout
         del request.session["vet_log_id"]
         del request.session["vet_log_name"]
         del request.session["vet_log_photo"]
-        messages.success(request, "╰┈➤ Logout Successful.")
+        messages.success(request, "🔓 Logout Successful.")
     except:
         None
     return redirect("/")
@@ -720,10 +720,6 @@ def manageBlogpage(request):
     paginator = Paginator(fetchpet, 6)  # Show 6 pets per page
     page_number = request.GET.get('page')
     page_data = paginator.get_page(page_number)
-
-    context = {
-        "datapet": page_data
-    }
 
 
     context = {

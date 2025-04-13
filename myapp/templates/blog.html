@@ -81,7 +81,7 @@
                                 <form class="search-form" method="post" action="/blogsearch/" >
                                     {% csrf_token %}
                                     <input type="text" name="bquery" class="form-control" placeholder="Search Here...">
-                                    <button type="submit"><i class="far fa-search"></i></button>
+                                    <button type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                 <div class="row">
@@ -97,8 +97,8 @@
                 </h4>
                 <div class="blog-item-meta">
                     <ul>
-                        <li><a href="#"><i class="far fa-user-circle"></i> By {{ i.vetid }}</a></li>
-                        <li><a href="#"><i class="far fa-calendar-alt"></i> {{ i.TimeStamp }}</a></li>
+                        <li><a href="#"><i class="fa fa-user-circle"></i> By {{ i.vetid }}</a></li>
+                        <li><a href="#"><i class="fa fa-calendar-alt"></i> {{ i.TimeStamp }}</a></li>
                     </ul>
                 </div>
                 <a class="theme-btn" href="/blogs/{{ i.id }}">Read Blog<i class="fas fa-arrow-right"></i></a>
@@ -117,7 +117,7 @@
             {% if data.has_previous %}
             <li class="page-item">
                 <a class="page-link" href="?page=1" aria-label="First">
-                    <i class="far fa-angle-double-left"></i>
+                    <i class="fa fa-angle-double-left"></i>
                 </a>
             </li>
             <li class="page-item">
@@ -141,7 +141,7 @@
             </li>
             <li class="page-item">
                 <a class="page-link" href="?page={{ data.paginator.num_pages }}" aria-label="Last">
-                    <i class="far fa-angle-double-right"></i>
+                    <i class="fa fa-angle-double-right"></i>
                 </a>
             </li>
             {% endif %}
@@ -164,7 +164,7 @@
 
 
     <!-- scroll-top -->
-    <a href="#" id="scroll-top"><i class="far fa-angle-up"></i></a>
+    <a href="#" id="scroll-top"><i class="fa fa-angle-up"></i></a>
     <!-- scroll-top end -->
 
 
