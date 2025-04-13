@@ -11,6 +11,9 @@ from django.conf import settings
 
 from .models import *
 from django.contrib import messages
+
+
+
 # Create your views here.
 def indexpage(request):
     return render(request,"index.html")
