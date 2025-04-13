@@ -2,51 +2,50 @@
 <header class="header custom-header">
 
         <!-- top header -->
-        <div class="header-top">
-            <div class="container">
-                <div class="header-top-wrapper">
-                    <div class="header-top-left">
-                        <div class="header-top-contact">
-                            <ul>
-                                <li>
-                                    <div class="header-top-contact-info">
-                                        <a href="#"><!--<i class="far fa-map-marker-alt"></i> 25/B Milford Road, New
-                                            York--></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="header-top-contact-info">
-                                        <a href="https://live.themewild.com/cdn-cgi/l/email-protection#4b22252d240b2e332a263b272e65282426"><!--<i class="far fa-envelope"></i>
-                                            <span class="__cf_email__" data-cfemail="eb82858d84ab8e938a869b878ec5888486">[email&#160;protected]</span>--></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="header-top-contact-info">
-                                        <a href="#"><!--<i class="far fa-clock"></i> Sun - Fri (08AM - 10PM)--></a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    {% if request.session.vet_log_name %}
-                      <div class="header-top-right">
-
-                        <a href="/vlogout" class="btn btn-outline-light me-2">Logout</a>
-
-                           <div class="header-btn">
-                                <a href="#" class="theme-btn mt-2">{{ request.session.vet_log_name }}</a>
+      <div class="header-top">
+    <div class="container">
+        <div class="header-top-wrapper">
+            <!-- LEFT SIDE: Contact Info -->
+            <div class="header-top-left">
+                <div class="header-top-contact">
+                    <ul>
+                        <li>
+                            <div class="header-top-contact-info">
+                                <a href="#"><i class="fas fa-user-md"></i> Verified Vet Portal</a>
                             </div>
-                   </div>
-                    {% else %}
-                   <div class="header-top-right">
-                        <a href="/vetLogin" class="btn btn-outline-light me-2">Login</a>
-                        <a href="/vetRegister" class="btn btn-outline-light me-2">Register</a>
-                   </div>
-                    {% endif %}
-
+                        </li>
+                        <li>
+                            <div class="header-top-contact-info">
+                                <a href="mailto:vet.support@petcarehub.in"><i class="far fa-envelope"></i> vet.support@petcarehub.in</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="header-top-contact-info">
+                                <a href="#"><i class="far fa-clock"></i> 24/7 Dashboard Access</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
+
+            <!-- RIGHT SIDE: Login/Register or Logout/Profile -->
+            {% if request.session.vet_log_name %}
+            <div class="header-top-right d-flex align-items-center gap-2">
+                <a href="/vlogout" class="btn btn-outline-light btn-sm">Logout</a>
+                <div class="header-btn">
+                    <a href="#" class="theme-btn btn-sm">{{ request.session.vet_log_name }}</a>
+                </div>
+            </div>
+            {% else %}
+            <div class="header-top-right d-flex align-items-center gap-2">
+                <a href="/vetLogin" class="btn btn-outline-light btn-sm">Login</a>
+                <a href="/vetRegister" class="btn btn-outline-light btn-sm">Register</a>
+            </div>
+            {% endif %}
         </div>
+    </div>
+</div>
+
         <div class="main-navigation">
             <nav class="navbar navbar-expand-lg">
                 <div class="container custom-nav">

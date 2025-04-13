@@ -301,7 +301,7 @@ def logout(request): #user logout
     try:
         del request.session["log_id"]
         del request.session["log_name"]
-        messages.success(request, " ╰┈➤ Logout Successful.")
+        messages.success(request, " 🔓 Logout Successful.")
     except:
         None
     return redirect("/")
@@ -311,7 +311,7 @@ def vetlogout(request): #vet logout
         del request.session["vet_log_id"]
         del request.session["vet_log_name"]
         del request.session["vet_log_photo"]
-        messages.success(request, "╰┈➤ Logout Successful.")
+        messages.success(request, "🔓 Logout Successful.")
     except:
         None
     return redirect("/")
