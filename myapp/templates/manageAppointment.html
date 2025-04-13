@@ -80,6 +80,12 @@
             width: 100%;
             max-width: 100%;
         }
+        .status-message {
+            margin-top: 80px; /* Adjust based on navbar height */
+            z-index: 1;
+            position: relative;
+        }
+
         
         
 
@@ -101,6 +107,8 @@
 
 
   {% include 'vetNav.html' %}
+
+
 
 
 
@@ -168,8 +176,11 @@
 
                         {% elif i.status == "Appointment Completed" %}
                             {% if i.withdraw %}
-                                {% if i.withdraw.withdrawStatus == "Payment Request Sent" %}
-                                    <p><i class="fas fa-check-circle"></i> Withdraw Request Sent</p>
+                                {% if i.withdraw.withdrawStatus == "Process Done" %}
+                                   <div class="status-message mt-3">
+    <p class="text-success"><i class="fas fa-check-circle"></i> Thanks For Appointment</p>
+</div>
+
                                 {% else %}
                                     <a href="/withdraw/{{ i.id }}">Withdraw Payment</a>
                                 {% endif %}

@@ -1,52 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Remove Popup</title>
-    <style>
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Remove Popup</title>
+  <style>
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
 
-        .popup {
-            position: fixed;
-            top: 120px;
-            right: 20px;
-            background: #7c58d3;
-            color: #fff;
-            padding: 25px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            opacity: 1;
-            transition: opacity 0.5s ease-out;
-            font-size: 22px;
-            font-family: 'Arial', sans-serif;
-            animation: shake 0.5s ease-in-out infinite;
-            z-index:100;
-        }
-        .hide {
-            opacity: 0;
-        }
-    </style>
+    .popup {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #7c58d3;
+      color: #fff;
+      padding: 25px 35px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      opacity: 1;
+      transition: opacity 0.5s ease-out;
+      font-size: 22px; /* 🔍 Bigger Text */
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      animation: shake 0.4s ease-in-out 3;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hide {
+      opacity: 0;
+    }
+  </style>
 </head>
 <body>
 
-    {%if messages%}
-        {%for msg in messages%}
-            <div id="popup" class="popup">{{msg}}</div>
-        {%endfor%}
-    {%endif%}
+  {% if messages %}
+    {% for msg in messages %}
+      <div id="popup" class="popup">
+         {{ msg }}
+      </div>
+    {% endfor %}
+  {% endif %}
 
-    <script>
+  <script>
+    setTimeout(() => {
+      const popup = document.getElementById("popup");
+      if (popup) {
+        popup.classList.add("hide");
         setTimeout(() => {
-            document.getElementById("popup").classList.add("hide");
-            setTimeout(() => {
-                document.getElementById("popup").remove();
-            }, 500);
-        }, 3000);
-    </script>
+          popup.remove();
+        }, 500);
+      }
+    }, 3000);
+  </script>
 </body>
 </html>

@@ -693,15 +693,14 @@ def withdraw(request, id):
             bank_name=bank,
             ifsc_code=ifsc,
         )
-        withdraw.withdrawStatus = "Payment Request Sent"
+        withdraw.withdrawStatus = "Process Done"
         withdraw.save()
 
-        messages.success(request, "Insert to Admin")
+        messages.success(request, "✅ Your payment is under process and will be completed within 72 hours.")
+
         return redirect("/manageAppoint")
 
     return render(request, "vetWithdraw.html", context)
-
-
 
 
 def manageBlogpage(request):
@@ -709,24 +708,22 @@ def manageBlogpage(request):
     if not vet_loggded_in:
         return redirect("/vetLogin")
 
-    vet_id = request.session["vet_log_name"]
-    print(vet_id)
+    vet_id = request.session.get("vet_log_name")
     if not vet_id:
-        return redirect("/vetLogin")  # redirect if session is missing
-    data = Blog.objects.filter(vetid=vet_id)
-    fetchpet = Blog.objects.all().order_by('-TimeStamp')  # Fetch pets, latest first
+        return redirect("/vetLogin")
 
-    # Apply pagination
-    paginator = Paginator(fetchpet, 6)  # Show 6 pets per page
+    data = Blog.objects.filter(vetid=vet_id).order_by('-TimeStamp')  # vet blogs only
+
+    paginator = Paginator(data, 6)  # paginate vet blogs
     page_number = request.GET.get('page')
     page_data = paginator.get_page(page_number)
 
-
     context = {
         "data": page_data,
-        "fetchdata":data
+        "fetchdata": data  # optional, only if you're using it elsewhere
     }
     return render(request, "manageBlog.html", context)
+
 
 
 def deleteBlog(request,id):
