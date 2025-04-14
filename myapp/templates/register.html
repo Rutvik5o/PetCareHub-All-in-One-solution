@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 
 <!-- Mirrored from live.themewild.com/PetCareHub/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 13:49:36 GMT -->
@@ -96,8 +96,23 @@
                                    title="Password must be at least 8 characters long, contain at least one uppercase letter and one special character.">
 
                             <!-- Eye Icon -->
-                            <i id="togglePassword" class="fas fa-eye position-absolute" style="top: 38px; right: 15px; cursor: pointer;"></i>
+                            <i id="togglePassword" class="fas fa-eye position-absolute" style="top: 55px; right: 15px; cursor: pointer;"></i>
                         </div>
+                            <div class="form-group position-relative">
+                                <label>Re-Enter Password</label>
+                                <input type="password"
+                                   class="form-control"
+                                   name="password2"
+                                   placeholder="Re-Enter Your Password"
+                                   id="password2"
+                                   required
+                                       pattern="^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$"
+                                       title="Password must be at least 8 characters long, contain at least one uppercase letter and one special character.">
+
+                                   <!-- Eye Icon for password2 -->
+                               <i id="togglePassword2" class="fas fa-eye position-absolute" style="top: 55px; right: 15px; cursor: pointer;"></i>
+                           </div>
+
 
                             <div class="form-group">
                                 <label>Address</label>
@@ -169,134 +184,70 @@
     <script src="/static/js/masonry.pkgd.min.js"></script>
     <script src="/static/js/wow.min.js"></script>
     <script src="/static/js/main.js"></script>
-    <script>
-          const togglePassword = document.querySelector("#togglePassword");
-    const password = document.querySelector("#password");
-
-    togglePassword.addEventListener("click", function () {
-        // Toggle the type attribute
-        const type = password.getAttribute("type") === "password" ? "text" : "password";
-        password.setAttribute("type", type);
-
-        // Toggle the icon
-        this.classList.toggle("fa-eye");
-        this.classList.toggle("fa-eye-slash");
-    });
-        document.addEventListener('DOMContentLoaded', function() {
-            const formContainer = document.querySelector('.slide-in');
-            formContainer.style.animation = 'slideIn 1s ease-out';
-
-            const togglePassword = document.querySelector('#togglePassword');
-            const password = document.querySelector('#password');
-
-            togglePassword.addEventListener('click', function (e) {
-                // toggle the type attribute
-                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-                password.setAttribute('type', type);
-                // toggle the eye slash icon
-                this.classList.toggle('fa-eye-slash');
-            });
-
-            const phoneNumber = document.querySelector('#phoneNumber');
-            const phoneError = document.querySelector('#phoneError');
-
-            phoneNumber.addEventListener('input', function (e) {
-                if (this.value.length > 10) {
-                    this.value = this.value.slice(0, 10);
-                }
-            });
-
-            phoneNumber.addEventListener('blur', function (e) {
-                if (this.value.length !== 10) {
-                    phoneError.classList.remove('hidden');
-                } else {
-                    phoneError.classList.add('hidden');
-                }
-            });
-
-            const registerForm = document.querySelector('#registerForm');
-            registerForm.addEventListener('submit', function (e) {
-                if (phoneNumber.value.length !== 10) {
-                    e.preventDefault();
-                    phoneError.classList.remove('hidden');
-                }
-            });
-        });
-
-
-        document.addEventListener('DOMContentLoaded', function () {
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const togglePassword = document.querySelector('#togglePassword');
+    const togglePassword2 = document.querySelector('#togglePassword2');
     const password = document.querySelector('#password');
-    const form = document.querySelector('form');
+    const password2 = document.querySelector('#password2');
+    const termsCheckbox = document.querySelector('#agree');
+    const agreeError = document.querySelector('#agreeError');
+    const phoneNumber = document.querySelector('#phoneNumber');
+    const form = document.querySelector('#registerForm');
 
-    // Password validation pattern
-    const passwordPattern = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
+    // Toggle password visibility for the first password field
+    togglePassword.addEventListener('click', function () {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
 
+    // Toggle password visibility for the re-enter password field
+    togglePassword2.addEventListener('click', function () {
+        const type = password2.getAttribute('type') === 'password' ? 'text' : 'password';
+        password2.setAttribute('type', type);
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+
+    // Limit phone number to 10 digits
+    phoneNumber.addEventListener('input', function () {
+        if (this.value.length > 10) {
+            this.value = this.value.slice(0, 10);
+        }
+    });
+
+    // ✅ Final Form Validation
     form.addEventListener('submit', function (e) {
+        const passwordPattern = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
+
+        // Password strength validation
         if (!passwordPattern.test(password.value)) {
             e.preventDefault();
             alert("Password must be at least 8 characters long, contain at least one uppercase letter and one special character.");
+            return;
+        }
+
+        // Password match validation
+        if (password.value !== password2.value) {
+            e.preventDefault();
+            alert("Passwords do not match. Please re-enter them correctly.");
+            return;
+        }
+
+        // Terms of service checkbox validation
+        if (!termsCheckbox.checked) {
+            e.preventDefault();
+            agreeError.style.display = 'block';
+            return;
+        } else {
+            agreeError.style.display = 'none';
         }
     });
 });
+</script>
 
-
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.querySelector('#registerForm');
-        const password = document.querySelector('#password');
-        const togglePassword = document.querySelector('#togglePassword');
-        const termsCheckbox = document.querySelector('#agree');
-        const agreeError = document.querySelector('#agreeError');
-        const phoneNumber = document.querySelector('#phoneNumber');
-
-        // Toggle Password Visibility
-        togglePassword.addEventListener("click", function () {
-            const type = password.getAttribute("type") === "password" ? "text" : "password";
-            password.setAttribute("type", type);
-            this.classList.toggle("fa-eye");
-            this.classList.toggle("fa-eye-slash");
-        });
-
-        // Limit phone number to 10 digits
-        phoneNumber.addEventListener('input', function () {
-            if (this.value.length > 10) {
-                this.value = this.value.slice(0, 10);
-            }
-        });
-
-        // Form submit validations
-        form.addEventListener('submit', function (e) {
-            const passwordPattern = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
-
-            // Password validation
-            if (!passwordPattern.test(password.value)) {
-                e.preventDefault();
-                alert("Password must be at least 8 characters long, contain at least one uppercase letter and one special character.");
-                return;
-            }
-
-            // Terms of service checkbox
-            if (!termsCheckbox.checked) {
-                e.preventDefault();
-                agreeError.style.display = 'block';
-                return;
-            } else {
-                agreeError.style.display = 'none';
-            }
-        });
-    });
-termsCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-        agreeError.style.display = 'none';
-    }
-});
-
-
-
-
-
-
-    </script>
 
 </body>
 
