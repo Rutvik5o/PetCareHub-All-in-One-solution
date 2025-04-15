@@ -565,7 +565,7 @@ def MakePayment(request, appointment_id):
     payment = Payment(
         userid=appointment.userid,
         appointmentid=appointment,
-        amount=amount,
+        amount=int(amount / 100),
         razorpay_order_id=razorpay_order['id'],
     )
 
