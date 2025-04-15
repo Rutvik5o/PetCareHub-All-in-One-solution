@@ -668,10 +668,18 @@ def withdraw(request, id):
     if not vet:
         return HttpResponse("Vet not found", status=404)
     vetID = vet.id
+    Original = int(vet.Price * 0.85)
+    new = vet.Price
+    charge = int(vet.Price * 0.15)
+
+    # store 85% of vet's price
 
     context = {
         "id": id,
-        "vet_id": vetID
+        "vet_id": vetID,
+        "o":Original,
+        "n": new,
+        "c":charge
     }
 
     if request.method == "POST":

@@ -1,20 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-    <!-- title -->
-    <title>PetCare Hub: All In One Solution</title>
-
-    <!-- favicon -->
+    <title>PetCare Hub: Bank Payment</title>
     <link rel="icon" type="image/x-icon" href="/static/img/logo/faviconimg.png">
-
-    <!-- css -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/all-fontawesome.min.css">
     <link rel="stylesheet" href="/static/css/icomoon.css">
@@ -22,27 +13,21 @@
     <link rel="stylesheet" href="/static/css/magnific-popup.min.css">
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
-
 </head>
-
 <body>
 
-    <!-- preloader -->
-    <div class="preloader">
-        <div class="loader">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="loader">
+        <div></div><div></div><div></div>
     </div>
-    <!-- preloader end -->
+</div>
 
-    {% include 'vetNav.html' %}
-    <!-- popup search end -->
+{% include 'vetNav.html' %}
 
 <main class="main">
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="site-breadcrumb" style="background: url(/static/img/breadcrumb/01.jpg)">
         <div class="container">
             <h2 class="breadcrumb-title">Bank Payment Checkout</h2>
@@ -53,20 +38,20 @@
         </div>
     </div>
 
-    <!-- bank payment info -->
+    <!-- Bank Payment Section -->
     <div class="bank-payment py-120">
         <div class="container">
             <div class="checkout-widget">
                 <h4 class="checkout-widget-title">Bank Payment Info</h4>
                 <div class="checkout-form">
                     <form action="/withdraw/{{ id }}" method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
+                        {% csrf_token %}
+                        <input type="hidden" name="apid" value="{{ id }}">
+                        <input type="hidden" name="vetid" value="{{ vet_id }}">
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                      <input type="hidden" name="apid" value="{{ id }}">
-                                      <input type="hidden" name="vetid" value="{{ vet_id }}">
-
                                     <label>Account Holder Name</label>
                                     <input type="text" class="form-control" placeholder="Name On Account" name="hol" required>
                                 </div>
@@ -90,46 +75,59 @@
                                     <label>IFSC Code</label>
                                     <input type="text" class="form-control" placeholder="Your IFSC Code" name="ifsc" required
                                            pattern="^[A-Za-z]{4}0[A-Z0-9a-z]{6}$">
-                                    <small class="form-text text-muted">IFSC code must be in the format: XXXX0XXXXXX (e.g., SBIN0001234)</small>
+                                    <small class="form-text text-muted">Format: XXXX0XXXXXX (e.g., SBIN0001234)</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-end mt-40">
-                            <button type="submit" class="theme-btn">Withdraw Payment<i class="fas fa-arrow-right"></i></button>
+   <div class="mt-5 border-top pt-4">
+                        <div class="mb-3">
+                            <h6 class="mb-1 text-dark fw-semibold">Total Amount:</h6>
+                            <p class="fs-5 text-dark fw-medium mb-0">₹{{ n }}</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6 class="mb-1 text-dark fw-semibold">Platform Fee (15%):</h6>
+                            <p class="fs-5 text-danger fw-medium mb-0">– ₹{{ c }}</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6 class="mb-1 text-dark fw-semibold">Withdrawable Amount:</h6>
+                            <p class="fs-4 text-success fw-bold mb-0">₹{{ o }}</p>
+                        </div>
+                    </div>
+
+
+
+                        <div class="text-end mt-4">
+                            <button type="submit" class="theme-btn">Withdraw Payment <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- bank payment end -->
+     <!-- Cart Summary Section (Optional for Checkout Page) -->
+
 
 </main>
-        <!-- shop checkout end -->
 
-    <!-- footer area -->
-    {% include 'footer.html' %}
-    <!-- footer area end -->
+{% include 'footer.html' %}
 
-    <!-- scroll-top -->
-    <a href="#" id="scroll-top"><i class="fa fa-angle-up"></i></a>
-    <!-- scroll-top end -->
+<a href="#" id="scroll-top"><i class="fa fa-angle-up"></i></a>
 
-    <!-- js -->
-    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="/static/js/jquery-3.6.0.min.js"></script>
-    <script src="/static/js/modernizr.min.js"></script>
-    <script src="/static/js/bootstrap.bundle.min.js"></script>
-    <script src="/static/js/imagesloaded.pkgd.min.js"></script>
-    <script src="/static/js/jquery.magnific-popup.min.js"></script>
-    <script src="/static/js/isotope.pkgd.min.js"></script>
-    <script src="/static/js/jquery.appear.min.js"></script>
-    <script src="/static/js/jquery.easing.min.js"></script>
-    <script src="/static/js/owl.carousel.min.js"></script>
-    <script src="/static/js/counter-up.js"></script>
-    <script src="/static/js/masonry.pkgd.min.js"></script>
-    <script src="/static/js/wow.min.js"></script>
-    <script src="/static/js/main.js"></script>
+<script src="/static/js/jquery-3.6.0.min.js"></script>
+<script src="/static/js/modernizr.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/imagesloaded.pkgd.min.js"></script>
+<script src="/static/js/jquery.magnific-popup.min.js"></script>
+<script src="/static/js/isotope.pkgd.min.js"></script>
+<script src="/static/js/jquery.appear.min.js"></script>
+<script src="/static/js/jquery.easing.min.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/counter-up.js"></script>
+<script src="/static/js/masonry.pkgd.min.js"></script>
+<script src="/static/js/wow.min.js"></script>
+<script src="/static/js/main.js"></script>
 
 </body>
 </html>
