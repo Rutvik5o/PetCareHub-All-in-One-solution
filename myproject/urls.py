@@ -63,7 +63,7 @@ urlpatterns = [
     path('getarticle',views.fetcharticle),
     path('subscribe',views.showletter),
     path('faq',views.faq),
-    path('terms',views.terms),
+    path('terms/',views.terms),
     path('pp',views.policy),
     path('team',views.team),
     path('soon',views.Petcare2o),

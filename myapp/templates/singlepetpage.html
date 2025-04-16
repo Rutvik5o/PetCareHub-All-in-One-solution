@@ -26,6 +26,12 @@
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/flex-slider.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .box{
+            margin-top:75px;
+            margin-left:75px;
+        }
+    </style>
 
 </head>
 
@@ -94,8 +100,8 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="single-item-info">
-                            <h4 class="single-item-title">{{ fetchsingle.petName }}</h4><br>
+                        <div class="single-item-info box">
+                            <h1 class="single-item-title">{{ fetchsingle.petName }}</h1><br>
 
                             <h5>Breed: <span>{{ fetchsingle.petBreed }}</span></h5><br>
                             <h5>Age: <span>{{ fetchsingle.petAge }}</span></h5><br>

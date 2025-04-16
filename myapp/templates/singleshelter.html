@@ -26,6 +26,12 @@
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/flex-slider.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .box{
+            margin-top:30px;
+            margin-left:30px;
+        }
+    </style>
 
 </head>
 
@@ -94,13 +100,29 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="single-item-info">
+                        <div class="single-item-info box">
                             <h4 class="single-item-title">{{ fetchsingle.shelterName }}</h4><br>
 
 
-                            <h5>Email: <span>{{ fetchsingle.shelterEmail }}</span></h5><br>
-                            <h5>Contact : <span>{{ fetchsingle.shelterContact }}</span></h5><br>
-                            <h5>Address : <span>{{ fetchsingle.shelterAddress }}</span></h5><br>
+                            <h5>
+                              Email:
+                              <span>
+                                <a href="mailto:{{ fetchsingle.shelterEmail }}">{{ fetchsingle.shelterEmail }}</a>
+                              </span>
+                            </h5><br>
+
+                            <h5>
+                              Contact:
+                              <span>
+                                <a href="tel:{{ fetchsingle.shelterContact }}">{{ fetchsingle.shelterContact }}</a>
+                              </span>
+                            </h5><br>
+
+                            <h5>
+                              Address:
+                              <span>{{ fetchsingle.shelterAddress }}</span>
+                            </h5><br>
+
                           <!--  <h5>Location Url : <span><a href="{{ fetchsingle.shelterLocationUrl }}">Click here</a></span></h5><br> -->
 
 
@@ -108,7 +130,7 @@
                                   {% if fetchsingle.shelterLocationUrl %}
                             <h5>Google Map:</h5><br>
                                         <div class="map-container">
-                                            <iframe src="{{ fetchsingle.shelterLocationUrl }}" width="600" height="450"
+                                            <iframe src="{{ fetchsingle.shelterLocationUrl }}" width="600" height="350"
                                                     style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                                                             </div>
                                 {% else %}
@@ -133,8 +155,9 @@
                             </div>
 
                             <br>
+                            <br>
 
-                            <hr>
+
 
 
                         </div>
