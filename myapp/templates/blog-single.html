@@ -26,6 +26,24 @@
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
 
+    <style>
+        .blog-thumb-img {
+    width: 100%;
+    max-width: 400px; /* adjust max width based on your layout */
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px; /* optional for rounded corners */
+}
+
+.blog-thumb-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+    </style>
+
 </head>
 
 <body>
@@ -81,9 +99,7 @@
                                                 <li><i class="fa fa-user"></i><a href="#">{{ fetchsingle.vetid }} </a></li>
                                             </ul>
                                         </div>
-                                        <div class="blog-meta-right">
-                                             <a href="#" class="share-link"><i class="fa fa-share-alt"></i>Share</a>
-                                        </div>
+
                                     </div>
                                     <div class="blog-details">
                                         <h3 class="blog-details-title mb-20">{{ fetchsingle.blogTitle }}</h3>

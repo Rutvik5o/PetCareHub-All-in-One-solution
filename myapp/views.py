@@ -503,9 +503,13 @@ def faq(request):
 
     return render(request,"faq.html")
 
-def terms(request):
+#def terms(request):
 
-    return render(request,"terms.html")
+#    return render(request,"terms.html")
+
+def termsN(request):
+
+    return render(request,"termsN.html")
 
 def getIntoTouch(request):
 
