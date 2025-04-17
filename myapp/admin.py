@@ -6,11 +6,14 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from reportlab.lib import colors
 import csv
 from django.utils.encoding import smart_str
+from django.http import HttpResponse
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.enums import TA_CENTER
 
 
-# ---------------------------------------
-# Export Functions
-# ---------------------------------------
 
 def export_as_csv(modeladmin, request, queryset):
     response = HttpResponse(content_type='text/csv')
@@ -29,57 +32,66 @@ def export_as_csv(modeladmin, request, queryset):
 export_as_csv.short_description = "Export Selected as CSV file(Excel)"
 
 
-# PDF export (for Payment model only)
+
+
 def export_to_pdf(modeladmin, request, queryset):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="report.pdf"'
     doc = SimpleDocTemplate(response, pagesize=letter)
     elements = []
+    styles = getSampleStyleSheet()
+    title_style = ParagraphStyle(
+        name='TitleStyle',
+        parent=styles['Heading1'],
+        fontSize=18,
+        leading=22,
+        alignment=TA_CENTER,
+        textColor=colors.HexColor('#d35400'),
+    )
+
+
+    title = Paragraph("PetCare Hub: Payment Report", title_style)
+    elements.append(title)
+    elements.append(Spacer(1, 12))  # Add space between title and table
+
 
     style = TableStyle([
-        # Header
-        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#d35400')),  # Warm orange
+        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#d35400')),
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
         ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
         ('FONTSIZE', (0, 0), (-1, 0), 12),
         ('BOTTOMPADDING', (0, 0), (-1, 0), 10),
 
-        # Rows background with soft yellow (like your UI)
         ('BACKGROUND', (0, 1), (-1, -1), colors.HexColor('#fef9e7')),
-        ('TEXTCOLOR', (0, 1), (-1, -1), colors.HexColor('#5D4037')),  # Dark brown text
+        ('TEXTCOLOR', (0, 1), (-1, -1), colors.HexColor('#5D4037')),
 
-        # Font and padding
         ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
         ('FONTSIZE', (0, 1), (-1, -1), 10),
         ('BOTTOMPADDING', (0, 1), (-1, -1), 8),
 
-        # Center all cells
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
 
-        # Borders
         ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#A1887F')),
         ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.HexColor('#fef9e7'), colors.HexColor('#fcefc7')])
-
     ])
 
-    headers = ['id', 'userid', 'appointmentid', 'amount', 'status', 'razorpay_order_id']
+    headers = ['ID', 'User ID', 'Appointment ID', 'Amount', 'Status', 'Razorpay Order ID']
     data = [
         [getattr(obj, field) for field in ['id', 'userid', 'appointmentid', 'amount', 'status', 'razorpay_order_id']]
-        for obj in queryset]
+        for obj in queryset
+    ]
 
     t = Table([headers] + data, style=style)
     elements.append(t)
+
     doc.build(elements)
 
     return response
 
-
 export_to_pdf.short_description = "Export to PDF"
 
 
-# ---------------------------------------
-# ExportActionMixin for Reuse
-# ---------------------------------------
+
 class ExportActionMixin:
     actions = [export_as_csv]
 
