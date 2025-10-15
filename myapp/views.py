@@ -737,6 +737,7 @@ def manageBlogpage(request):
         "data": page_data,
         "fetchdata": data  # optional, only if you're using it elsewhere
     }
+    #you can see there the changes
     return render(request, "manageBlog.html", context)
 
 
